@@ -1,4 +1,11 @@
 {
   "name": "euripides-rewritten-monorepo",
-  "packageManager": "yarn@4.7.0"
+  "packageManager": "yarn@4.7.0",
+  "private": true,
+  "main": "index.js",
+  "workspaces": [
+    "apps/*"
+  ],
+  "version": "1.0.0",
+  "license": "MIT"
 }
