@@ -1,0 +1,35 @@
+{
+    "kind": "collectionType",
+    "collectionName": "editors",
+    "info": {
+        "singularName": "editor",
+        "pluralName": "editors",
+        "displayName": "Editor",
+        "description": "Modern scholars/editors"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string"
+        },
+        "role": {
+            "type": "enumeration",
+            "enum": [
+                "Digital",
+                "Curator",
+                "Reviewer"
+            ]
+        },
+        "orcid": {
+            "type": "string"
+        },
+        "user": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "plugin::users-permissions.user"
+        }
+    }
+}

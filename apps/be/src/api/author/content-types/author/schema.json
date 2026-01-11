@@ -5,30 +5,47 @@
     "singularName": "author",
     "pluralName": "authors",
     "displayName": "Author",
-    "description": "Create authors for your content"
+    "description": "Historical authors"
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "original",
+        "scholar"
+      ],
+      "default": "scholar",
+      "required": true
+    },
+    "bio": {
+      "type": "richtext"
+    },
+    "dateOfBirth": {
+      "type": "date"
+    },
+    "placeOfBirth": {
       "type": "string"
     },
-    "avatar": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images", "files", "videos"]
+    "languages": {
+      "type": "json"
     },
-    "email": {
-      "type": "string"
-    },
-    "articles": {
+    "works": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::article.article",
-      "mappedBy": "author"
+      "relation": "manyToMany",
+      "target": "api::catalog.catalog",
+      "mappedBy": "authors"
     }
   }
 }

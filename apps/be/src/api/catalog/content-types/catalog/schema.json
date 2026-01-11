@@ -1,0 +1,71 @@
+{
+    "kind": "collectionType",
+    "collectionName": "catalogs",
+    "info": {
+        "singularName": "catalog",
+        "pluralName": "catalogs",
+        "displayName": "Catalog",
+        "description": "Works metadata"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "subTitle": {
+            "type": "string"
+        },
+        "uuid": {
+            "type": "uid",
+            "targetField": "title"
+        },
+        "isbn": {
+            "type": "string"
+        },
+        "authors": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::author.author",
+            "inversedBy": "works"
+        },
+        "fragments": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::document.document",
+            "mappedBy": "catalog"
+        },
+        "additionalDocuments": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": [
+                "files",
+                "images",
+                "videos"
+            ]
+        },
+        "projectDescription": {
+            "type": "richtext"
+        },
+        "editorialDeclaration": {
+            "type": "richtext"
+        },
+        "encodingMethod": {
+            "type": "string",
+            "default": "double-end-point"
+        },
+        "publicationInfo": {
+            "type": "component",
+            "repeatable": false,
+            "component": "shared.publication-info"
+        },
+        "languages": {
+            "type": "component",
+            "repeatable": false,
+            "component": "shared.work-language"
+        }
+    }
+}

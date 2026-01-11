@@ -1,0 +1,19 @@
+{
+    "collectionName": "components_shared_revision_entries",
+    "info": {
+        "displayName": "Revision Entry",
+        "icon": "history"
+    },
+    "options": {},
+    "attributes": {
+        "date": {
+            "type": "datetime"
+        },
+        "description": {
+            "type": "text"
+        },
+        "editorID": {
+            "type": "string"
+        }
+    }
+}

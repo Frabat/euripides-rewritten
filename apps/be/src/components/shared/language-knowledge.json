@@ -1,0 +1,24 @@
+{
+    "collectionName": "components_shared_language_knowledges",
+    "info": {
+        "displayName": "Language Knowledge",
+        "icon": "language"
+    },
+    "options": {},
+    "attributes": {
+        "language": {
+            "type": "string",
+            "required": true
+        },
+        "proficiency": {
+            "type": "enumeration",
+            "enum": [
+                "Basic",
+                "Fluent",
+                "Native",
+                "Scholarly"
+            ],
+            "default": "Scholarly"
+        }
+    }
+}

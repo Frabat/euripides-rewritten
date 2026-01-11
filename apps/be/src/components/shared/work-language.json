@@ -1,0 +1,17 @@
+{
+    "collectionName": "components_shared_work_languages",
+    "info": {
+        "displayName": "Work Language",
+        "icon": "language",
+        "description": "Language details for the work"
+    },
+    "options": {},
+    "attributes": {
+        "originalLanguage": {
+            "type": "string"
+        },
+        "translationLanguage": {
+            "type": "string"
+        }
+    }
+}

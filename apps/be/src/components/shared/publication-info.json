@@ -1,0 +1,19 @@
+{
+    "collectionName": "components_shared_publication_infos",
+    "info": {
+        "displayName": "Publication Info",
+        "icon": "book"
+    },
+    "options": {},
+    "attributes": {
+        "publisher": {
+            "type": "string"
+        },
+        "place": {
+            "type": "string"
+        },
+        "year": {
+            "type": "integer"
+        }
+    }
+}

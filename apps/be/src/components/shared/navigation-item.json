@@ -1,0 +1,24 @@
+{
+    "collectionName": "components_shared_navigation_items",
+    "info": {
+        "displayName": "Navigation Item",
+        "icon": "list"
+    },
+    "options": {},
+    "attributes": {
+        "label": {
+            "type": "string"
+        },
+        "targetID": {
+            "type": "string"
+        },
+        "type": {
+            "type": "enumeration",
+            "enum": [
+                "Book",
+                "Section",
+                "Verse"
+            ]
+        }
+    }
+}
