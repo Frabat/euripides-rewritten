@@ -1,7 +1,18 @@
+"use client";
+
 import Link from "next/link";
-import { User, Menu } from "lucide-react";
+import { User, Menu, LogOut } from "lucide-react";
+import { useEffect, useState } from "react";
+import { getUser, logout } from "@/lib/auth";
+import { StrapiUser } from "@/types/strapi";
 
 export function Navbar() {
+    const [user, setUser] = useState<StrapiUser | null>(null);
+
+    useEffect(() => {
+        setUser(getUser());
+    }, []); // Run once on mount
+
     return (
         <nav className="w-full py-4 px-8 flex items-center justify-between bg-euripides-bg text-euripides-fg">
             <div className="flex items-center gap-4">
@@ -28,9 +39,22 @@ export function Navbar() {
             </div>
 
             <div className="flex items-center gap-4">
-                <button className="p-2 hover:bg-black/5 rounded-full transition-colors">
-                    <User className="w-6 h-6" />
-                </button>
+                {user ? (
+                    <div className="flex items-center gap-4">
+                        <span className="text-sm font-bold hidden sm:block">Hello, {user.username}</span>
+                        <Link href="/profile" className="p-2 hover:bg-black/5 rounded-full transition-colors" title="Profile">
+                            <User className="w-6 h-6" />
+                        </Link>
+                        <button onClick={logout} className="p-2 hover:bg-black/5 rounded-full transition-colors text-red-600" title="Logout">
+                            <LogOut className="w-6 h-6" />
+                        </button>
+                    </div>
+                ) : (
+                    <Link href="/login" className="flex items-center gap-2 font-bold hover:text-euripides-accent transition-colors">
+                        <User className="w-6 h-6" />
+                        <span className="hidden sm:block">Accedi</span>
+                    </Link>
+                )}
                 <button className="md:hidden p-2 hover:bg-black/5 rounded-full transition-colors">
                     <Menu className="w-6 h-6" />
                 </button>

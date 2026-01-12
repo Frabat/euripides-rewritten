@@ -81,6 +81,23 @@ export interface Catalog {
     publishedAt?: string;
 }
 
+export interface StrapiUser {
+    id: number;
+    username: string;
+    email: string;
+    provider: string;
+    confirmed: boolean;
+    blocked: boolean;
+    role?: {
+        id: number;
+        name: string;
+        description: string;
+        type: string;
+    };
+    createdAt: string;
+    updatedAt: string;
+}
+
 export interface StrapiResponse<T> {
     data: T;
     meta: {
