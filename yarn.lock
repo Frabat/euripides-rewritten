@@ -6825,6 +6825,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "be@workspace:apps/be"
   dependencies:
+    "@strapi/admin": "npm:5.33.2"
     "@strapi/plugin-cloud": "npm:5.33.2"
     "@strapi/plugin-users-permissions": "npm:5.33.2"
     "@strapi/strapi": "npm:5.33.2"

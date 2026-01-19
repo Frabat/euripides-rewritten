@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title type="main">Tebaide</title>  
+            <title type="sub"> Libro Quinto</title>
+            <author> P. Papinio Stazio</author>
+            <editor xml:id="agervasi"> Anastasia Maria Gervasi </editor>
+            <respStmt>
+               <resp> Edizione critica digitale, traduzione e note di commento di </resp>
+               <name xml:id="gervasi">Anastasia Maria Gervasi</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher> DEFrAG-Tragedy</publisher>
+            <pubPlace> Bari </pubPlace>
+            <date> 2024 </date>
+         </publicationStmt>
+         <sourceDesc>
+            <p>born digital</p>
+         </sourceDesc>
+      </fileDesc>
+     <encodingDesc>
+        <projectDesc>
+           <p>Stazio lettore di Euripide: per un’edizione digitale 
+              <hi rend="italic"><foreign xml:lang="en">school oriented</foreign></hi>del teatro greco e della sua fortuna </p>
+        </projectDesc>
+        <editorialDecl>
+           <p> Documento XML codificato secondo le Guidelines della TEI <ref type="url" target="http://www.tei-c.org/release/doc/tei-p5-doc/es/html/index.html">TEI
+              P5</ref>.</p>
+        </editorialDecl>
+        <variantEncoding location="external" method="double-end-point"/>
+     </encodingDesc>
+     <profileDesc>
+        <creation>
+           <date notAfter="0092" notBefore="0091">91–92 d.C.</date>
+           <lang>Latín</lang>
+           <placeName>Roma</placeName>
+        </creation>
+        <particDesc>
+           <person role="author" xml:id="statius">
+              <persName xml:lang="la">P. Papinius <name>Statius</name>
+              </persName>
+              <birth notAfter="0045">45 d.C.</birth>
+              <death notAfter="0096">96 d.C.</death>
+              <floruit>?</floruit>
+              <nationality>Romano</nationality>
+              <langKnowledge>
+                 <langKnown tag="la">Latín</langKnown>
+              </langKnowledge> 
+           </person>
+        </particDesc>
+        <langUsage>
+           <language ident="la" ana="source">latino</language>
+           <language ident="grc" ana="comparison">greco</language>
+           <language ident="it" ana="translation-commentary"> italiano</language>
+        </langUsage>
+        <textDesc n="epic poetry">
+           <channel mode="w"/>
+           <constitution type="single"/>
+           <derivation type="original"/>
+           <domain type="art"/>
+           <factuality type="fiction"/>
+           <interaction type="none"/>
+           <preparedness type="prepare"/>
+           <purpose type="entertain" degree="high"/>
+        </textDesc>
+        <textClass>
+           <catRef scheme="#genre" target="#epic"/>
+        </textClass>
+        
+     </profileDesc>
+     <revisionDesc>
+        <change when-iso="18-10-23" who="#agervasi">codificati i versi e l'apparato</change>
+        <change when-iso="05-12-23" who="#agervasi">codificata la congettura 'ostia' di Bentley e Müller nell'apparato; 
+           aggiunta la milestone 'anchor' per codificare i limiti di hospita per legare il termine alla lezione e alle congetture nell'apparato </change>
+     </revisionDesc>
+  </teiHeader>
+   
+  <text>
+    <group> 
+       <text type="source" xml:lang="la" xml:id="la">
+      <body>
+         <div type="book" n="5" xml:id="la.5">
+            <head>
+               <seg xml:id="la.5.t"> Liber quintus</seg>
+            </head>
+            <div xml:id="la.versi.5.335">
+               <head>
+                  <seg xml:id="la.part.335">335-360</seg>
+               </head>
+            <p>
+               <seg xml:id="la.5.335"> <ref target="#note.part.335">
+              
+               <l xml:id="Theb.5.335">Ecce autem aerata dispellens aequora prora</l>
+                  <l xml:id="Theb.5.336"> <ref target="#w1.336">Pelias </ref> intacti late subit
+                     <w xml:id="app_w1"><anchor xml:id="app1_336begin"/>hospita
+                     <anchor xml:id="app1_336end"/></w> ponti</l>
+               <l xml:id="Theb.5.337">pinus; agunt Minyae, geminus fragor ardua canet</l>
+               <l xml:id="Theb.5.338">per latera: abruptam credas radicibus ire </l>
+                  <l xml:id="Theb.5.339">Ortygiam aut fractum pelago decurrere montem.</l></ref>
+               </seg>
+               
+               <seg xml:id="la.5.340">
+                  <l xml:id="Theb.5.340"> ast ubi suspensis siluerunt aequora tonsis,  </l>
+                  <l xml:id="Theb.5.341">mitior et senibus cycnis et pectine Phoebi </l>
+                  <l xml:id="Theb.5.342"> uox media de puppe uenit, maria ipsa carinae</l>
+                  <l xml:id="Theb.5.343"> accedunt. post nosse datum est: Oeagrius illic </l>
+                  <l xml:id="Theb.5.344">adclinis malo <w xml:id="app_w2"><anchor xml:id="app_344begin"/> mediis 
+                     <anchor xml:id="app_344end"/></w> intersonat Orpheus </l>
+                  <l xml:id="Theb.5.345"> remigiis tantosque iubet nescire labores. </l>
+               </seg>
+               
+               <seg xml:id="la.5.346">
+                  <l xml:id="Theb.5.346">illis in Scythicum Borean iter oraque <w xml:id="app_w3"><anchor xml:id="app_346begin"/>Ponti 
+                     <anchor xml:id="app_346end"/></w></l>
+                  <l xml:id="Theb.5.347">Cyaneis artata <w xml:id="app_w4"> <anchor xml:id="app_347begin"/>moris 
+                     <anchor xml:id="app_347end"/>.</w> nos, Thracia uisu </l>
+                  <l xml:id="Theb.5.348"> bella ratae, uario tecta incursare tumultu</l>
+                  <l xml:id="Theb.5.349">densarum pecudum aut fugientum more uolucrum</l>
+               </seg>
+               
+              <seg xml:id="la.5.350">
+                 <l xml:id="Theb.5.350">heu ubi nunc Furiae? portus amplexaque litus  </l>
+                 <l xml:id="Theb.5.351"> moenia, qua longe pelago despectus aperto,</l>
+                 <l xml:id="Theb.5.352">scandimus et celsas turres; hue saxa sudesque </l>
+                 <l xml:id="Theb.5.353">armaque maesta uirum atque infectos caedibus enses </l>
+                 <l xml:id="Theb.5.354">subuectant trepidae; quin et squalentia texta</l>
+                 <l xml:id="Theb.5.355">thoracum et uultu galeas intrare soluto  </l>
+                 <l xml:id="Theb.5.356">non pudet; audaces rubuit mirata cateruas </l>
+                 <l xml:id="Theb.5.357">Pallas, et auerso risit Gradiuus in Haemo. </l>
+                 <l xml:id="Theb.5.358">tune prim um ex animis praeceps amentia cessit, </l>
+                 <l xml:id="Theb.5.359">nee ratis ilia salo, sed diuum sera per aequor</l>
+                 <l xml:id="Theb.5.360">iustitia et poenae scelerum aduentare uidentur.</l>
+              </seg>
+            </p>
+            <div xml:id="aTheb.5" type="apparatus">
+               <p><hi rend="bold">336</hi></p>
+               <app from="#app1_336begin" to="#app1_336end">
+                  <lem wit="#B #D #G #M #O #P #Q #S"> hospita <bibl type="mss.">B D G M O P Q S</bibl><span type="lem/rdg_sep">:</span></lem>
+                  <rdg wit="#Qvl #R #T">(h)ostia  <bibl type="mss.">Q<hi rend="italic">vl</hi>R T</bibl><span type="lem/rgd_sep">,</span></rdg>
+                  <rdg wit="#O"> aequora <bibl type="ms">O</bibl></rdg>
+                  <rdg resp="#Bentley_Müller">ostia <bibl type="edition">Bentley 1861, 134 e Müller 1870, 201</bibl><span type="w_sep">|</span></rdg>
+               </app>
+               <p><hi rend="bold">344</hi></p>
+               <app from="#app_344begin" to="#app_344end">
+                  <lem wit="#edd">mediis <bibl>edd. </bibl><span type="lem/rdg_sep">:</span></lem> 
+                  <rdg wit="#B #M #Q #R #S #T">mediisque <bibl type="mss">B M Q R S T,</bibl></rdg>
+                  <rdg wit="#N #O">mediusque <bibl type="mss"> N O</bibl> </rdg>
+               </app>
+               <p><hi rend="bold">346</hi></p>
+               <app from="#app_346begin" to="#app_346end">
+                  <lem resp="#Marklandus #Hall">Ponti <bibl type="edition"> Markland 1728, 304s., Hall 2007, 122</bibl> <span type="lem/rdg_sep">:</span></lem>
+                  <rdg wit="#P #Qac #Σ #Hill">primi <bibl type="mss">P Qac </bibl> <bibl type="scholia">Σ</bibl> <bibl type="edition">Hill 1996, 118,</bibl></rdg>
+                  <rdg wit="#vulg. #B #D #G #M #O #Qpc #R #S #T">primum <bibl type="vulgata">vulg. </bibl><bibl type="mss"> B D G M O Qpc R S T </bibl></rdg>
+               </app>
+               <p><hi rend="bold">347</hi></p>
+               <app from="#app_347begin" to="#app_347end">
+                  <lem resp="#Bailey">moris <bibl type="edition">Bailey</bibl><span type="lem/rdg_sep">:</span></lem>
+                  <rdg wit="#vulg. #Bac #P #Qac #Σ, #Müller #Hill">maris <bibl type="vulgata">vulg.</bibl> <bibl type="mss">Bac P Qac </bibl> <bibl type="scholia">Σ</bibl> 
+                     <bibl type="editions">Müller 1870, 223, Hill 1996, 118</bibl></rdg>
+                  <rdg wit="#Bpc #D #G #M #O #Qpc #Hall">vadis <bibl type="mss">Bpc D G M O Qpc  </bibl> <bibl type="edition">S Hall 2007, 122 </bibl></rdg>
+               </app>
+            </div>
+         </div>
+           
+           
+         </div>
+      </body>
+       </text>
+       
+       <text type="translation" xml:lang="it" xml:id="Tr.it">
+          <body>
+             <div type="book" n="5" xml:id="Tr.it.5">
+                <head>
+                   <seg xml:id="it.5.t"> Libro quinto</seg>
+                </head>
+                <div xml:id="it.versi.5.335">
+                   <head>
+                      <seg xml:id="it.part.335">335-360</seg>
+                   </head>
+             <p>
+                <seg xml:id="it.5.335">Ma ecco avanzare la nave Peliaca, mentre fende le onde con la bronzea prora, <lb/> ospite sconosciuta dello sconfinato abisso mai navigato:
+                   <lb/> la guidano i Mini
+                   e spumeggiano fragorose le onde contro le alte fiancate! <lb/> Diresti che sia Ortigia a vagare,<lb/>  strappata alle proprie radici,<lb/> 
+                   o una montagna divelta che naviga sul mare. <lb/> </seg>
+                   
+                <seg xml:id="it.5.340"> Ma quando le onde tacquero al levarsi dei remi,<lb/>  più dolce dei cigni morenti e del plettro di Febo,<lb/>  
+                   una voce giunse dal mezzo della nave: 
+                   le stesse onde si accostarono <lb/> in ascolto. 
+                   In seguito, scoprimmo che là Orfeo, figlio di Eagro,  <lb/>  appoggiato all’albero maestro  cantava in mezzo ai rematori <lb/>
+                   e ordinava di dimenticare le pesanti fatiche. <lb/> </seg>
+                
+                <seg xml:id="it.5.346"> Il viaggio per loro (volgeva) verso la nordica Scizia e verso le bocche del Ponto <lb/> strette dagli ostacoli cianei. Noi, a quella vista, 
+                   credendoli guerrieri di Tracia, <lb/> corriamo alle case con il gran scompiglio <lb/> tipico del bestiame accalcato e degli uccelli che fuggono confusamente.
+                   <lb/> </seg>
+                   
+                <seg xml:id="it.5.350">  Ahimé, cosa resta ora del nostro furore? Saliamo sulle mura, che circondano il porto e la spiaggia, 
+                   <lb/>da dove è possibile spinger lo sguardo lontano sul mare aperto, <lb/>
+                   e sulle torri. Qui le donne trasportano in preda al panico pietre e pali,<lb/> le armi degli infelici mariti e le spade sporche di sangue,<lb/>
+                   non hanno ritegno a indossare le irte maglie delle corazze <lb/>e a calare gli elmi sciogliendo la chioma. </seg>
+             </p>
+                </div>
+             </div>
+          </body> 
+       </text>
+       <text type="commentary" xml:lang="it" xml:id="Note.it">
+          <body>
+             <div type="book" n="5" xml:id="Note.it.5"> 
+                <head>
+                   <seg xml:id="it.5.subt"> Commento </seg>
+                </head>
+                <div xml:id="it.note.5.335">
+                   <head>
+                      <seg xml:id="note.part.335"> 335-360</seg>
+                   </head>
+                   <p>
+                      <ref target="#la.5.335"> <seg xml:id="note.5.335">
+                         <seg xml:id="w1.335"> <hi rend="bold"> <title type="sub">335 Ecce autem </title></hi> : il nesso è un colloquialismo che ricorre spesso in commedia 
+                            ed è largamente attestato in Plauto 
+                         (vd. e.g. Plu. Cas. 969: ecce autem uxor omviamst, Mer.748: Ecce autem perii, coquos adest) e in Terenzio
+                         (vd. e.g. Ter. Ad. 767: Ecce autem hic adest / senex noster, Eu. 967: ecce autem uideo rure redeuntem senem. / dicam huic an non dicam?) 
+                         per esprimere la sorpresa della persona loquens di fronte a un brusco mutamento degli eventi (cf. anche Turp. com. 183). La formula funge da deittico,
+                         avverbio o particella atta a tener desta l’attenzione dei lettori (Dionisotti 2007, 87). Per quel che ci consta, il nesso non compare nell’epica,
+                         nella storiografia e nell’oratoria risalenti al periodo arcaico, ma ricorre una sola volta nei frammenti tragici di Ennio 
+                         (80.167 Jocelyn: ecce autem caligo oborta est, omnem prospectum obstulit / derepente contulit sese in pedes) a indicare un brusco cambiamento 
+                         narrativo che provoca sorpresa nel personaggio e nel pubblico.
+                         Ecce autem è frequentemente impiegato anche da Cicerone per sottolineare eventi determinanti e inattesi. 
+                         Lo Pseudo Asconio nel commento a Ver. 1.17 sottolinea, infatti, che “ecce autem” proprium hoc Ciceronis est in rebus improvisis (Stangl 1912, 211.5s.) 
+                         e che dall’uso che l’oratore fa della iunctura avrebbe poi tratto ispirazione Virgilio (quod cum cura Virgilius et legit et transtulit), 
+                         che impiega e denota ecce autem per l’introduzione di personaggi o eventi imprevisti
+                         (vd. e.g. Aen. 2.203-5: Ecce autem gemini a Tenedo tranquilla per alta— / horresco referens—immensis orbibus angues / 
+                         incumbunt pelago, pariterque ad litora tendunt, cf. Serv. ad Aen. 2.203: cum ex improuiso vult aliquid ostendere). </seg>
+                         <seg xml:id="w1.336"> <ref target="#la.5.335"><hi rend="bold"> <title type="sub">336 Pelias </title></hi></ref>: l’aggettivo rimanda 
+                            al monte Pelio (vd. OLD s.v. Pelias1),  dalle cui valli selvose furono 
+                         recisi i tronchi di pino con cui Argo è costruita. Apollonio Rodio impiega l’espressione Πηλιὰς Ἀργώ 
+                         (<ref target="http://www.perseus.tufts.edu/hopper/text?doc=Apollon.+1.386&amp;fromdoc=Perseus%3Atext%3A1999.01.0227">1.386</ref>) 
+                         al momento del varo: versi 524-25 del primo libro (σμερδαλέον δὲ λιμὴν Παγασήιος ἠδὲ καὶ αὐτή / Πηλιὰς ἴαχεν Ἀργὼ ἐπισπέρχουσα νέεσθαι). 
+                         Nella tragedia greca si confrontino i versi 3-4 del prologo della Medea, nel quale la nutrice rammenta la spedizione argonautica:
+                         μηδ’ ἐν νάπαισι Πηλίου πεσεῖν ποτε / τμηθεῖσα πεύκη. 
+                         Ed Euripide sembra impiegare il medesimo nesso tra il monte e l’imbarcazione nell’Ipsipile adoperando 
+                         l’espressione εἰλατίνας…  πλάτα̣[ς] (F 752g.14 Kn.). È possibile, infatti, che l’eroina stia qui richiamando l’origine del viaggio argonautico,
+                         a cui presumibilmente ha già fatto riferimento nel prologo (Bond 1963, 7).
+                         Il sostantivo ἐλάτη è convenzionalmente inteso nel senso di “pino” (vd. e.g. Eur. IT 411, Hel. 1461), sebbene indichi spesso una varietà di legno d’abete,
+                         preferito nell’antichità per la costruzione delle navi da guerra poiché particolarmente leggero.
+                         L’aggettivo ελάτινος, che Euripide usa con riferimento ai remi “di legno di pino” nel nostro lacerto, 
+                         suggerisce verosimilmente l’origine della nave mitica.
+                         Nella latinità il legame è sottolineato da Ennio ai versi 208-9 della Medea 
+                         (fr. 103 Jocelyn: utinam ne in nemore Pelio securibus caesa accidisset abiegna ad terram trabes), 
+                         da Catullo all’inizio del carme 64 (1: Peliaco quondam prognatae vertice pinus) e da Valerio Flacco nell’ottavo libro 
+                         del poema nell’ambito della descrizione che contiene il confronto tra Giasone e Medea (Arg. 8.417: si modo Peliacae non sum captiva carinae).</seg>
+                         <seg xml:id="w2.336"> <hi rend="bold"> <title type="sub">subit </title></hi>:<hi rend="bold">  </hi>: il verbo è variamente adoperato nel corpus poetico staziano e ha qui significato di “avanzare”. Non è tuttavia da escludere che possa racchiudere 
+                         anche la sfumatura di “attaccare” o “invadere” (e.g. Theb. 5.566, 10.406) alla luce del fatto che le Lemnie avrebbero da lì a poco imbracciato nuovamente 
+                         le armi credendo Argo una nave dei guerrieri di Tracia (Theb. 5.347s.). Si tratta di un presente storico a cui Stazio attribuisce la duplice funzione di segnalare, 
+                         insieme ad ecce autem (cf. Schlicher 1931, 52), un brusco mutamento nella narrazione dovuto alla cruciale apparizione degli Argonauti, e di enfatizzare l’oscillazione 
+                         tra passato e presente nel racconto di Ipsipile, al fine di rendere l’azione vivida e tangibile.
+                         subit: il verbo è variamente adoperato nel corpus poetico staziano e ha qui significato di “avanzare”.
+                         Non è tuttavia da escludere che possa racchiudere anche la sfumatura di “attaccare” o “invadere” (e.g. Theb. 5.566, 10.406) 
+                         alla luce del fatto che le Lemnie avrebbero da lì a poco imbracciato nuovamente le armi credendo Argo una nave dei guerrieri di Tracia (Theb. 5.347s.). 
+                         Si tratta di un presente storico a cui Stazio attribuisce la duplice funzione di segnalare, insieme ad ecce autem (cf. Schlicher 1931, 52), 
+                         un brusco mutamento nella narrazione dovuto alla cruciale apparizione degli Argonauti, e di enfatizzare l’oscillazione tra passato e presente nel racconto di Ipsipile, 
+                         al fine di rendere l’azione vivida e tangibile.</seg>
+                         <seg xml:id="w3.336"> <hi rend="bold"> <title type="sub"> <ref target="#app_w1">hospita </ref> </title></hi>:<hi rend="bold">  </hi> : variante maggioritaria dei manoscritti primari e accolta dalla maggior parte degli editori. I codici R T e l’editio princeps hanno 
+                         (h)ostia, che è anche varia lectio di Q. Bentley (1961, 134) e Müller (1870, 201) congetturano ostia sulla base del confronto con il nesso subit ostia in 
+                         Virgilio (Aen. 1.400, 5. 281) e con ostia Ponti al verso 328 del sesto libro della Tebaide. Si preferisce tuttavia generalmente la variante hospita 
+                         in ragione dell’affinità alla iunctura tipicamente ovidiana hospita… navis (Trist. 4.4.58, Fast. 1.340 e 4.298) e hospita… puppis (Trist. 3.12.32): 
+                         l’aggettivo, che assume l’accezione di “straniera” (cf. anche ThLL 6.3, 3033), è infatti adoperato da Stazio con lo stesso significato. 
+                         Mi pare inoltre interessante notare l’allitterazione del suono ‘p’, rimarcata da hospita, che conferisce alla voce di Ipsipile la parvenza di un balbettio, 
+                         finalizzato a richiamare lo stato di ansia e paura all’arrivo degli eroi. </seg>
+                       </seg>
+                         
+                      </ref>
+                   </p>
+                </div>
+             </div>
+          </body>
+       </text>
+    </group>
+  </text>
+</TEI>
