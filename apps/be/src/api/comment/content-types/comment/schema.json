@@ -1,0 +1,37 @@
+{
+    "kind": "collectionType",
+    "collectionName": "comments",
+    "info": {
+        "singularName": "comment",
+        "pluralName": "comments",
+        "displayName": "Comment",
+        "description": "User comments on documents"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "content": {
+            "type": "text",
+            "required": true
+        },
+        "startLine": {
+            "type": "integer"
+        },
+        "endLine": {
+            "type": "integer"
+        },
+        "document": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::document.document",
+            "inversedBy": "comments"
+        },
+        "author": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::users-permissions.user"
+        }
+    }
+}

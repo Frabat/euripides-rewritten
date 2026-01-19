@@ -55,23 +55,17 @@ export default function ProfilePage() {
                 {/* Actions Grid */}
                 <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Scholar Actions */}
-                    {isScholar && (
-                        <div className="col-span-1 md:col-span-2 bg-gradient-to-r from-purple-50 to-white p-6 rounded-lg border border-purple-100">
-                            <div className="flex items-start gap-4">
-                                <div className="p-3 bg-white rounded-full shadow-sm text-purple-600">
-                                    <Shield className="w-6 h-6" />
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-lg mb-2">Area Studiosi</h3>
-                                    <p className="text-gray-600 mb-4 text-sm">Hai accesso ai privilegi di pubblicazione. Puoi caricare nuovi testi o revisioni.</p>
-                                    <Link href="/profile/upload" className="inline-flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-md font-bold hover:bg-purple-700 transition-colors text-sm">
-                                        <Upload className="w-4 h-4" />
-                                        Carica Nuovo Contributo
-                                    </Link>
-                                </div>
+                    <div className="col-span-1 md:col-span-2 bg-gradient-to-r from-purple-50 to-white p-6 rounded-lg border border-purple-100">
+                        <div className="flex items-start gap-4">
+                            <div className="p-3 bg-white rounded-full shadow-sm text-purple-600">
+                                <Shield className="w-6 h-6" />
+                            </div>
+                            <div>
+                                <h3 className="font-bold text-lg mb-2">Area Studiosi</h3>
+                                <p className="text-gray-600 text-sm">Hai accesso ai privilegi di pubblicazione. Gestisci i contenuti dalla pagina Catalogo.</p>
                             </div>
                         </div>
-                    )}
+                    </div>
 
                     {/* Standard Actions */}
                     <div className="p-4 rounded-lg border border-gray-100 hover:border-euripides-accent/50 transition-colors group">

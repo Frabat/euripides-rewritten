@@ -1,21 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getUser, getToken } from "@/lib/auth";
-import { Upload, FileText, ArrowLeft } from "lucide-react";
+import { Upload, FileText, ArrowLeft, Save } from "lucide-react";
 import Link from "next/link";
 import { StrapiUser } from "@/types/strapi";
 
-export default function ScholarUploadPage() {
+function UploadForm() {
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const workId = searchParams.get("workId");
+
     const [user, setUser] = useState<StrapiUser | null>(null);
     const [loading, setLoading] = useState(true);
     const [uploading, setUploading] = useState(false);
 
     // Form State
-    const [title, setTitle] = useState("");
     const [summary, setSummary] = useState("");
+    const [bookNumber, setBookNumber] = useState<string>("");
+    const [sectionRangeStart, setSectionRangeStart] = useState("");
+    const [sectionRangeEnd, setSectionRangeEnd] = useState("");
+
     const [file, setFile] = useState<File | null>(null);
     const [message, setMessage] = useState("");
 
@@ -25,10 +31,10 @@ export default function ScholarUploadPage() {
             router.push("/login");
             return;
         }
-        // Strict Role Check - Client Side (Backend should also enforce)
+        // Strict Role Check - Client Side
         const isScholar = userData.role?.name === "Scholar" || userData.role?.type === "scholar";
         if (!isScholar) {
-            router.push("/profile"); // Redirect unauthorized
+            router.push("/profile");
             return;
         }
         setUser(userData);
@@ -72,31 +78,41 @@ export default function ScholarUploadPage() {
             const fileId = uploadData[0].id;
 
             // 2. Create Document Entry
-            // Note: This assumes we are creating a 'Document'. Adjust endpoint if 'Catalog' needed.
-            // For simplicity, we are creating a draft Document.
+            const payload: any = {
+                data: {
+                    summary: summary,
+                    xmlFile: fileId,
+                    bookNumber: bookNumber ? parseInt(bookNumber) : null,
+                    sectionRangeStart,
+                    sectionRangeEnd,
+                }
+            };
+
+            // Link to Catalog if workId is present
+            if (workId) {
+                payload.data.catalog = workId;
+            }
+
             const docRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}/api/documents`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`
                 },
-                body: JSON.stringify({
-                    data: {
-                        summary: summary,
-                        // We might need to associate it with a Catalog/Work, but let's keep it simple
-                        xmlFile: fileId,
-                        // Add other required fields if any (e.g. bookNumber defaults?)
-                    }
-                })
+                body: JSON.stringify(payload)
             });
 
             if (!docRes.ok) throw new Error("Errore durante la creazione del documento");
 
             setMessage("Caricamento completato con successo!");
-            // Reset form
-            setTitle("");
-            setSummary("");
-            setFile(null);
+
+            // Redirect back to work if possible
+            if (workId) {
+                setTimeout(() => router.push(`/catalog/${workId}`), 1500);
+            } else {
+                // Determine where to go if no workId, maybe profile?
+                setTimeout(() => router.push("/profile"), 1500);
+            }
 
         } catch (err: any) {
             console.error(err);
@@ -106,16 +122,19 @@ export default function ScholarUploadPage() {
         }
     };
 
-    if (loading) return <div className="p-8 text-center">Verifica permessi...</div>;
+    if (loading) return <div className="p-8 text-center bg-euripides-bg min-h-screen">Verifica permessi...</div>;
 
     return (
         <div className="container mx-auto py-12 px-4 md:px-8 max-w-2xl">
-            <Link href="/profile" className="flex items-center gap-2 text-gray-500 hover:text-black mb-6">
-                <ArrowLeft className="w-4 h-4" /> Torna al Profilo
+            <Link href={workId ? `/catalog/${workId}` : "/profile"} className="flex items-center gap-2 text-gray-500 hover:text-black mb-6">
+                <ArrowLeft className="w-4 h-4" /> Torna {workId ? "all'Opera" : "al Profilo"}
             </Link>
 
             <h1 className="text-3xl font-serif font-bold mb-2">Carica Contributo</h1>
-            <p className="text-gray-600 mb-8">Area riservata agli studiosi per il caricamento di nuove edizioni XML o revisioni.</p>
+            <p className="text-gray-600 mb-8">
+                Area riservata agli studiosi per il caricamento di frammenti XML.
+                {workId && <span className="block font-medium text-purple-700 mt-1">Stai caricando per l'opera ID: {workId}</span>}
+            </p>
 
             <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
                 {message && (
@@ -125,17 +144,41 @@ export default function ScholarUploadPage() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* We might want a Catalog selection here later */}
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Titolo / Descrizione (Opzionale)</label>
-                        <input
-                            type="text"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-euripides-accent focus:border-transparent"
-                            placeholder="Es. Nuova revisione Libro V"
-                        />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Libro (Numero)</label>
+                            <input
+                                type="number"
+                                value={bookNumber}
+                                onChange={(e) => setBookNumber(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-euripides-accent focus:border-transparent"
+                                placeholder="Es. 1"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Range Inizio</label>
+                            <input
+                                type="text"
+                                value={sectionRangeStart}
+                                onChange={(e) => setSectionRangeStart(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-euripides-accent focus:border-transparent"
+                                placeholder="Es. 100"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Range Fine</label>
+                            <input
+                                type="text"
+                                value={sectionRangeEnd}
+                                onChange={(e) => setSectionRangeEnd(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-euripides-accent focus:border-transparent"
+                                placeholder="Es. 150"
+                            />
+                        </div>
                     </div>
 
                     <div>
@@ -177,5 +220,13 @@ export default function ScholarUploadPage() {
                 </form>
             </div>
         </div>
+    );
+}
+
+export default function ScholarUploadPage() {
+    return (
+        <Suspense fallback={<div className="p-8 text-center">Caricamento...</div>}>
+            <UploadForm />
+        </Suspense>
     );
 }

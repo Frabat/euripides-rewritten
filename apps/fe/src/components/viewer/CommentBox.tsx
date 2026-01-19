@@ -7,12 +7,15 @@ import Link from "next/link";
 import { StrapiUser } from "@/types/strapi";
 
 interface CommentBoxProps {
-    documentId: number;
+    documentId: string;
+    onCommentPosted?: () => void;
 }
 
-export function CommentBox({ documentId }: CommentBoxProps) {
+export function CommentBox({ documentId, onCommentPosted }: CommentBoxProps) {
     const [user, setUser] = useState<StrapiUser | null>(null);
     const [comment, setComment] = useState("");
+    const [startLine, setStartLine] = useState<string>("");
+    const [endLine, setEndLine] = useState<string>("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
@@ -31,15 +34,36 @@ export function CommentBox({ documentId }: CommentBoxProps) {
             const token = getToken();
             if (!token) throw new Error("Devi effettuare il login per commentare.");
 
-            // Mock submission - or replace with actual endpoint
-            // const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/comments`, { ... });
+            const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}/api/comments`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    data: {
+                        content: comment,
+                        document: documentId,
+                        startLine: startLine ? parseInt(startLine, 10) : null,
+                        endLine: endLine ? parseInt(endLine, 10) : null,
+                        // Backend controller assigns 'author' automatically from token
+                    }
+                })
+            });
 
-            // Simulating API call
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.error?.message || "Errore invio commento");
+            }
 
-            setMessage("Commento inviato con successo (Simulazione).");
+            setMessage("Commento inviato con successo!");
             setComment("");
+            setStartLine("");
+            setEndLine("");
+            if (onCommentPosted) onCommentPosted(); // Refresh list
+
         } catch (err: any) {
+            console.error(err);
             setMessage(`Errore: ${err.message}`);
         } finally {
             setLoading(false);
@@ -79,6 +103,31 @@ export function CommentBox({ documentId }: CommentBoxProps) {
                             <span className="bg-purple-100 text-purple-700 px-1 rounded">Scholar</span>
                         )}
                     </div>
+
+                    {/* Line References */}
+                    <div className="flex gap-4 mb-3">
+                        <div className="flex-1">
+                            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Inizio Verso</label>
+                            <input
+                                type="number"
+                                className="w-full p-2 border border-gray-300 rounded text-sm"
+                                placeholder="Es: 335"
+                                value={startLine}
+                                onChange={(e) => setStartLine(e.target.value)}
+                            />
+                        </div>
+                        <div className="flex-1">
+                            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Fine Verso</label>
+                            <input
+                                type="number"
+                                className="w-full p-2 border border-gray-300 rounded text-sm"
+                                placeholder="Es: 337"
+                                value={endLine}
+                                onChange={(e) => setEndLine(e.target.value)}
+                            />
+                        </div>
+                    </div>
+
                     <textarea
                         className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-euripides-accent resize-y min-h-[100px]"
                         placeholder="Scrivi le tue osservazioni..."

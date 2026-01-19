@@ -42,6 +42,12 @@
             "type": "component",
             "repeatable": true,
             "component": "shared.revision-entry"
+        },
+        "comments": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::comment.comment",
+            "mappedBy": "document"
         }
     }
 }

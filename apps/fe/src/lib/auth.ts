@@ -69,6 +69,24 @@ export const login = async (payload: LoginPayload): Promise<AuthResponse> => {
 
     const data = await response.json();
     setToken(data.jwt);
+
+    // Fetch full user details with role
+    try {
+        const meRes = await fetch(`${STRAPI_URL}/api/users/me?populate=role`, {
+            headers: {
+                Authorization: `Bearer ${data.jwt}`,
+            },
+        });
+        if (meRes.ok) {
+            const meData = await meRes.json();
+            setUser(meData); // Set full user data with role
+            return { jwt: data.jwt, user: meData };
+        }
+    } catch (e) {
+        console.error("Failed to fetch user role", e);
+    }
+
+    // Fallback to basic user data
     setUser(data.user);
     return data;
 };
