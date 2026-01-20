@@ -18,6 +18,9 @@ import { Footer } from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "Euripides Rewritten",
   description: "Digital Critical Edition",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
