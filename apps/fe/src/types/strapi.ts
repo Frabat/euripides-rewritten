@@ -96,6 +96,12 @@ export interface StrapiUser {
     };
     createdAt: string;
     updatedAt: string;
+    firstName?: string;
+    lastName?: string;
+    isScholar?: boolean;
+    bio?: string;
+    institution?: string;
+    title?: string;
 }
 
 export interface StrapiResponse<T> {

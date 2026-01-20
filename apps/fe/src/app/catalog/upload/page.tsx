@@ -32,9 +32,9 @@ function UploadForm() {
             return;
         }
         // Strict Role Check - Client Side
-        const isScholar = userData.role?.name === "Scholar" || userData.role?.type === "scholar";
+        const isScholar = userData.isScholar === true || userData.role?.name === "Scholar" || userData.role?.type === "scholar";
         if (!isScholar) {
-            router.push("/profile");
+            router.push("/catalog");
             return;
         }
         setUser(userData);

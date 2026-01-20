@@ -16,6 +16,12 @@ export interface RegisterPayload {
     username: string;
     email: string;
     password: string;
+    firstName?: string;
+    lastName?: string;
+    bio?: string;
+    institution?: string;
+    title?: string;
+    isScholar?: boolean;
 }
 
 export const setToken = (token: string) => {
@@ -92,7 +98,7 @@ export const login = async (payload: LoginPayload): Promise<AuthResponse> => {
 };
 
 export const register = async (payload: RegisterPayload): Promise<AuthResponse> => {
-    const response = await fetch(`${STRAPI_URL}/api/auth/local/register`, {
+    const response = await fetch(`${STRAPI_URL}/api/custom-auth/register`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

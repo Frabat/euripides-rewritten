@@ -7,6 +7,7 @@ import { getAuthors } from "@/lib/api";
 import { BookPlus, ArrowLeft, Save } from "lucide-react";
 import Link from "next/link";
 import { StrapiUser } from "@/types/strapi";
+import { ChipAutocomplete, AutocompleteItem } from "@/components/ui/ChipAutocomplete";
 
 export default function NewCatalogPage() {
     const router = useRouter();
@@ -24,6 +25,18 @@ export default function NewCatalogPage() {
     const [projectDescription, setProjectDescription] = useState("");
     const [editorialDeclaration, setEditorialDeclaration] = useState("");
 
+    // New Author Form State
+    const [showNewAuthorForm, setShowNewAuthorForm] = useState(false);
+    const [newAuthorData, setNewAuthorData] = useState({
+        firstName: "",
+        lastName: "",
+        type: "original",
+        bio: "",
+        dateOfBirth: "",
+        placeOfBirth: ""
+    });
+    const [creatingAuthor, setCreatingAuthor] = useState(false);
+
     // Authors
     const [availableAuthors, setAvailableAuthors] = useState<any[]>([]);
     const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
@@ -34,7 +47,7 @@ export default function NewCatalogPage() {
             router.push("/login");
             return;
         }
-        const isScholar = userData.role?.name === "Scholar" || userData.role?.type === "scholar";
+        const isScholar = userData.isScholar === true || userData.role?.name === "Scholar" || userData.role?.type === "scholar";
         if (!isScholar) {
             router.push("/catalog");
             return;
@@ -60,6 +73,71 @@ export default function NewCatalogPage() {
                 return [...prev, authorId];
             }
         });
+    };
+
+    const handleCreateAuthor = async () => {
+        if (!newAuthorData.firstName || !newAuthorData.lastName) {
+            setMessage("Errore: Nome e Cognome autore sono obbligatori.");
+            return;
+        }
+
+        setCreatingAuthor(true);
+        setMessage("");
+
+        try {
+            const token = getToken();
+            // Convert DD/MM/YYYY to YYYY-MM-DD for Strapi
+            const formatDateForApi = (dateStr: string) => {
+                if (!dateStr) return null;
+                // Simple check for DD/MM/YYYY
+                const parts = dateStr.split("/");
+                if (parts.length === 3) {
+                    const [day, month, year] = parts;
+                    return `${year}-${month}-${day}`;
+                }
+                return null; // or throw error if strictly parsing
+            };
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}/api/authors`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    data: {
+                        ...newAuthorData,
+                        dateOfBirth: formatDateForApi(newAuthorData.dateOfBirth)
+                    }
+                })
+            });
+
+            if (!res.ok) throw new Error("Errore creazione autore");
+
+            const { data } = await res.json();
+
+            // Add to list and select
+            setAvailableAuthors(prev => [...prev, data]);
+            setSelectedAuthors(prev => [...prev, String(data.id)]); // Auto select
+
+            // Reset form
+            setNewAuthorData({
+                firstName: "",
+                lastName: "",
+                type: "original",
+                bio: "",
+                dateOfBirth: "",
+                placeOfBirth: ""
+            });
+            setShowNewAuthorForm(false);
+            setMessage("Autore aggiunto con successo!");
+
+        } catch (err) {
+            console.error(err);
+            setMessage("Impossibile creare l'autore. Controlla i permessi.");
+        } finally {
+            setCreatingAuthor(false);
+        }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -161,21 +239,87 @@ export default function NewCatalogPage() {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Autori</label>
-                        <div className="border border-gray-300 rounded-md p-3 max-h-48 overflow-y-auto space-y-2">
-                            {availableAuthors.length === 0 ? (
-                                <p className="text-sm text-gray-500">Nessun autore disponibile.</p>
-                            ) : (
-                                availableAuthors.map(author => (
-                                    <label key={author.id} className="flex items-center gap-2 text-sm cursor-pointer hover:bg-gray-50 p-1 rounded">
+
+                        <div className="mb-4">
+                            <ChipAutocomplete
+                                items={availableAuthors.map(a => ({
+                                    id: String(a.id),
+                                    label: `${a.lastName} ${a.firstName}`
+                                }))}
+                                selectedIds={selectedAuthors}
+                                onChange={setSelectedAuthors}
+                                placeholder="Cerca autore per nome..."
+                            />
+                        </div>
+
+                        {/* Create Author Toggle */}
+                        <div className="border border-gray-200 rounded-md p-4 bg-gray-50">
+                            <button
+                                type="button"
+                                onClick={() => setShowNewAuthorForm(!showNewAuthorForm)}
+                                className="text-sm font-bold text-purple-600 hover:text-purple-800 flex items-center gap-1 mb-2"
+                            >
+                                {showNewAuthorForm ? "- Annulla Creazione Autore" : "+ Crea Nuovo Autore"}
+                            </button>
+
+                            {showNewAuthorForm && (
+                                <div className="space-y-3 mt-2 animate-in fade-in slide-in-from-top-2">
+                                    <div className="grid grid-cols-2 gap-3">
                                         <input
-                                            type="checkbox"
-                                            checked={selectedAuthors.includes(String(author.id)) || selectedAuthors.includes(author.id)}
-                                            onChange={() => handleAuthorToggle(author.id)}
-                                            className="rounded border-gray-300 text-purple-600 focus:ring-purple-500"
+                                            type="text"
+                                            placeholder="Nome *"
+                                            className="border p-2 rounded text-sm"
+                                            value={newAuthorData.firstName}
+                                            onChange={e => setNewAuthorData({ ...newAuthorData, firstName: e.target.value })}
                                         />
-                                        <span>{author.lastName} {author.firstName}</span>
-                                    </label>
-                                ))
+                                        <input
+                                            type="text"
+                                            placeholder="Cognome *"
+                                            className="border p-2 rounded text-sm"
+                                            value={newAuthorData.lastName}
+                                            onChange={e => setNewAuthorData({ ...newAuthorData, lastName: e.target.value })}
+                                        />
+                                    </div>
+                                    <select
+                                        className="border p-2 rounded text-sm w-full"
+                                        value={newAuthorData.type}
+                                        onChange={e => setNewAuthorData({ ...newAuthorData, type: e.target.value })}
+                                    >
+                                        <option value="original">Originale (Antico)</option>
+                                        <option value="scholar">Studioso (Moderno)</option>
+                                    </select>
+                                    <textarea
+                                        placeholder="Breve Biografia (opzionale)"
+                                        className="border p-2 rounded text-sm w-full"
+                                        rows={2}
+                                        value={newAuthorData.bio}
+                                        onChange={e => setNewAuthorData({ ...newAuthorData, bio: e.target.value })}
+                                    />
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <input
+                                            type="text"
+                                            placeholder="Data di Nascita (GG/MM/AAAA)"
+                                            className="border p-2 rounded text-sm"
+                                            value={newAuthorData.dateOfBirth}
+                                            onChange={e => setNewAuthorData({ ...newAuthorData, dateOfBirth: e.target.value })}
+                                        />
+                                        <input
+                                            type="text"
+                                            placeholder="Luogo di Nascita"
+                                            className="border p-2 rounded text-sm"
+                                            value={newAuthorData.placeOfBirth}
+                                            onChange={e => setNewAuthorData({ ...newAuthorData, placeOfBirth: e.target.value })}
+                                        />
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={handleCreateAuthor}
+                                        disabled={creatingAuthor}
+                                        className="bg-gray-900 text-white text-sm px-3 py-2 rounded hover:bg-black w-full"
+                                    >
+                                        {creatingAuthor ? "Salvataggio..." : "Salva Autore e Seleziona"}
+                                    </button>
+                                </div>
                             )}
                         </div>
                         <p className="text-xs text-gray-500 mt-1">Seleziona uno o più autori.</p>

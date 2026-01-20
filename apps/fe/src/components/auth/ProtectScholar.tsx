@@ -22,7 +22,7 @@ export function ProtectScholar({ children }: ProtectScholarProps) {
     // Assuming Authenticated users can also contribute for now based on context, or strictly Scholar. 
     // Usually "Scholar" role is specific. Let's start strictly if "Scholar" role exists, but previous code checked for "Scholar".
     // Reverting to strict Scholar check as per previous "ScholarActions" logic.
-    const isScholarStrict = user.role?.name === "Scholar" || user.role?.type === "scholar";
+    const isScholarStrict = user.isScholar === true || user.role?.name === "Scholar" || user.role?.type === "scholar";
 
     if (!isScholarStrict) return null;
 

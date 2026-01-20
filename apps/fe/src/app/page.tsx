@@ -18,14 +18,9 @@ export default function Home() {
 
         {/* Subtitle */}
         <h2 className="text-xl md:text-2xl text-gray-700 font-light tracking-wide max-w-2xl mx-auto">
-          Digital Critical Edition of the Works of Euripides<br />
-          <span className="text-base mt-2 block opacity-80">A project by Publio Papinio Stazio & Anastasia Maria Gervasi</span>
+          Edizione scientifica digitale delle tragedie euripidee e della loro fortuna<br />
+          <span className="text-base mt-2 block opacity-80">Progetto a cura di Anastasia Maria Gervasi</span>
         </h2>
-
-        {/* Description */}
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Welcome to the digital archive. Explore the rewritten tragedies, compare original texts with modern translations, and delve into critical commentaries.
-        </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
