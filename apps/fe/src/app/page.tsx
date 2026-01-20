@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BookOpen } from "lucide-react";
 
 export default function Home() {
@@ -7,8 +8,15 @@ export default function Home() {
       {/* Hero Section */}
       <div className="max-w-4xl space-y-8 animate-fade-in-up">
         {/* Logo / Icon */}
-        <div className="w-24 h-24 bg-black text-white text-4xl font-serif font-bold flex items-center justify-center mx-auto rounded-lg shadow-xl mb-8">
-          ER
+        {/* Logo / Icon */}
+        <div className="relative w-40 h-40 mx-auto mb-8 animate-fade-in">
+          <Image
+            src="/logo.svg"
+            alt="Euripides Rewritten"
+            fill
+            className="object-contain"
+            priority
+          />
         </div>
 
         {/* Title */}

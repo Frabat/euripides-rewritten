@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { User, Menu, LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getUser, logout } from "@/lib/auth";
@@ -16,10 +17,17 @@ export function Navbar() {
     return (
         <nav className="w-full py-4 px-8 flex items-center justify-between bg-euripides-bg text-euripides-fg">
             <div className="flex items-center gap-4">
-                {/* Placeholder Logo */}
-                <Link href="/" className="font-bold text-xl uppercase tracking-wider flex items-center gap-2">
-                    <div className="w-8 h-8 bg-black rounded-sm flex items-center justify-center text-white text-xs">ER</div>
-                    <span>Euripides<br /><span className="text-sm font-normal">Rewritten</span></span>
+                {/* Logo */}
+                <Link href="/" className="flex items-center gap-2">
+                    <div className="relative w-40 h-10">
+                        <Image
+                            src="/logos/logo_horizontal.png"
+                            alt="Euripides Rewritten"
+                            fill
+                            className="object-contain object-left invert"
+                            priority
+                        />
+                    </div>
                 </Link>
             </div>
 
