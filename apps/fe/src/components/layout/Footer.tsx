@@ -25,12 +25,11 @@ export function Footer() {
                             />
                         </div>
 
-                        <h3 className="text-lg font-bold font-serif leading-tight">
-                            Edizione scientifica digitale delle tragedie euripidee e della loro fortuna
-                        </h3>
-
                         <p className="text-gray-400 text-sm leading-relaxed">
-                            La piattaforma Euripides Rewritten si inserisce nell’ambito del progetto di dottorato intitolato “Didattica interattiva e inclusiva per lo studio del teatro greco”, finanziato dalla Pubblica Amministrazione per la borsa PNRR D.M. 351/22.
+                            La piattaforma Euripides Rewritten si inserisce nell’ambito del progetto di Dottorato finanziato dall’Unione EuroNext Generationration EU, Missione 4
+                            Componente 1  Investimento 4.1 D.M. n. 351 del 9
+                            Aprile 2022 – Piano Nazionale di Ripresa e Resilienza. Progetto: “Didattica
+                            interattiva e inclusiva per lo studio del teatro greco
                         </p>
 
                         <div className="pt-8 text-xs text-gray-500 space-y-1 font-mono">
