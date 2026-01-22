@@ -59,12 +59,9 @@ export default function ContactPage() {
         {
             name: "Anastasia Maria Gervasi",
             role: "Ph.D. Candidate",
-            bio: `Anastasia Maria Gervasi è una dottoranda in "Lettere, Lingue e Arti" presso l'Università degli Studi di Bari "Aldo Moro". Specializzata in Digital Humanities, il suo lavoro si concentra sull'intersezione tra filologia classica e tecnologie digitali, con particolare esperienza nella codifica XML/TEI per edizioni critiche digitali.
-Con un solido background in Filologia Moderna (conseguita con lode), Anastasia integra competenze umanistiche e tecniche, occupandosi di progetti di digitalizzazione di testi letterari, gamification e storytelling applicati alla didattica. È esperta nell'uso di software specifici per l'informatica umanistica (come Oxygen ed esist-db) e linguaggi di marcatura, promuovendo un approccio innovativo e interattivo alla fruizione del patrimonio testuale.`,
+            bio: `Dottoranda in Lingua e Letteratura greca presso l’Università di Bari, si occupa di nuove tecnologie e metodologie didattiche per lo studio del dramma antico, con particolare riferimento alla fortuna latina dell’Ipsipile euripidea.`,
             socials: [
-                { icon: Twitter, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Globe, href: "#" }
+                { icon: Linkedin, href: "https://www.linkedin.com/in/anastasia-maria-gervasi-9b9123212/" },
             ],
             image: "https://media.licdn.com/dms/image/v2/D4E03AQGab2zKDoZzzA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729431177908?e=1770249600&v=beta&t=4zJwbibP88qYOrMKgVslsHyz_fKVhTfkjYR4COK_XoQ", // Placeholder
             imageColor: "bg-purple-100 text-purple-600"
@@ -72,11 +69,10 @@ Con un solido background in Filologia Moderna (conseguita con lode), Anastasia i
         {
             name: "Francesco Battista",
             role: "Software Engineer",
-            bio: `Senior Software Engineer con una consolidata esperienza nella progettazione di prodotti digitali per realtà tecnologiche di respiro internazionale. Il suo approccio si distingue per una forte visione orientata al prodotto, dove l'eccellenza tecnica è messa al servizio della scalabilità e della qualità dell'esperienza utente. Attualmente sta perfezionando la sua formazione con un Master of Science in Computer Science presso la Georgia Institute of Technology`,
+            bio: `Senior Software Engineer con un Master of Science in Computer Science presso il Georgia Institute of Technology. Ha esperienza in sviluppo di software per realtà internazionali nell'ambito media e industriale.`,
             socials: [
-                { icon: Twitter, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Github, href: "#" }
+                { icon: Linkedin, href: "https://www.linkedin.com/in/frabat/" },
+                { icon: Github, href: "https://github.com/frabat" }
             ],
             image: "https://media.licdn.com/dms/image/v2/D4E03AQHYsN445wX4Eg/profile-displayphoto-shrink_800_800/B4EZZy_mlGHMAc-/0/1745685999579?e=1770249600&v=beta&t=xrzjVRozX7dMmnMRXG8ZRLULIPhw5WTDpuDPtlXamdw", // Placeholder
             imageColor: "bg-blue-100 text-blue-600"
@@ -97,7 +93,7 @@ Con un solido background in Filologia Moderna (conseguita con lode), Anastasia i
                         Un piccolo team con una grande missione.
                     </h2>
                     <p className="text-xl text-gray-600">
-                        Uniamo filologia classica e ingegneria del software per preservare e rinnovare la fruizione delle tragedie di Euripide.
+                        Uniamo  competenze umanistiche e ingegneria del software per promuovere il coinvolgimento attivo degli utenti e rispondere in modo efficace alle esigenze degli studenti.
                     </p>
                 </div>
 
@@ -115,7 +111,7 @@ Con un solido background in Filologia Moderna (conseguita con lode), Anastasia i
                         Siamo sempre alla ricerca di collaborazioni con altri istituti di ricerca e studiosi. Contattaci per saperne di più.
                     </p>
                     <a
-                        href="mailto:contact@euripides-rewritten.org"
+                        href="mailto:anastasia.gervasi97@gmail.com"
                         className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-md font-bold hover:bg-gray-800 transition-colors"
                     >
                         <Mail className="w-4 h-4" /> Scrivici una Email
