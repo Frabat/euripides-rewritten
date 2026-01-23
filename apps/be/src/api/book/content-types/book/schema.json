@@ -1,0 +1,50 @@
+{
+    "kind": "collectionType",
+    "collectionName": "books",
+    "info": {
+        "singularName": "book",
+        "pluralName": "books",
+        "displayName": "Book",
+        "description": "A book belonging to a work, containing verse blocks"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "period": {
+            "type": "string"
+        },
+        "authors": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::author.author",
+            "inversedBy": "books"
+        },
+        "work": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::catalog.catalog",
+            "inversedBy": "books"
+        },
+        "verseBlocks": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::document.document",
+            "mappedBy": "book"
+        },
+        "languages": {
+            "type": "component",
+            "repeatable": false,
+            "component": "shared.work-language"
+        },
+        "isSingleVolume": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

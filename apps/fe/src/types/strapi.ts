@@ -21,12 +21,9 @@ export interface WorkLanguage {
 export interface Author {
     id: number;
     documentId: string;
-    firstName: string;
-    lastName: string;
-    type: 'original' | 'scholar';
+    name: string;
+    isOriginal: boolean;
     bio?: string;
-    dateOfBirth?: string;
-    placeOfBirth?: string;
     languages?: any;
     works?: Catalog[];
     user?: any;
@@ -52,10 +49,24 @@ export interface Document {
     xmlFile: any;
     bookNumber?: number;
     summary?: string;
+    verseBlockName?: string; // Added for Volume name logic
     sectionRangeStart?: string;
     sectionRangeEnd?: string;
-    catalog?: Catalog;
+    book?: Book; // Changed from catalog to book
     revisionHistory?: RevisionEntry[];
+    createdAt: string;
+    updatedAt: string;
+    publishedAt?: string;
+}
+
+export interface Book {
+    id: number;
+    documentId: string;
+    title: string;
+    period?: string;
+    authors?: Author[];
+    work?: Catalog;
+    verseBlocks?: Document[];
     createdAt: string;
     updatedAt: string;
     publishedAt?: string;
@@ -68,8 +79,14 @@ export interface Catalog {
     subTitle?: string;
     uuid?: string;
     isbn?: string;
+    period?: string;
+    reference_author?: string;
+    reference_version?: string;
+    reference_document_url?: string;
+    language?: string;
+    isFragmented?: boolean;
     authors?: Author[];
-    fragments?: Document[];
+    books?: Book[]; // Changed from fragments to books
     additionalDocuments?: any[];
     projectDescription?: string;
     editorialDeclaration?: string;

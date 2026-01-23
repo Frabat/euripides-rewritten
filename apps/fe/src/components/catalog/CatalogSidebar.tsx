@@ -90,7 +90,7 @@ export function CatalogSidebar() {
                         <option value="all">Tutti gli Autori</option>
                         {authors.map(author => (
                             <option key={author.id} value={author.id}>
-                                {author.lastName} {author.firstName}
+                                {author.name}
                             </option>
                         ))}
                     </select>

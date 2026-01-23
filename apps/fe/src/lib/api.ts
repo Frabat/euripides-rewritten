@@ -60,7 +60,7 @@ export async function getCatalogs(filters?: {
     const queryParams: any = {
         populate: {
             authors: true,
-            fragments: true,
+            books: true,
             languages: true
         },
         filters: { $and: [] },
@@ -119,9 +119,21 @@ export async function getCatalogById(id: string): Promise<Catalog> {
     const response = await fetchAPI<StrapiResponse<Catalog>>(`/catalogs/${id}`, {
         populate: {
             authors: true,
-            fragments: true, // Assuming relation name is 'fragments' or 'documents'. Checked schema: mappedBy: "catalog", inversedBy: "fragments". So on Catalog schema it is "fragments"? 
-            // In Catalog schema view (step 226): 
-            // "documents": { "mappedBy": "catalog", "relation": "oneToMany", "target": "api::document.document" } --> Wait, relation name in Catalog schema
+            books: true, // Populating books instead of fragments
+            languages: true
+        }
+    }, {
+        cache: 'no-store'
+    });
+    return response.data;
+}
+
+export async function getBookById(id: string): Promise<any> {
+    const response = await fetchAPI<StrapiResponse<any>>(`/books/${id}`, {
+        populate: {
+            verseBlocks: true, // Populating verseBlocks (Documents)
+            work: true,
+            authors: true
         }
     }, {
         cache: 'no-store'
@@ -170,7 +182,7 @@ export async function deleteComment(documentId: string, token: string) {
 
 export async function getAuthors() {
     const response = await fetchAPI<StrapiResponse<any[]>>("/authors", {
-        sort: ["lastName:asc"],
+        sort: ["name:asc"],
         pagination: {
             limit: 100 // Reasonable limit for now
         }
@@ -184,13 +196,14 @@ export async function getDocumentById(id: string) {
     const response = await fetchAPI<StrapiResponse<any>>(`/documents/${id}`, {
         populate: {
             xmlFile: true,
-            catalog: true
+            book: true
         }
     }, {
         cache: 'no-store'
     });
     return response.data;
 }
+
 
 export async function fetchXML(url: string): Promise<string> {
     const fullUrl = url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
@@ -199,4 +212,32 @@ export async function fetchXML(url: string): Promise<string> {
         throw new Error(`Failed to fetch XML: ${response.statusText}`);
     }
     return response.text();
+}
+
+export async function updateDocument(id: string, data: any, token: string) {
+    const res = await fetch(`${STRAPI_URL}/api/documents/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ data })
+    });
+    if (!res.ok) {
+        throw new Error("Failed to update document");
+    }
+    return res.json();
+}
+
+export async function deleteDocument(id: string, token: string) {
+    const res = await fetch(`${STRAPI_URL}/api/documents/${id}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    if (!res.ok) {
+        throw new Error("Failed to delete document");
+    }
+    return true;
 }

@@ -19,7 +19,17 @@ export default function NewCatalogPage() {
     // Form
     const [title, setTitle] = useState("");
     const [subTitle, setSubTitle] = useState("");
-    const [isbn, setIsbn] = useState("");
+
+    // Languages
+    const [originalLanguage, setOriginalLanguage] = useState("");
+    const [translationLanguage, setTranslationLanguage] = useState("");
+
+    // Metadata
+    const [period, setPeriod] = useState("");
+    const [isFragmented, setIsFragmented] = useState(false);
+
+    // Reference Text (XML)
+    const [referenceText, setReferenceText] = useState<File | null>(null);
 
     // New Fields
     const [projectDescription, setProjectDescription] = useState("");
@@ -28,12 +38,9 @@ export default function NewCatalogPage() {
     // New Author Form State
     const [showNewAuthorForm, setShowNewAuthorForm] = useState(false);
     const [newAuthorData, setNewAuthorData] = useState({
-        firstName: "",
-        lastName: "",
-        type: "original",
-        bio: "",
-        dateOfBirth: "",
-        placeOfBirth: ""
+        name: "",
+        isOriginal: true,
+        bio: ""
     });
     const [creatingAuthor, setCreatingAuthor] = useState(false);
 
@@ -76,8 +83,8 @@ export default function NewCatalogPage() {
     };
 
     const handleCreateAuthor = async () => {
-        if (!newAuthorData.firstName || !newAuthorData.lastName) {
-            setMessage("Errore: Nome e Cognome autore sono obbligatori.");
+        if (!newAuthorData.name) {
+            setMessage("Errore: Nome autore è obbligatorio.");
             return;
         }
 
@@ -86,17 +93,7 @@ export default function NewCatalogPage() {
 
         try {
             const token = getToken();
-            // Convert DD/MM/YYYY to YYYY-MM-DD for Strapi
-            const formatDateForApi = (dateStr: string) => {
-                if (!dateStr) return null;
-                // Simple check for DD/MM/YYYY
-                const parts = dateStr.split("/");
-                if (parts.length === 3) {
-                    const [day, month, year] = parts;
-                    return `${year}-${month}-${day}`;
-                }
-                return null; // or throw error if strictly parsing
-            };
+            // Removed date formatting logic as dateOfBirth is removed
 
             const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}/api/authors`, {
                 method: "POST",
@@ -106,8 +103,7 @@ export default function NewCatalogPage() {
                 },
                 body: JSON.stringify({
                     data: {
-                        ...newAuthorData,
-                        dateOfBirth: formatDateForApi(newAuthorData.dateOfBirth)
+                        ...newAuthorData
                     }
                 })
             });
@@ -122,12 +118,9 @@ export default function NewCatalogPage() {
 
             // Reset form
             setNewAuthorData({
-                firstName: "",
-                lastName: "",
-                type: "original",
-                bio: "",
-                dateOfBirth: "",
-                placeOfBirth: ""
+                name: "",
+                isOriginal: true,
+                bio: ""
             });
             setShowNewAuthorForm(false);
             setMessage("Autore aggiunto con successo!");
@@ -149,6 +142,22 @@ export default function NewCatalogPage() {
             const token = getToken();
             if (!token) throw new Error("Non autenticato");
 
+            let referenceTextId = null;
+            if (referenceText) {
+                const formData = new FormData();
+                formData.append("files", referenceText);
+
+                const uploadRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}/api/upload`, {
+                    method: "POST",
+                    headers: { Authorization: `Bearer ${token}` },
+                    body: formData
+                });
+
+                if (!uploadRes.ok) throw new Error("Errore caricamento file di riferimento");
+                const uploadData = await uploadRes.json();
+                referenceTextId = uploadData[0].id;
+            }
+
             const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}/api/catalogs`, {
                 method: "POST",
                 headers: {
@@ -159,10 +168,16 @@ export default function NewCatalogPage() {
                     data: {
                         title,
                         subTitle,
-                        isbn,
                         projectDescription,
                         editorialDeclaration,
                         authors: selectedAuthors,
+                        languages: {
+                            originalLanguage,
+                            translationLanguage
+                        },
+                        period,
+                        isFragmented,
+                        reference_text: referenceTextId,
                         // Defaults
                         encodingMethod: "double-end-point"
                     }
@@ -228,13 +243,77 @@ export default function NewCatalogPage() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">ISBN / Identificativo</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Lingue</label>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <input
+                                    type="text"
+                                    value={originalLanguage}
+                                    onChange={(e) => setOriginalLanguage(e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-euripides-accent focus:border-transparent"
+                                    placeholder="Lingua Originale (es. Greco)"
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    type="text"
+                                    value={translationLanguage}
+                                    onChange={(e) => setTranslationLanguage(e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-euripides-accent focus:border-transparent"
+                                    placeholder="Lingua Traduzione (es. Italiano)"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Periodo Storico</label>
+                            <input
+                                type="text"
+                                value={period}
+                                onChange={(e) => setPeriod(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-euripides-accent focus:border-transparent"
+                                placeholder="Es. I secolo d.C."
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Tipologia Opera</label>
+                            <div className="grid grid-cols-2 gap-4">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsFragmented(false)}
+                                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors border ${!isFragmented
+                                        ? "bg-black text-white border-black"
+                                        : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"}`}
+                                >
+                                    Opera Completa
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setIsFragmented(true)}
+                                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors border ${isFragmented
+                                        ? "bg-black text-white border-black"
+                                        : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"}`}
+                                >
+                                    Testo Frammentato
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Testo di Riferimento (XML/TEI)</label>
                         <input
-                            type="text"
-                            value={isbn}
-                            onChange={(e) => setIsbn(e.target.value)}
+                            type="file"
+                            accept=".xml"
+                            onChange={(e) => setReferenceText(e.target.files ? e.target.files[0] : null)}
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-euripides-accent focus:border-transparent"
                         />
+                        <p className="text-xs text-gray-500 mt-1">Carica il file XML contenente la trascrizione ufficiale.</p>
                     </div>
 
                     <div>
@@ -244,7 +323,7 @@ export default function NewCatalogPage() {
                             <ChipAutocomplete
                                 items={availableAuthors.map(a => ({
                                     id: String(a.id),
-                                    label: `${a.lastName} ${a.firstName}`
+                                    label: a.name || "Senza Nome"
                                 }))}
                                 selectedIds={selectedAuthors}
                                 onChange={setSelectedAuthors}
@@ -264,30 +343,25 @@ export default function NewCatalogPage() {
 
                             {showNewAuthorForm && (
                                 <div className="space-y-3 mt-2 animate-in fade-in slide-in-from-top-2">
-                                    <div className="grid grid-cols-2 gap-3">
+                                    <div className="grid grid-cols-1 gap-3">
                                         <input
                                             type="text"
-                                            placeholder="Nome *"
+                                            placeholder="Nome Completo *"
                                             className="border p-2 rounded text-sm"
-                                            value={newAuthorData.firstName}
-                                            onChange={e => setNewAuthorData({ ...newAuthorData, firstName: e.target.value })}
-                                        />
-                                        <input
-                                            type="text"
-                                            placeholder="Cognome *"
-                                            className="border p-2 rounded text-sm"
-                                            value={newAuthorData.lastName}
-                                            onChange={e => setNewAuthorData({ ...newAuthorData, lastName: e.target.value })}
+                                            value={newAuthorData.name}
+                                            onChange={e => setNewAuthorData({ ...newAuthorData, name: e.target.value })}
                                         />
                                     </div>
-                                    <select
-                                        className="border p-2 rounded text-sm w-full"
-                                        value={newAuthorData.type}
-                                        onChange={e => setNewAuthorData({ ...newAuthorData, type: e.target.value })}
-                                    >
-                                        <option value="original">Originale (Antico)</option>
-                                        <option value="scholar">Studioso (Moderno)</option>
-                                    </select>
+                                    <div className="flex items-center gap-2">
+                                        <input
+                                            type="checkbox"
+                                            id="isOriginal"
+                                            checked={newAuthorData.isOriginal}
+                                            onChange={e => setNewAuthorData({ ...newAuthorData, isOriginal: e.target.checked })}
+                                            className="h-4 w-4"
+                                        />
+                                        <label htmlFor="isOriginal" className="text-sm text-gray-700">Autore Originale (Antico)</label>
+                                    </div>
                                     <textarea
                                         placeholder="Breve Biografia (opzionale)"
                                         className="border p-2 rounded text-sm w-full"
@@ -295,22 +369,6 @@ export default function NewCatalogPage() {
                                         value={newAuthorData.bio}
                                         onChange={e => setNewAuthorData({ ...newAuthorData, bio: e.target.value })}
                                     />
-                                    <div className="grid grid-cols-2 gap-3">
-                                        <input
-                                            type="text"
-                                            placeholder="Data di Nascita (GG/MM/AAAA)"
-                                            className="border p-2 rounded text-sm"
-                                            value={newAuthorData.dateOfBirth}
-                                            onChange={e => setNewAuthorData({ ...newAuthorData, dateOfBirth: e.target.value })}
-                                        />
-                                        <input
-                                            type="text"
-                                            placeholder="Luogo di Nascita"
-                                            className="border p-2 rounded text-sm"
-                                            value={newAuthorData.placeOfBirth}
-                                            onChange={e => setNewAuthorData({ ...newAuthorData, placeOfBirth: e.target.value })}
-                                        />
-                                    </div>
                                     <button
                                         type="button"
                                         onClick={handleCreateAuthor}
@@ -354,8 +412,8 @@ export default function NewCatalogPage() {
                             {submitting ? "Creazione..." : <><Save className="w-5 h-5" /> Crea Opera</>}
                         </button>
                     </div>
-                </form>
-            </div>
-        </div>
+                </form >
+            </div >
+        </div >
     );
 }

@@ -12,31 +12,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "firstName": {
+    "name": {
       "type": "string",
       "required": true
     },
-    "lastName": {
-      "type": "string",
-      "required": true
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "original",
-        "scholar"
-      ],
-      "default": "scholar",
+    "isOriginal": {
+      "type": "boolean",
+      "default": false,
       "required": true
     },
     "bio": {
       "type": "richtext"
-    },
-    "dateOfBirth": {
-      "type": "date"
-    },
-    "placeOfBirth": {
-      "type": "string"
     },
     "languages": {
       "type": "json"
@@ -45,6 +31,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::catalog.catalog",
+      "mappedBy": "authors"
+    },
+    "books": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::book.book",
       "mappedBy": "authors"
     },
     "user": {

@@ -4,8 +4,8 @@
     "info": {
         "singularName": "document",
         "pluralName": "documents",
-        "displayName": "Document",
-        "description": "XML Orchestration"
+        "displayName": "Verse Block",
+        "description": "XML Orchestration - Verse Blocks / Volumes"
     },
     "options": {
         "draftAndPublish": true
@@ -32,11 +32,17 @@
         "sectionRangeEnd": {
             "type": "string"
         },
-        "catalog": {
+        "criticalEditionAuthor": {
+            "type": "string"
+        },
+        "verseBlockName": {
+            "type": "string"
+        },
+        "book": {
             "type": "relation",
             "relation": "manyToOne",
-            "target": "api::catalog.catalog",
-            "inversedBy": "fragments"
+            "target": "api::book.book",
+            "inversedBy": "verseBlocks"
         },
         "revisionHistory": {
             "type": "component",

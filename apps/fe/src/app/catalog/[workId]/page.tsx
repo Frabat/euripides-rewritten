@@ -25,7 +25,7 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
         notFound();
     }
 
-    const authors = work.authors?.map(a => `${a.firstName} ${a.lastName}`).join(", ") || "Autore Sconosciuto";
+    const authors = work.authors?.map(a => a.name).join(", ") || "Autore Sconosciuto";
 
     return (
         <div className="container mx-auto py-12 px-4 md:px-8">
@@ -54,54 +54,63 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
                         {/* We can render rich text here later if needed */}
                     </div>
                 </div>
+
+                {/* Reference Text Button */}
+                <div className="mt-6 flex flex-wrap gap-4">
+                    {work.reference_text && work.reference_text.url && (
+                        <Link
+                            href={`/catalog/${workId}/reference`}
+                            className="bg-gray-100 text-gray-800 px-4 py-2 rounded-md font-medium text-sm border border-gray-300 hover:bg-gray-200 transition-colors flex items-center gap-2"
+                        >
+                            <FileText className="w-4 h-4" />
+                            Leggi Testo di Riferimento (XML)
+                        </Link>
+                    )}
+                </div>
             </div>
 
             {/* Fragments / Documents List */}
             <div>
                 <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-2xl font-bold flex items-center gap-2">
-                        <FileText className="w-6 h-6" />
-                        Documenti / Frammenti Disponibili
-                    </h3>
-
+                    <h3 className="text-xl font-bold font-serif">Libri / Edizioni</h3>
                     <ProtectScholar>
                         <Link
-                            href={`/catalog/upload?workId=${workId}`}
+                            href={`/catalog/${workId}/book/new`}
                             className="bg-black text-white px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide hover:bg-gray-800 transition-colors flex items-center gap-2"
                         >
-                            <Upload className="w-4 h-4" />
-                            Nuovo Frammento
+                            <BookOpen className="w-4 h-4" />
+                            Nuovo Libro
                         </Link>
                     </ProtectScholar>
                 </div>
-
-                {!work.fragments || work.fragments.length === 0 ? (
-                    <div className="bg-gray-50 p-8 rounded-lg text-center text-gray-500">
-                        Nessun documento collegato a questa opera per il momento.
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {work.fragments.map((doc: any) => (
-                            <Link
-                                key={doc.documentId}
-                                href={`/catalog/${workId}/${doc.documentId}`}
-                                className="block group bg-white p-6 rounded-lg border border-gray-200 hover:border-euripides-accent transition-colors hover:shadow-sm"
-                            >
-                                <div className="flex items-start justify-between mb-4">
-                                    <FileText className="w-8 h-8 text-gray-300 group-hover:text-euripides-accent transition-colors" />
-                                    <span className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600 group-hover:bg-euripides-accent/10 group-hover:text-euripides-accent transition-colors">Leggibile</span>
-                                </div>
-                                <h4 className="font-bold text-lg mb-2 group-hover:text-euripides-accent transition-colors">
-                                    {doc.title || `Documento ${doc.id}`}
-                                </h4>
-                                <p className="text-sm text-gray-500 line-clamp-3">
-                                    {doc.summary || "Nessun sommario disponibile."}
-                                </p>
-                            </Link>
-                        ))}
-                    </div>
-                )}
             </div>
+
+            {!work.books || work.books.length === 0 ? (
+                <div className="bg-gray-50 p-8 rounded-lg text-center text-gray-500">
+                    Nessun libro collegato a questa opera per il momento.
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {work.books.map((book: any) => (
+                        <Link
+                            key={book.documentId}
+                            href={`/catalog/${workId}/book/${book.documentId}`}
+                            className="block group bg-white p-6 rounded-lg border border-gray-200 hover:border-euripides-accent transition-colors hover:shadow-sm"
+                        >
+                            <div className="flex items-start justify-between mb-4">
+                                <BookOpen className="w-8 h-8 text-gray-300 group-hover:text-euripides-accent transition-colors" />
+                                <span className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600 group-hover:bg-euripides-accent/10 group-hover:text-euripides-accent transition-colors">Libro</span>
+                            </div>
+                            <h4 className="font-bold text-lg mb-2 group-hover:text-euripides-accent transition-colors">
+                                {book.title}
+                            </h4>
+                            <p className="text-sm text-gray-500 line-clamp-3">
+                                {book.period || "Nessun periodo specificato"}
+                            </p>
+                        </Link>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

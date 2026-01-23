@@ -22,8 +22,24 @@
             "type": "uid",
             "targetField": "title"
         },
-        "isbn": {
+        "period": {
             "type": "string"
+        },
+        "reference_author": {
+            "type": "string"
+        },
+        "reference_version": {
+            "type": "string"
+        },
+        "reference_document_url": {
+            "type": "string"
+        },
+        "language": {
+            "type": "string"
+        },
+        "isFragmented": {
+            "type": "boolean",
+            "default": false
         },
         "authors": {
             "type": "relation",
@@ -31,11 +47,19 @@
             "target": "api::author.author",
             "inversedBy": "works"
         },
-        "fragments": {
+        "books": {
             "type": "relation",
             "relation": "oneToMany",
-            "target": "api::document.document",
-            "mappedBy": "catalog"
+            "target": "api::book.book",
+            "mappedBy": "work"
+        },
+        "reference_text": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "files"
+            ]
         },
         "additionalDocuments": {
             "type": "media",

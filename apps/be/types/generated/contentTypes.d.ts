@@ -512,24 +512,22 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
   attributes: {
     bio: Schema.Attribute.RichText;
+    books: Schema.Attribute.Relation<'manyToMany', 'api::book.book'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dateOfBirth: Schema.Attribute.Date;
-    firstName: Schema.Attribute.String & Schema.Attribute.Required;
+    isOriginal: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     languages: Schema.Attribute.JSON;
-    lastName: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::author.author'
     > &
       Schema.Attribute.Private;
-    placeOfBirth: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    type: Schema.Attribute.Enumeration<['original', 'scholar']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'scholar'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -538,6 +536,42 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
       'plugin::users-permissions.user'
     >;
     works: Schema.Attribute.Relation<'manyToMany', 'api::catalog.catalog'>;
+  };
+}
+
+export interface ApiBookBook extends Struct.CollectionTypeSchema {
+  collectionName: 'books';
+  info: {
+    description: 'A book belonging to a work, containing verse blocks';
+    displayName: 'Book';
+    pluralName: 'books';
+    singularName: 'book';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    authors: Schema.Attribute.Relation<'manyToMany', 'api::author.author'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isSingleVolume: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    languages: Schema.Attribute.Component<'shared.work-language', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::book.book'> &
+      Schema.Attribute.Private;
+    period: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    verseBlocks: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::document.document'
+    >;
+    work: Schema.Attribute.Relation<'manyToOne', 'api::catalog.catalog'>;
   };
 }
 
@@ -558,14 +592,15 @@ export interface ApiCatalogCatalog extends Struct.CollectionTypeSchema {
       true
     >;
     authors: Schema.Attribute.Relation<'manyToMany', 'api::author.author'>;
+    books: Schema.Attribute.Relation<'oneToMany', 'api::book.book'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     editorialDeclaration: Schema.Attribute.RichText;
     encodingMethod: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'double-end-point'>;
-    fragments: Schema.Attribute.Relation<'oneToMany', 'api::document.document'>;
-    isbn: Schema.Attribute.String;
+    isFragmented: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    language: Schema.Attribute.String;
     languages: Schema.Attribute.Component<'shared.work-language', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -573,12 +608,17 @@ export interface ApiCatalogCatalog extends Struct.CollectionTypeSchema {
       'api::catalog.catalog'
     > &
       Schema.Attribute.Private;
+    period: Schema.Attribute.String;
     projectDescription: Schema.Attribute.RichText;
     publicationInfo: Schema.Attribute.Component<
       'shared.publication-info',
       false
     >;
     publishedAt: Schema.Attribute.DateTime;
+    reference_author: Schema.Attribute.String;
+    reference_document_url: Schema.Attribute.String;
+    reference_text: Schema.Attribute.Media<'files'>;
+    reference_version: Schema.Attribute.String;
     subTitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -659,8 +699,8 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
 export interface ApiDocumentDocument extends Struct.CollectionTypeSchema {
   collectionName: 'documents';
   info: {
-    description: 'XML Orchestration';
-    displayName: 'Document';
+    description: 'XML Orchestration - Verse Blocks / Volumes';
+    displayName: 'Verse Block';
     pluralName: 'documents';
     singularName: 'document';
   };
@@ -668,12 +708,13 @@ export interface ApiDocumentDocument extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    book: Schema.Attribute.Relation<'manyToOne', 'api::book.book'>;
     bookNumber: Schema.Attribute.Integer;
-    catalog: Schema.Attribute.Relation<'manyToOne', 'api::catalog.catalog'>;
     comments: Schema.Attribute.Relation<'oneToMany', 'api::comment.comment'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    criticalEditionAuthor: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -688,6 +729,7 @@ export interface ApiDocumentDocument extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    verseBlockName: Schema.Attribute.String;
     xmlFile: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
   };
 }
@@ -1278,6 +1320,7 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
+      'api::book.book': ApiBookBook;
       'api::catalog.catalog': ApiCatalogCatalog;
       'api::category.category': ApiCategoryCategory;
       'api::comment.comment': ApiCommentComment;
