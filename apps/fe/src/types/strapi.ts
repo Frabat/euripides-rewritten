@@ -96,6 +96,7 @@ export interface Catalog {
     createdAt: string;
     updatedAt: string;
     publishedAt?: string;
+    reference_text?: any;
 }
 
 export interface StrapiUser {
