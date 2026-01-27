@@ -131,7 +131,11 @@ export async function getCatalogById(id: string): Promise<Catalog> {
 export async function getBookById(id: string): Promise<any> {
     const response = await fetchAPI<StrapiResponse<any>>(`/books/${id}`, {
         populate: {
-            verseBlocks: true, // Populating verseBlocks (Documents)
+            verseBlocks: {
+                populate: {
+                    xmlFile: true
+                }
+            },
             work: true,
             authors: true
         }

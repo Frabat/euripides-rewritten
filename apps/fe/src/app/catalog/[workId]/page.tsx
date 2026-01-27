@@ -46,8 +46,7 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
 
                         <div className="space-y-1 text-gray-700">
                             <p><span className="font-bold">Autore:</span> {authors}</p>
-                            <p><span className="font-bold">ISBN:</span> {work.isbn || "N/A"}</p>
-                            <p><span className="font-bold">Lingua:</span> Latino (placeholder)</p>
+                            <p><span className="font-bold">Lingua:</span> {work.languages?.originalLanguage || "Non specificata"}</p>
                         </div>
 
                         {/* Description */}

@@ -66,6 +66,7 @@ export interface Book {
     period?: string;
     authors?: Author[];
     work?: Catalog;
+    isSingleVolume?: boolean;
     verseBlocks?: Document[];
     createdAt: string;
     updatedAt: string;

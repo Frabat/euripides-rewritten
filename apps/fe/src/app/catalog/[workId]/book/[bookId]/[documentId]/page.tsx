@@ -1,6 +1,6 @@
 import { TEIViewer } from "@/components/viewer/TEIViewer";
 import { CommentSection } from "@/components/viewer/CommentSection";
-import { fetchXML, getDocumentById } from "@/lib/api";
+import { fetchXML, getDocumentById, getBookById } from "@/lib/api";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -23,6 +23,21 @@ export default async function DocumentViewerPage({ params }: DocumentViewerPageP
         console.error("Error fetching document:", e);
     }
 
+    // 2. Fetch Book Structure (Siblings)
+    let bookStructure: any[] = [];
+    try {
+        const book = await getBookById(bookId);
+        if (book && book.verseBlocks) {
+            bookStructure = book.verseBlocks.sort((a: any, b: any) => {
+                const startA = parseInt(a.sectionRangeStart) || 0;
+                const startB = parseInt(b.sectionRangeStart) || 0;
+                return startA - startB;
+            });
+        }
+    } catch (e) {
+        console.error("Error fetching book structure:", e);
+    }
+
     if (!document) {
         return <div className="p-12 text-center text-gray-500">Documento non trovato.</div>;
     }
@@ -31,7 +46,7 @@ export default async function DocumentViewerPage({ params }: DocumentViewerPageP
     if (!xmlFile || !xmlFile.url) {
         return (
             <div className="container mx-auto py-12 px-4 md:px-8">
-                 <Link href={`/catalog/${workId}/book/${bookId}`} className="flex items-center gap-2 text-gray-500 hover:text-black mb-8">
+                <Link href={`/catalog/${workId}/book/${bookId}`} className="flex items-center gap-2 text-gray-500 hover:text-black mb-8">
                     <ArrowLeft className="w-4 h-4" /> Torna al Libro
                 </Link>
                 <h1 className="text-2xl font-bold mb-4">Documento: {document.verseBlockName || document.documentId}</h1>
@@ -45,7 +60,7 @@ export default async function DocumentViewerPage({ params }: DocumentViewerPageP
         );
     }
 
-    // 2. Fetch XML Content
+    // 3. Fetch XML Content
     let xmlContent = "";
     try {
         xmlContent = await fetchXML(xmlFile.url);
@@ -56,13 +71,13 @@ export default async function DocumentViewerPage({ params }: DocumentViewerPageP
 
     return (
         <div className="container mx-auto py-8 px-4 md:px-8">
-             <Link href={`/catalog/${workId}/book/${bookId}`} className="flex items-center gap-2 text-gray-500 hover:text-black mb-8">
+            <Link href={`/catalog/${workId}/book/${bookId}`} className="flex items-center gap-2 text-gray-500 hover:text-black mb-8">
                 <ArrowLeft className="w-4 h-4" /> Torna al Libro
             </Link>
 
             <div className="mb-4">
-                 <h1 className="text-2xl font-bold">{document.title || document.verseBlockName}</h1>
-                 {document.summary && <p className="text-gray-500 mt-1">{document.summary}</p>}
+                <h1 className="text-2xl font-bold">{document.title || document.verseBlockName}</h1>
+                {document.summary && <p className="text-gray-500 mt-1">{document.summary}</p>}
             </div>
 
             <div className="mb-8 border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
@@ -70,7 +85,13 @@ export default async function DocumentViewerPage({ params }: DocumentViewerPageP
                     XML Source: {document.xmlFile.name}
                 </div>
                 <div className="bg-white">
-                     <TEIViewer xmlContent={xmlContent} />
+                    <TEIViewer
+                        xmlContent={xmlContent}
+                        bookStructure={bookStructure}
+                        workId={workId}
+                        bookId={bookId}
+                        currentDocumentId={documentId}
+                    />
                 </div>
             </div>
 
