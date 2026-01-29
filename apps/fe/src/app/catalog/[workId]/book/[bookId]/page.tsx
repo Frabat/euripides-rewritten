@@ -45,7 +45,7 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
     return (
         <div className="container mx-auto py-12 px-4 md:px-8">
             <Link href={`/catalog/${workId}`} className="flex items-center gap-2 text-gray-500 hover:text-black mb-8">
-                <ArrowLeft className="w-4 h-4" /> Torna all'Opera
+                <ArrowLeft className="w-4 h-4" /> Torna alla Tragedia
             </Link>
 
             {/* Header */}

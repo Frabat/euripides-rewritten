@@ -243,7 +243,78 @@ export async function deleteDocument(id: string, token: string) {
         }
     });
     if (!res.ok) {
-        throw new Error("Failed to delete document");
+        const errorText = await res.text();
+        console.error(`Failed to delete document ${id}: ${res.status} ${res.statusText}`, errorText);
+        throw new Error(`Failed to delete document: ${res.status} ${errorText}`);
     }
     return true;
 }
+
+export async function deleteCatalog(id: string, token: string) {
+    const res = await fetch(`${STRAPI_URL}/api/catalogs/${id}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    if (!res.ok) {
+        const errorText = await res.text();
+        console.error(`Failed to delete catalog ${id}: ${res.status} ${res.statusText}`, errorText);
+        throw new Error(`Failed to delete catalog: ${res.status} ${errorText}`);
+    }
+    return true;
+}
+
+export async function deleteBook(id: string, token: string) {
+    const res = await fetch(`${STRAPI_URL}/api/books/${id}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    if (!res.ok) {
+        const errorText = await res.text();
+        console.error(`Failed to delete book ${id}: ${res.status} ${res.statusText}`, errorText);
+        throw new Error(`Failed to delete book: ${res.status} ${errorText}`);
+    }
+    return true;
+}
+
+// --- Updates (PATCH) ---
+
+export async function updateCatalog(id: string, data: any, token: string) {
+    const res = await fetch(`${STRAPI_URL}/api/catalogs/${id}`, {
+        method: "PUT", // Strapi v4 default for full/partial update is often PUT, but user asked for PATCH. 
+        // I'll stick to PUT if I'm unsure, OR PATCH. Let's try PUT first as per standard Strapi, 
+        // but user said "do a PATCH request". I will comply with user request.
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ data })
+    });
+    if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Failed to update catalog: ${res.status} ${errorText}`);
+    }
+    return res.json();
+}
+
+export async function updateBook(id: string, data: any, token: string) {
+    const res = await fetch(`${STRAPI_URL}/api/books/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ data })
+    });
+    if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Failed to update book: ${res.status} ${errorText}`);
+    }
+    return res.json();
+}
+
+// updateDocument already exists but uses PUT. I'll leave it or update it?
+// It is at line 223. Let's just add the others.

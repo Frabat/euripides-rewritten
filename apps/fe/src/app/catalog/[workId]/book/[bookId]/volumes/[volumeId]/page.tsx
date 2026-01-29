@@ -48,7 +48,7 @@ export default async function VolumePage({ params }: VolumePageProps) {
     return (
         <div className="container mx-auto py-12 px-4 md:px-8">
             <Link href={`/catalog/${workId}/book/${bookId}`} className="flex items-center gap-2 text-gray-500 hover:text-black mb-8">
-                <ArrowLeft className="w-4 h-4" /> Torna al Libro
+                <ArrowLeft className="w-4 h-4" /> Torna all'opera
             </Link>
 
             <div className="bg-white rounded-lg p-8 border border-gray-200 shadow-sm mb-12 flex justify-between items-center">

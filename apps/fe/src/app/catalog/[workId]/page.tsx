@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, BookOpen, FileText, Upload } from "lucide-react";
 import { ProtectScholar } from "@/components/auth/ProtectScholar";
+import { BookCard } from "@/components/catalog/BookCard";
 
 interface CatalogDetailPageProps {
     params: Promise<{
@@ -71,7 +72,7 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
             {/* Fragments / Documents List */}
             <div>
                 <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-xl font-bold font-serif">Libri / Edizioni</h3>
+                    <h3 className="text-xl font-bold font-serif">Opere</h3>
                     <ProtectScholar>
                         <Link
                             href={`/catalog/${workId}/book/new`}
@@ -91,26 +92,11 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {work.books.map((book: any) => (
-                        <Link
+                        <BookCard
                             key={book.documentId}
-                            href={`/catalog/${workId}/book/${book.documentId}`}
-                            className="block group bg-white p-6 rounded-lg border border-gray-200 hover:border-euripides-accent transition-colors hover:shadow-sm"
-                        >
-                            <div className="flex items-start justify-between mb-4">
-                                <BookOpen className="w-8 h-8 text-gray-300 group-hover:text-euripides-accent transition-colors" />
-                                {book.type && (
-                                    <span className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600 group-hover:bg-euripides-accent/10 group-hover:text-euripides-accent transition-colors">
-                                        {book.type}
-                                    </span>
-                                )}
-                            </div>
-                            <h4 className="font-bold text-lg mb-2 group-hover:text-euripides-accent transition-colors">
-                                {book.title}
-                            </h4>
-                            <p className="text-sm text-gray-500 line-clamp-3">
-                                {book.period || "Nessun periodo specificato"}
-                            </p>
-                        </Link>
+                            workId={workId}
+                            book={book}
+                        />
                     ))}
                 </div>
             )}

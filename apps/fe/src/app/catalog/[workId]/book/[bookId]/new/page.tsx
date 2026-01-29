@@ -173,7 +173,7 @@ export default function NewVerseBlockPage() {
     return (
         <div className="container mx-auto py-12 px-4 md:px-8 max-w-2xl">
             <Link href={`/catalog/${workId}/book/${bookId}`} className="flex items-center gap-2 text-gray-500 hover:text-black mb-6">
-                <ArrowLeft className="w-4 h-4" /> Torna al Libro
+                <ArrowLeft className="w-4 h-4" /> Torna all'opera
             </Link>
 
             <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">

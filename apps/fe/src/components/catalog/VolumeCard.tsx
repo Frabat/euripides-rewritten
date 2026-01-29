@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { FileText } from "lucide-react";
-import { ProtectScholar } from "@/components/auth/ProtectScholar";
 import { useRouter } from "next/navigation";
+import { CardActions } from "@/components/common/CardActions";
+import { deleteDocument } from "@/lib/api";
+import { getToken } from "@/lib/auth";
 
 interface VolumeCardProps {
     workId: string;
@@ -27,6 +29,16 @@ export function VolumeCard({ workId, bookId, block }: VolumeCardProps) {
         router.push(`/catalog/${workId}/book/${bookId}/${block.documentId}`);
     };
 
+    const handleDelete = async () => {
+        const token = getToken();
+        if (!token) {
+            alert("Non autorizzato");
+            return;
+        }
+        await deleteDocument(block.documentId, token);
+        router.refresh();
+    };
+
     return (
         <div
             onClick={handleCardClick}
@@ -37,17 +49,14 @@ export function VolumeCard({ workId, bookId, block }: VolumeCardProps) {
                     <FileText className="w-8 h-8 text-gray-300 group-hover:text-euripides-accent transition-colors" />
                     <span className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600 group-hover:bg-euripides-accent/10 group-hover:text-euripides-accent transition-colors">Volume</span>
                 </div>
-                <ProtectScholar>
-                    <Link
-                        href={`/catalog/${workId}/book/${bookId}/${block.documentId}/edit`}
-                        className="text-xs bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded text-gray-600 font-medium z-10"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                        }}
-                    >
-                        Modifica
-                    </Link>
-                </ProtectScholar>
+
+                <div className="absolute bottom-2 right-2 z-20" onClick={(e) => e.stopPropagation()}>
+                    <CardActions
+                        itemType="Volume"
+                        editUrl={`/catalog/${workId}/book/${bookId}/${block.documentId}/edit`}
+                        onDelete={handleDelete}
+                    />
+                </div>
             </div>
             <h4 className="font-bold text-lg mb-2 group-hover:text-euripides-accent transition-colors">
                 {block.verseBlockName || block.title || `Volume ${block.bookNumber || block.id}`}

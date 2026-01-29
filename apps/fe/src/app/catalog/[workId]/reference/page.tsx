@@ -22,7 +22,7 @@ export default async function ReferenceViewerPage({ params }: ReferenceViewerPag
         return (
             <div className="container mx-auto py-12 px-4 md:px-8">
                 <Link href={`/catalog/${workId}`} className="flex items-center gap-2 text-gray-500 hover:text-black mb-8">
-                    <ArrowLeft className="w-4 h-4" /> Torna all'Opera
+                    <ArrowLeft className="w-4 h-4" /> Torna alla Tragedia
                 </Link>
                 <div className="p-12 text-center text-gray-500 bg-gray-50 rounded-lg">
                     Questa opera non ha un testo di riferimento associato.
@@ -39,7 +39,7 @@ export default async function ReferenceViewerPage({ params }: ReferenceViewerPag
         return (
             <div className="container mx-auto py-12 px-4 md:px-8">
                 <Link href={`/catalog/${workId}`} className="flex items-center gap-2 text-gray-500 hover:text-black mb-8">
-                    <ArrowLeft className="w-4 h-4" /> Torna all'Opera
+                    <ArrowLeft className="w-4 h-4" /> Torna alla Tragedia
                 </Link>
                 <div className="p-12 text-center text-red-600 bg-red-50 rounded-lg">
                     Errore nel caricamento del file di riferimento.
@@ -51,7 +51,7 @@ export default async function ReferenceViewerPage({ params }: ReferenceViewerPag
     return (
         <div className="container mx-auto py-8 px-4 md:px-8">
             <Link href={`/catalog/${workId}`} className="flex items-center gap-2 text-gray-500 hover:text-black mb-8">
-                <ArrowLeft className="w-4 h-4" /> Torna all'Opera
+                <ArrowLeft className="w-4 h-4" /> Torna alla Tragedia
             </Link>
 
             <div className="mb-6">
