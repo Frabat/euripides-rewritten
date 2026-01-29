@@ -2,8 +2,9 @@ import { getBookById } from "@/lib/api";
 import { Book } from "@/types/strapi";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, PlusCircle } from "lucide-react";
 import { VolumeCard } from "@/components/catalog/VolumeCard";
+import { ProtectScholar } from "@/components/auth/ProtectScholar";
 
 interface VolumePageProps {
     params: Promise<{
@@ -50,9 +51,20 @@ export default async function VolumePage({ params }: VolumePageProps) {
                 <ArrowLeft className="w-4 h-4" /> Torna al Libro
             </Link>
 
-            <div className="bg-white rounded-lg p-8 border border-gray-200 shadow-sm mb-12">
-                <h1 className="text-3xl font-serif font-bold mb-2">{book.title}</h1>
-                <h2 className="text-xl text-gray-500">Volume {targetVolumeNumber === 0 ? "Extra" : targetVolumeNumber}</h2>
+            <div className="bg-white rounded-lg p-8 border border-gray-200 shadow-sm mb-12 flex justify-between items-center">
+                <div>
+                    <h1 className="text-3xl font-serif font-bold mb-2">{book.title}</h1>
+                    <h2 className="text-xl text-gray-500">Volume {targetVolumeNumber === 0 ? "Extra" : targetVolumeNumber}</h2>
+                </div>
+                <ProtectScholar>
+                    <Link
+                        href={`/catalog/${workId}/book/${bookId}/new?volume=${targetVolumeNumber}`}
+                        className="bg-black text-white px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide hover:bg-gray-800 transition-colors flex items-center gap-2"
+                    >
+                        <PlusCircle className="w-4 h-4" />
+                        Nuovo blocco di versi
+                    </Link>
+                </ProtectScholar>
             </div>
 
             {sortedBlocks.length === 0 ? (

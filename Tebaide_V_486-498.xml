@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title type="main">Tebaide</title>  
+            <title type="sub"> Libro Quinto (vv. 486-498)</title>
+            <author> P. Papinio Stazio</author>
+            <editor xml:id="agervasi"> Anastasia Maria Gervasi </editor>
+            <respStmt>
+               <resp> Edizione critica digitale, traduzione e note di commento di </resp>
+               <name ref="#agervasi">Anastasia Maria Gervasi</name>
+            </respStmt>
+         </titleStmt>
+         <editionStmt>
+            <edition>Edizione critica digitale con traduzione italiana in parallelo</edition>
+            <respStmt>
+               <resp>Conversione in XML/TEI, marcatura del testo e correzione a cura di</resp>
+               <name ref="#agervasi">Anastasia Maria Gervasi</name>
+            </respStmt>
+         </editionStmt>
+         <publicationStmt>
+            <publisher> UniBa</publisher>
+            <pubPlace> Bari </pubPlace>
+            <date> 2026 </date>
+            <availability status="free">
+               <licence target="nd">
+                  <p> da inserire la licenza per il no commerciale</p>
+               </licence>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Born digital, based on academic research notes.</p>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>Progetto di ricerca dal titolo <hi rend="italic">Didattica interattiva e inclusiva per lo studio del teatro greco </hi>, finanziato dalla Pubblica Amministrazione (D.M. 351/22 - curriculum 3).
+               La tesi ha titolo <hi rend="italic">Stazio lettore di Euripide: per un’edizione digitale 
+               <foreign xml:lang="en">school oriented</foreign>del teatro greco e della sua fortuna</hi>
+               </p>
+            <p>Tutor: <name>Prof.ssa Olimpia Imperio</name></p>
+            <p>Co-Tutor: <name>Prof.ssa Sabina Castellaneta</name></p>
+         </projectDesc>
+         <editorialDecl>
+            <p> Documento XML codificato secondo le Guidelines della TEI <ref type="url" target="http://www.tei-c.org/release/doc/tei-p5-doc/es/html/index.html">TEI
+               P5</ref>.</p>
+         </editorialDecl>
+         <variantEncoding  method="double-end-point" location="external"/>
+      </encodingDesc>
+      <profileDesc>
+         <langUsage>
+            <language ident="la" ana="source">latino</language>
+            <language ident="grc" ana="comparison">greco</language>
+            <language ident="it" ana="translation-commentary"> italiano</language>
+         </langUsage>
+      </profileDesc>
+   </teiHeader>
+    
+   <text xml:id="Eur_Stat_Text_comparison_3" >
+     <group> 
+        <!-- Latin Source: Statius -->
+        <text type="source" xml:lang="la" xml:id="la">
+       <body>
+          <div type="book" n="5" xml:id="la.5">
+             <head>
+                <seg xml:id="la.5.t"> Liber quintus</seg>
+             </head>
+             <div xml:id="la.versi.5.486">
+                <head>
+                   <seg xml:id="la.part.486">486-498</seg>
+                </head>
+             <p>
+                <seg xml:id="la.5.486">
+                   <l xml:id="Theb.5.486"><w xml:id="app_w_486_1"><anchor xml:id="app_486_1_begin"/>fama<anchor xml:id="app_486_1_end"/></w> <w xml:id="app_w_486_2"><anchor xml:id="app_486_2_begin"/>subit portus<anchor xml:id="app_486_2_end"/></w> vectum trans alta Thoanta</l>
+                   <l xml:id="Theb.5.487">fraterna regnare Chio, mihi crimina nulla</l>
+                   <l xml:id="Theb.5.488">et vacuos arsisse rogos. fremit <w xml:id="app_w_488"><anchor xml:id="app_488_begin"/>impia<anchor xml:id="app_488_end"/></w> plebes</l>
+                   <l xml:id="Theb.5.489">sontibus <w xml:id="app_w_489"><anchor xml:id="app_489_begin"/>accensae<anchor xml:id="app_489_end"/></w> stimulis facinusque reposcunt.</l>
+                   <l xml:id="Theb.5.490">quin etiam <w xml:id="app_w_490"><anchor xml:id="app_490_begin"/>occultae<anchor xml:id="app_490_end"/></w> vulgo increbrescere voces:</l> 
+                   <l xml:id="Theb.5.491">“solane fida suis, nos autem <w xml:id="app_w_491_1"><anchor xml:id="app_491_1_begin"/>in funera<anchor xml:id="app_491_1_end"/></w> <w xml:id="app_w_491_2"><anchor xml:id="app_491_2_begin"/>laetae<anchor xml:id="app_491_2_end"/></w>?</l>
+                   <l xml:id="Theb.5.492"><w xml:id="app_w_492_1"><anchor xml:id="app_492_1_begin"/>non<anchor xml:id="app_492_1_end"/></w> deus haec fatumque? <w xml:id="app_w_492_2"><anchor xml:id="app_492_2_begin"/>quid<anchor xml:id="app_492_2_end"/></w> imperat urbe nefanda?”</l>
+                   <l xml:id="Theb.5.493">talibus exanimis dictis (<w xml:id="app_w_493"><anchor xml:id="app_493_begin"/>et<anchor xml:id="app_493_end"/></w> triste propinquat</l>
+                   <l xml:id="Theb.5.494">supplicium, nec regna iuvant) vaga litora <w xml:id="app_w_494"><anchor xml:id="app_494_begin"/>furtim<anchor xml:id="app_494_end"/></w></l>
+                   <l xml:id="Theb.5.495">incomitata sequor funestaque moenia linquo,</l> 
+                   <l xml:id="Theb.5.496">qua fuga nota patris. sed non iterum obvius Euhan,</l>
+                   <l xml:id="Theb.5.497">nam me praedonum manus huc appulsa <w xml:id="app_w_497"><anchor xml:id="app_497_begin"/>tacentem<anchor xml:id="app_497_end"/></w></l>
+                   <l xml:id="Theb.5.498">abripit et vestras famulam transmittit in oras.</l>
+                </seg>
+             </p>
+             <div xml:id="aTheb.5" type="apparatus">
+                <p><hi rend="bold">486</hi></p>
+                <app from="#app_486_2_begin" to="#app_486_2_end">
+                   <lem wit="#codd">subit portus <bibl type="mss">codd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#Rvl #Tvl">subit ponti <bibl type="mss">Rvl Tvl</bibl></rdg>
+                </app>
+                <p><hi rend="bold">488</hi></p>
+                <app from="#app_488_begin" to="#app_488_end">
+                   <lem wit="#B #D #G #M #O #P #Q #R #S #T">impia <bibl type="mss">B D G M O P Q R S T</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#A">improba <bibl type="mss">A</bibl></rdg>
+                </app>
+                <p><hi rend="bold">489</hi></p>
+                <app from="#app_489_begin" to="#app_489_end">
+                   <lem wit="#codd">accensae <bibl type="mss">codd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg resp="#Wakefield">accensast <bibl type="edition">Wakefield ap. Hall 2007, 126</bibl></rdg>
+                </app>
+                <p><hi rend="bold">490</hi></p>
+                <app from="#app_490_begin" to="#app_490_end">
+                   <lem wit="#codd">occultae <bibl type="mss">codd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg resp="#Hall">incultae <bibl type="edition">Hall 2007, 127</bibl></rdg>
+                </app>
+                <p><hi rend="bold">491</hi></p>
+                <app from="#app_491_1_begin" to="#app_491_1_end">
+                   <lem wit="#B #D #G #M #O #P #Q #R #S #T">in funera <bibl type="mss">B D G M O P Q R S T</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#Ssscr #M3 #S3 #U16 #Z2">in funere <bibl type="mss">Ssscr. M3 S3 U16 Z2</bibl>,</rdg>
+                   <rdg wit="#Mvl">vulnere <bibl type="mss">Mvl</bibl>,</rdg>
+                   <rdg resp="#Hall">funere <bibl type="edition">Hall 2007, 127</bibl></rdg>
+                </app>
+                <app from="#app_491_2_begin" to="#app_491_2_end">
+                   <lem wit="#B #D #G #M #O #P #Q #R #S #T">laetae <bibl type="mss">B D G M O P Q R S T</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#Ovl #npc">lectae <bibl type="mss">Ovl npc</bibl>,</rdg>
+                   <rdg wit="#Z2vl">leti <bibl type="mss">Z2vl</bibl>,</rdg>
+                   <rdg wit="#F">iactae <bibl type="mss">F</bibl>,</rdg>
+                   <rdg resp="#Baehrens">latae <bibl type="edition">Baehrens ap. Kohlmann 1884, 134</bibl></rdg>
+                </app>
+                <p><hi rend="bold">492</hi></p>
+                <app from="#app_492_1_begin" to="#app_492_1_end">
+                   <lem wit="#codd">non <bibl type="mss">codd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#E #U3 #U11 #Z2 #Z19 #Hall">num <bibl type="mss">E U3 U11 Z2 Z19</bibl>, <bibl type="edition">Hall 2007, 127</bibl></rdg>
+                </app>
+                <app from="#app_492_2_begin" to="#app_492_2_end">
+                   <lem wit="#B #M #P #Q #R #T #Klotz #edd">quid <bibl type="mss">B M P Q R T</bibl>, <bibl>duce Klotz 1908, 181 edd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#D #G #O #S #E #J1 #n #F2 #N #O3 #U1 #U2 #U3 #U11 #Z2 #Z19">quod <bibl type="mss">D G O S E J1 n F2 N O3 U1 U2 U3 U11 Z2 Z19</bibl></rdg>
+                </app>
+                <p><hi rend="bold">493</hi></p>
+                <app from="#app_493_begin" to="#app_493_end">
+                   <lem wit="#codd">et <bibl type="mss">codd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg resp="#Hall">nam <bibl type="edition">Hall 2007, 127</bibl></rdg>
+                </app>
+                <p><hi rend="bold">494</hi></p>
+                <app from="#app_494_begin" to="#app_494_end">
+                   <lem wit="#G #P #O2 #t #Z2 #M4 #U2 #U4 #Lsscr #Behotte #edd">furtim <bibl type="mss">G P O2 t Z2 M4 U2 U4 Lsscr.</bibl>, <bibl>duce Behotte ap. Tiliobroga 1650, 185s. edd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#B #D #M #O #Q #R #S #T">furto <bibl type="mss">B D M O Q R S T</bibl></rdg>
+                </app>
+                <p><hi rend="bold">497</hi></p>
+                <app from="#app_497_begin" to="#app_497_end">
+                   <lem wit="#B #D #G #M #O #P #Q #R #S #T">tacentem <bibl type="mss">B D G M O P Q R S T</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg resp="#Baehrens">latentem <bibl type="edition">Baehrens ap. Kohlmann 1884, 134</bibl>,</rdg>
+                   <rdg wit="#U2" resp="#Peyrarède">iacentem <bibl type="mss">U2</bibl>, <bibl type="edition">Peyrarède ap. Kohlmann 1884, 134</bibl></rdg>
+                </app>
+             </div>
+          </div>
+          </div>
+       </body>
+        </text>
+
+        <!-- Translation (Italian) -->
+        <text type="translation" xml:lang="it" xml:id="Tr.it">
+           <body>
+              <div type="book" n="5" xml:id="Tr.it.5">
+                 <div xml:id="it.versi.5.486">
+                    <head>
+                       <seg xml:id="it.part.486">Traduzione</seg>
+                    </head>
+                    <p>
+                       <seg xml:id="it.5.486">
+                           Giunge al porto la voce che Toante, tratto in salvo, ha attraversato l’alto mare e ora regna su Chio, isola di suo fratello, e che io non avevo commesso alcun crimine e avevo acceso il rogo senza alcun cadavere. Rumoreggia allora quella folla di donne empie, accese da rimorsi colpevoli e chiede conto della mia colpa. Mormorii occulti serpeggiano sempre di più tra la folla: “Lei, dunque, è la sola che è rimasta fedele ai suoi, mentre noi gioivamo per il delitto? Non era stato un dio o il fato a volere tutto ciò? E allora perché regna su una città criminosa?” A quei discorsi io mi sento senza speranza (di certo una dura condanna s’avvicina, né mi giova di essere regina). Così in segreto e senza scorta, mi avvio per i lidi tortuosi e abbandono le mura funeste, passando per il sentiero a me noto dalla fuga del padre. Ma Evoè non mi venne incontro una seconda volta: una banda di pirati, appena approdata, mi rapì senza che io potessi parlare e mi condusse schiava sulla vostra terra
+                       </seg>
+                    </p>
+                 </div>
+              </div>
+           </body> 
+        </text>
+
+        <!-- Commentary (Italian) -->
+        <text type="commentary" xml:lang="it" xml:id="Note.it">
+           <body>
+              <div type="book" n="5" xml:id="Note.it.5"> 
+                 <head>
+                    <seg xml:id="it.5.subt"> Commento 486 - 498</seg>
+                 </head>
+                 <div xml:id="it.note.5.486">
+                    <head>
+                       <seg xml:id="note.part.486"> 486-488</seg>
+                    </head>
+                    <p>
+                        <seg xml:id="note.5.486">
+                            <seg xml:id="comm.5.486.1">
+                                <hi rend="bold">486-488 Fama subit … rogos</hi>: Stazio si limita a riferire genericamente che dopo essere stato messo in salvo da Ipsipile (<hi rend="italic">Theb.</hi> 5.265-71), Toante, posto all’interno di una cassa (<hi rend="italic">Theb.</hi> 5.287: <foreign xml:lang="la">curvo robore clausum</foreign>), era giunto sano e salvo a Chio, dove avrebbe regnato con suo fratello Enopione (cf. F 752a.7s. Kn.: τρί̣τος ̣Διο̣ν̣υ̣[ς / Κίου πα̣ρα[). Il poeta latino si discosta della versione euripidea, nella quale i figli di Ipsipile giungono a Lemno accompagnati dal nonno (F 759a.1624-27 Kn.), che aveva in qualche modo fatto ritorno sull’isola, riuscendo a ripristinare il suo ruolo di sovrano. Il poeta latino si inserisce nel solco della tradizione secondo cui Toante viaggia all’interno di una cassa. L’immagine dei corpi che all’interno della cassa vagano nel mare, sospesi sulla superficie marina, in un equilibrio precario, suggerisce lo stato di incertezza tra la vita e la morte dettato dalla linea delle onde che separa la superficie dalla profondità (<bibl>Cursaru 2014, 367</bibl>). <bibl>Brûlé (1987, 125)</bibl> sottolinea l’ambiguità del contenitore, che può custodire beni essenziali per la sopravvivenza, ma anche le salme dei defunti (cf. <bibl>Il. 24.795</bibl>; <bibl>Thu. 2.34</bibl>; <bibl>AP. 7.478, 9.278</bibl>; <bibl>Suda s.v. λάρναξ</bibl>). 
+                                L’immagine delle casse in balìa delle onde è impiegata prevalentemente con riferimento a figure femminili (<bibl>Beaulieu 2016, 96</bibl>), ma con una significativa inversione di ruoli, qui è la figlia a rinchiudere il padre in una cassa consegnandolo al mare (<bibl>Nugent 1996, 65</bibl>).
+                                Anche in Apollonio Rodio (1.620-22), la cui versione deriva probabilmente da Teolito di Metimna (<bibl>FGrHist 478 F 3</bibl>; <bibl>Σ A.R. 1.609-19a-f Wendel</bibl>, cf. <bibl>Lomiento 2005, 56 n.14</bibl> con bibliografia), Toante giunge sull’isola di Enoe dentro una λάρναξ (cf. <bibl>Ps.Apollod. 1.9.17</bibl>). Qui, il sovrano di Lemno viene salvato dai pescatori e, una volta a terra, si unisce a una ninfa locale e genera l’eroe Sicino, eponimo dell’isola. Nal racconto apolloniano, dunque, la fuga nella cassa non solo garantisce la sopravvivenza di Toante, ma anche la nascita di una nuova comunità. Diversamente, in un’altra versione del mito, documentata dallo Pseudo-Apollodoro (3.6.65), Toante è sì nascosto in una cassa da Ipsipile, ma scoperto e gettato in mare della Lemnie che causano la morte del sovrano. 
+                                Nella letteratura latina, Valerio Flacco (2.260-305) narra dell’arrivo di Toante, trasportato in una cassa nella terra dei Tauri: la stessa destinazione indicata da Igino (<bibl>Fab. 15.120</bibl>), benché in quest’ultimo caso il viaggio avvenga per nave. Parte della tradizione letteraria tende, dunque, a identificare il re di Lemno con l’omonimo sovrano taurico, la cui vicenda mitica è resa celebre dall’Ifigenia fra i Tauri di Euripide:
+                                <quote xml:lang="grc">
+                                   <lg>
+                                    <l>ΙΦ.         […] Ταύρων χθόνα</l> 
+                                    <l>οὗ γῆς ἀνάσσει βαρβάροισι βάρβαρος</l> 
+                                    <l>Θόας, ὃς ὠκὺν πόδα τιθεὶς ἴσον πτεροῖς</l> 
+                                    <l>ἐς τοὔνομ᾽ ἦλθε τόδε ποδωκείας χάριν.</l>
+                                    <bibl>(Eur. IT 30-33)</bibl>
+                                   </lg>
+                                </quote>
+                                <quote xml:lang="it">
+                                   <p>
+                                    Ifigenia: […] La terra dei Tauri, 
+                                    su cui regna, barbaro tra i barbari, 
+                                    Toante, il quale, muovendo le gambe veloci come fossero ali, 
+                                    prese il nome da questa sua rapidità dei piedi.
+                                   </p>
+                                </quote>
+                                E sull’omonimia tra i due sovrani insiste Aristofane nelle già citate Lemnie, dove distorce in chiave comica i versi 31-33 della tragedia euripidea:
+                                <quote xml:lang="grc">
+                                   <lg>
+                                    <l>ἐνταῦθα ⟨δ’⟩ ἐτυράννευεν Ὑψιπύλης πατὴρ</l>
+                                    <l>Θόας, βραδύτερος τῶν ἐν ἀνθρώποις δραμεῖν</l>
+                                    <bibl>(Ar. fr. 373 K.–A.)</bibl>
+                                   </lg>
+                                </quote>
+                                <quote xml:lang="it">
+                                   <p>
+                                    Qui regnava il padre di Ipsipile,
+                                    Toante, il più lento tra gli uomini nella corsa
+                                   </p>
+                                </quote>
+                                Nel frammento 373, parodiando la paretimologia euripidea che riconduceva il nome del Toante taurico all’aggettivo θόας (IT vv. 32s.) il commediografo attribuisce al Toante lemnio la caratteristica opposta alla velocità. Il risultato è tanto più efficace sul piano comico in quanto riferito all’omonimo sovrano lemnio, costretto a fuggire per porsi in salvo dalla furia vendicatrice delle donne dell’isola (<bibl>Imperio 2023, 279</bibl>).
+                            </seg>
+                            <seg xml:id="comm.5.486.2">
+                                <hi rend="bold">486 Fama</hi>: In riferimento a Ipsipile, il termine <foreign xml:lang="la">fama</foreign> è impiegato con il significato di “gloria” (OLD s.v. fama 7a, cf. <hi rend="italic">Theb.</hi> 4.725-29, 5.626s., 651), allo scopo di legittimare le nobili origini dell’eroina, e nell’accezione di “diceria” (OLD s.v. fama 2a), configurandosi come una forza che ha il compito di accelerare o innescare gli eventi, tanto nell’episodio nemeo quanto nella narrazione principale (cf. <hi rend="italic">Theb.</hi> 3.425-31, 4.369-405). Com’è stato osservato (vd. <bibl>Götting 1969, 22s.</bibl>; <bibl>Vessey 1973, 317-28</bibl>; <bibl>Lovatt 2005, 19</bibl>; <bibl>Parkes 2012, xxv.</bibl>), la vicenda di Ipsipile ricalca, nelle dinamiche e nei temi, quella del conflitto dei Sette contro Tebe, riproducendo in scala ridotta i meccanismi che governano la vicenda centrale del poema. All’interno del microcosmo lemnio, perciò, la notizia della sopravvivenza di Toante, che riaccende l’animo violento delle Lemnie e determina la fuga di Ipsipile, riecheggia la dinamica innescata dalla fama nel racconto principale, dove la voce riguardante le nozze delle figlie di Adrasto con Tideo e Polinice (<hi rend="italic">Theb.</hi> 2.201-13) diviene uno dei motori del conflitto tebano: il nesso <foreign xml:lang="la">bella canit</foreign> assume qui un valore metapoetico, poiché il cantare – e dunque profetizzare – il conflitto è strettamente connesso al diffondersi della sua fama, tanto nella sezione principale quanto in quelle digressive del poema latino. E dunque, il diffondersi della fama non si limita a profetizzare gli eventi, ma contribuisce a innescarli (<bibl>Gervais 2013, 150s.</bibl>).
+                            </seg>
+                            <seg xml:id="comm.5.486.3">
+                                <hi rend="bold">Fama subit portus</hi>: L’espressione evoca l’immagine di un’entità, la Fama personificata, giunta in movimento alle coste lemnie. <foreign xml:lang="la">Subit portus</foreign> è trasmesso da tutti i manoscritti con l’eccezione di R e T che hanno <foreign xml:lang="la">subit ponti</foreign>. Quest’ultima lezione introduce un riferimento più diretto al mare e richiama con ogni probabilità il <foreign xml:lang="la">subit ponti</foreign> del verso 336, che segnala l’arrivo improvviso della nave degli Argonauti e un brusco mutamento dell’azione. 
+                                È interessante notare che <foreign xml:lang="la">portus</foreign>, che simbolicamente designa la via di fuga per eccellenza dal pericolo (OLD s.v. portus 2), assume qui una funzione inattesa: anziché offrire protezione, segna l’inizio delle sventure per mare di Ipsipile. Mediante questo termine, che sottolinea il carattere erratico della fama (cf. <bibl>Verg. A. 4.173-188, 7.377</bibl>; <bibl>Ov. Met. 12.39-63</bibl>; <bibl>Luc. 1.472</bibl>; <bibl>V.Fl. 2.130</bibl>, cf. <bibl>Hardie 2012, 108</bibl>), il poeta latino richiama l’attenzione sulla natura mutevole della sua voce e della sua forma, che la rende affine alle creature mostruose (cf. Eur. Hyps. F 759a.1597-99 Kn.). In questa prospettiva, la fama in Stazio è affine a quella virgiliana (A. 4.176, 187, 298, cf. V.Fl. 2.115), simile a una baccante e a una furia: figura alata, dotata di molteplici bocche, lingue e orecchie, capace di attraversare terra e mare e di mutare il timore individuale in panico collettivo (cf. Stat. Theb. 4.369-405), innescando così un meccanismo narrativo nel quale la diceria genera il terrore che, a sua volta, conferisce credibilità alla diceria (<bibl>Hardie 2012, 102</bibl>). Che vi sia una connessione tra la fama virgiliana e le Erinni, che avrebbe poi verosimilmente influenzato l’eroina staziana, è confermato da A. 4.173-196, nei quali fama assume le caratteristiche sovrapponibili a quelle di Ἔρις e Ὄσσα nei poemi omerici (cf. <bibl>Il.2.93, 4.439, Od. 24..413</bibl>).
+                            </seg>
+                        </seg>
+                    </p>
+                 </div>
+              </div>
+           </body>
+        </text>
+     </group>
+   </text>
+</TEI>

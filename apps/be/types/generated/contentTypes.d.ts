@@ -564,6 +564,7 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
     period: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    type: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -617,6 +618,7 @@ export interface ApiCatalogCatalog extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     reference_author: Schema.Attribute.String;
     reference_document_url: Schema.Attribute.String;
+    reference_file: Schema.Attribute.Media<'files'>;
     reference_text: Schema.Attribute.Media<'files'>;
     reference_version: Schema.Attribute.String;
     subTitle: Schema.Attribute.String;

@@ -56,13 +56,13 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
 
                 {/* Reference Text Button */}
                 <div className="mt-6 flex flex-wrap gap-4">
-                    {work.reference_text && work.reference_text.url && (
+                    {(work.reference_file || work.reference_text) && (
                         <Link
                             href={`/catalog/${workId}/reference`}
                             className="bg-gray-100 text-gray-800 px-4 py-2 rounded-md font-medium text-sm border border-gray-300 hover:bg-gray-200 transition-colors flex items-center gap-2"
                         >
                             <FileText className="w-4 h-4" />
-                            Leggi Testo di Riferimento (XML)
+                            Vai alla tragedia
                         </Link>
                     )}
                 </div>
@@ -78,7 +78,7 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
                             className="bg-black text-white px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide hover:bg-gray-800 transition-colors flex items-center gap-2"
                         >
                             <BookOpen className="w-4 h-4" />
-                            Nuovo Libro
+                            Nuova Opera
                         </Link>
                     </ProtectScholar>
                 </div>
@@ -98,7 +98,11 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
                         >
                             <div className="flex items-start justify-between mb-4">
                                 <BookOpen className="w-8 h-8 text-gray-300 group-hover:text-euripides-accent transition-colors" />
-                                <span className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600 group-hover:bg-euripides-accent/10 group-hover:text-euripides-accent transition-colors">Libro</span>
+                                {book.type && (
+                                    <span className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600 group-hover:bg-euripides-accent/10 group-hover:text-euripides-accent transition-colors">
+                                        {book.type}
+                                    </span>
+                                )}
                             </div>
                             <h4 className="font-bold text-lg mb-2 group-hover:text-euripides-accent transition-colors">
                                 {book.title}

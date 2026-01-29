@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Title</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <div type="fragment" xml:id="fr752">
+            <head>
+               <ref type="work">Eur. <title xml:lang="la">Hypsipyle</title></ref>,
+               <ref type="fragment">F 752 Kn.</ref>
+            </head>
+            
+            <cit type="fragment">
+               <quote xml:lang="grc">
+                  <lg type="verse">
+                     <l n="1">
+                        <persName type="deity">Διόνυσος</persName>,
+                        ὃς <seg type="attribute">θύρσοισι</seg> καὶ
+                        <seg type="attribute">νεβρῶν δοραῖς</seg>
+                     </l>
+                     <l n="2">
+                        καθαπτὸς ἐν πεύκῃσι
+                        <placeName>Παρνασσὸν</placeName> κάτα
+                     </l>
+                     <l n="3">
+                        πηδᾷ χορεύων παρθένοις σὺν
+                        <placeName>Δελφίσιν</placeName>
+                     </l>
+                  </lg>
+               </quote>
+               
+               <cit type="translation">
+                  <quote xml:lang="it">
+                     <lg>
+                        <l n="1">
+                           <persName type="deity">Dioniso</persName>, che cinto con tirso e pelle di cerbiatto
+                        </l>
+                        <l n="2">
+                           tra fiaccole sulle pendici del
+                           <placeName>Parnaso</placeName>
+                        </l>
+                        <l n="3">
+                           balza danzando con le vergini
+                           <placeName>delfiche</placeName>.
+                        </l>
+                     </lg>
+                  </quote>
+               </cit>
+            </cit>
+         </div>
+         
+         <div type="fragment" xml:id="fr752a">
+            <head>
+               <ref type="work">Eur. <title xml:lang="la">Hypsipyle</title></ref>,
+               <ref type="fragment">F 752a Kn.</ref>
+            </head>
+            
+            <cit type="fragment">
+               <quote xml:lang="grc">
+                  <sp>
+                     <speaker>
+                        <persName>Iψίπυλη</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="1">
+                           <gap reason="lost"/>
+                        </l>
+                        <l n="2">
+                           <persName>Στα̣φ<supplied reason="lost">υλ</supplied></persName>
+                        </l>
+                        <l n="3">
+                           <placeName>Πεπαρ<gap reason="lost"/></placeName>
+                        </l>
+                        <l n="4">
+                           Τού̣τ̣ων̣ σ̣υδε.
+                        </l>
+                        <l n="5">
+                           ὥραις γε <gap reason="lost"/>
+                        </l>
+                        <l n="6">
+                           <persName>Ἥρας</persName>̣ <gap reason="lost"/>
+                        </l>
+                        <l n="7">
+                           <persName>Διονυσο<gap reason="lost"/></persName>
+                        </l>
+                        <l n="8">
+                           Τρί̣τος̣ <gap reason="lost"/>
+                           <persName>Διο̣ν̣υ̣<supplied reason="lost">ς</supplied></persName>
+                        </l>
+                        <l n="9">
+                           <placeName>Κίου</placeName> πα̣ρα<gap reason="lost"/>
+                        </l>
+                        <l n="10">
+                           <gap reason="lost"/>
+                        </l>
+                        <l n="11">
+                           <placeName>Λῆμνον</placeName>
+                        </l>
+                        <l n="12">
+                           ἐγὼ δὲ <gap reason="lost"/>
+                        </l>
+                        <l n="13">
+                           εὐδαιμ<gap reason="lost"/>
+                        </l>
+                        <l n="14">
+                           <gap reason="lost"/>
+                        </l>
+                        <l n="15">
+                           <gap reason="lost"/>
+                        </l>
+                     </lg>
+                  </sp>
+               </quote>
+               
+               <cit type="translation">
+                  <quote xml:lang="it">
+                     <sp>
+                        <speaker>
+                           <persName>Ipsipile</persName>
+                        </speaker>
+                        <lg>
+                           <l n="1">
+                              …
+                           </l>
+                           <l n="2">
+                              … <persName>Stafilo</persName> …
+                           </l>
+                           <l n="3">
+                              <placeName>Pepareto</placeName> …
+                           </l>
+                           <l n="4">
+                              di questi …
+                           </l>
+                           <l n="5">
+                              nelle / verso le stagioni …
+                           </l>
+                           <l n="6">
+                              di / da <persName>Era</persName> …
+                           </l>
+                           <l n="7">
+                              <persName>Dioniso</persName> …
+                           </l>
+                           <l n="8">
+                              un terzo … <persName>Dioniso</persName> …
+                           </l>
+                           <l n="9">
+                              di / da <placeName>Chio</placeName> …
+                           </l>
+                           <l n="10">
+                              …
+                           </l>
+                           <l n="11">
+                              <placeName>Lemno</placeName>
+                           </l>
+                           <l n="12">
+                              e io …
+                           </l>
+                        </lg>
+                     </sp>
+                  </quote>
+               </cit>
+            </cit>
+         </div>
+         <div type="fragment" xml:id="fr752b">
+            <head>
+               <ref type="work">Eur. <title xml:lang="la">Hypsipyle</title></ref>,
+               <ref type="fragment">F 752b Kn.</ref>
+            </head>
+            
+            <cit type="fragment">
+               <quote xml:lang="grc">
+                  <lg type="verse">
+                     <l n="1">
+                        <gap reason="lost"/>
+                     </l>
+                     <l n="2">
+                        <gap reason="lost"/>όπτολιν
+                     </l>
+                     <l n="3">
+                        <gap reason="lost"/>ι τύχαις
+                     </l>
+                     <l n="4">
+                        <gap reason="lost"/>
+                     </l>
+                     <l n="5">
+                        <gap reason="lost"/>λα̣την
+                     </l>
+                     <l n="6">
+                        <placeName>Συμ<supplied reason="lost">π</supplied>ληγἀδων</placeName>
+                     </l>
+                     <l n="7">
+                        <gap reason="lost"/> φάος
+                     </l>
+                     <l n="8">
+                        <gap reason="lost"/>αζω ζυγῶι
+                     </l>
+                     <l n="9">
+                        <gap reason="lost"/>
+                     </l>
+                     <l n="10">
+                        <gap reason="lost"/>γης
+                     </l>
+                     <l n="11">
+                        <gap reason="lost"/>μεν
+                     </l>
+                     <l n="12">
+                        <gap reason="lost"/>εμας
+                     </l>
+                     <l n="13">
+                        <gap reason="lost"/>μονα
+                     </l>
+                     <l n="14">
+                        <gap reason="lost"/>
+                     </l>
+                  </lg>
+               </quote>
+               
+               <cit type="translation">
+                  <quote xml:lang="it">
+                     <lg>
+                        <l n="1">
+                           …
+                        </l>
+                        <l n="2">
+                           … la città …
+                        </l>
+                        <l n="3">
+                           … alle sorti / alla fortuna …
+                        </l>
+                        <l n="4">
+                           …
+                        </l>
+                        <l n="5">
+                           … errante / vagante …
+                        </l>
+                        <l n="6">
+                           delle <placeName>Simplegadi</placeName>
+                        </l>
+                        <l n="7">
+                           … la luce …
+                        </l>
+                        <l n="8">
+                           … aggiogo / lego al giogo …
+                        </l>
+                        <l n="9">
+                           …
+                        </l>
+                        <l n="10">
+                           … della terra …
+                        </l>
+                        <l n="11">
+                           … da una parte …
+                        </l>
+                        <l n="12">
+                           … le mie …
+                        </l>
+                        <l n="13">
+                           … sola / unico …
+                        </l>
+                        <l n="14">
+                           …
+                        </l>
+                     </lg>
+                  </quote>
+               </cit>
+            </cit>
+         </div>
+         <div type="fragment" xml:id="fr752c">
+            <head>
+               <ref type="work">Eur. <title xml:lang="la">Hypsipyle</title></ref>,
+               <ref type="fragment">F 752c Kn.</ref>
+            </head>
+            
+            <cit type="fragment">
+               <quote xml:lang="grc">
+                  <sp>
+                     <speaker>
+                        <persName>Θόας</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="1">
+                           ἰδού, πρὸς αἰθέρ᾽ ἐξαμίλλησαι κόρας
+                        </l>
+                        <l n="2">
+                           γραπτούς <supplied reason="lost">τ᾽ ἐν αἰετ</supplied>οῖσι
+                           πρόσβλεψον τύποθς
+                        </l>
+                     </lg>
+                  </sp>
+               </quote>
+               
+               <cit type="translation">
+                  <quote xml:lang="it">
+                     <sp>
+                        <speaker>
+                           <persName>Toante</persName>
+                        </speaker>
+                        <lg>
+                           <l n="1">
+                              Ecco, alza lo sguardo verso il cielo
+                           </l>
+                           <l n="2">
+                              e osserva i rilievi figurati dipinti sul frontone.
+                           </l>
+                        </lg>
+                     </sp>
+                  </quote>
+               </cit>
+            </cit>
+         </div>
+         
+         <div type="fragment" xml:id="fr752d">
+            <head>
+               <ref type="work">Eur. <title xml:lang="la">Hypsipyle</title></ref>,
+               <ref type="fragment">F 752d Kn.</ref>
+            </head>
+            
+            <cit type="fragment">
+               <quote xml:lang="grc">
+                  <sp>
+                     <speaker>
+                        <persName>Ἰψίπυλη</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="1">
+                           <gap reason="lost"/>
+                        </l>
+                        <l n="2">
+                           γρα<gap reason="lost"/>̣ε̣οις
+                        </l>
+                        <l n="3">
+                           ἥξε̣<gap reason="lost"/> σ̣π̣.<gap reason="lost"/>
+                           <supplied reason="lost">ἀ</supplied>θύρμα<supplied reason="lost">τ</supplied>α
+                        </l>
+                        <l n="4">
+                           ἅ σὰς <supplied reason="lost">ὀ</supplied>δ̣υ̣ρ̣μ̣ῶν
+                           ἐκγαλ̣η̣<supplied reason="lost">νιεῖ</supplied>
+                           <supplied reason="lost">φ</supplied>ρ̣ένας.
+                        </l>
+                        <l n="5">
+                           ὑμεῖς ἐκρούσατ', ὦ νεανία̣<supplied reason="lost">ι</supplied>,
+                           <supplied reason="lost">πύλα</supplied>ς;
+                        </l>
+                        <l n="6">
+                           ὦ μακαρία σφῷν ἡ τεκο<supplied reason="lost">ῦς</supplied>',
+                           <supplied reason="lost">ἥ</supplied> τ̣ις ποτ’ ἦν.
+                        </l>
+                        <l n="7">
+                           τί̲ τῶ<supplied reason="lost">ν</supplied>δε μελάθρων
+                           δε̣<supplied reason="lost">όμε</supplied>νοι
+                           προσήλθετον;
+                        </l>
+                     </lg>
+                  </sp>
+               </quote>
+               <quote xml:lang="grc">
+                  <sp>
+                     <speaker>
+                        <persName>Θόας</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="8">
+                           στέ̣γ<supplied reason="lost">η</supplied>ς κεχρήμεθ' <supplied reason="lost">ἐ</supplied>ν
+                           τὸς ἀ<supplied reason="lost">χθῆναι</supplied>, γύναι,
+                        </l>
+                        <l n="9">
+                           εἰ δυ<supplied reason="lost">να</supplied>τὸν
+                           <supplied reason="lost">ἑναυλίς</supplied>
+                           <supplied reason="lost">αι</supplied> μίαν.
+                        </l>
+                        <l n="10">
+                           ἔχο<supplied reason="lost">με</supplied>ν δ' ὅ<supplied reason="lost">σ</supplied>ων
+                           δῖ<supplied reason="lost">κ</supplied><supplied reason="lost">α</supplied>ὶ
+                           <gap reason="lost"/> λυ<supplied reason="lost">π</supplied>η̣ρ̣ο̣ι
+                           δ̣ό<supplied reason="lost">μοις</supplied>
+                        </l>
+                        <l n="11">
+                           ἐσό<supplied reason="lost">μ</supplied>εσθα το̣ῖσδε,
+                           τὸ <supplied reason="lost">δὲ</supplied>
+                           <supplied reason="lost">σ</supplied>ὸ̣ν
+                           ὡς ἔχε̣ι̣ς
+                           <supplied reason="lost">μ</supplied><supplied reason="lost">εν</supplied><supplied reason="lost">εῖ</supplied>.
+                        </l>
+                     </lg>
+                  </sp>
+                  
+                  <sp>
+                     <speaker>
+                        <persName>Ἰψίπυλη</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="12">
+                           <supplied reason="lost">ἀ</supplied>δές̣π̣οτος
+                           <supplied reason="lost">μ</supplied><supplied reason="lost">ἐν</supplied>
+                           <supplied reason="lost">ο</supplied>̣ἶ̣κ<supplied reason="lost">ο</supplied>̣ς
+                           ἀρσένων κυ<supplied reason="lost">ρεῖ</supplied>
+                        </l>
+                        <l n="13">
+                           <gap reason="lost"/>δώ̣μ<supplied reason="lost">α</supplied>̣τα
+                        </l>
+                        <l n="14">
+                           <gap reason="lost"/>
+                        </l>
+                     </lg>
+                  </sp>
+               </quote>
+               
+               
+               <cit type="translation">
+                  <quote xml:lang="it">
+                     <sp>
+                        <speaker>
+                           <persName>Ipsipile</persName>
+                        </speaker>
+                        <lg>
+                           <l n="1">
+                              … verrà …
+                           </l>
+                           <l n="2">
+                              giocattoli,
+                           </l>
+                           <l n="3">
+                              calmeranno i tuoi pianti.
+                           </l>
+                           <l n="4">
+                              Siete voi, o giovani, che avete bussato alla porta?
+                           </l>
+                           <l n="5">
+                              Beata la madre che vi ha messo al mondo, chiunque sia.
+                           </l>
+                           <l n="6">
+                              Che cosa venite a chiedere in questa casa?
+                           </l>
+                        </lg>
+                     </sp>
+                  </quote>
+                  <quote xml:lang="it">
+                     <sp>
+                        <speaker>
+                           <persName>Toante</persName>
+                        </speaker>
+                        <lg>
+                           <l n="8">
+                              Abbiamo bisogno di trovare riparo al chiuso, donna,
+                           </l>
+                           <l n="9">
+                              se ci è possibile fermarci qui per una sola notte.
+                           </l>
+                           <l n="10">
+                              Abbiamo con noi tutto il necessario
+                           </l>
+                           <l n="11">
+                              e non saremo di peso alla tua casa: da parte tua resterai del tutto indisturbata.
+                           </l>
+                        </lg>
+                     </sp>
+                     
+                     <sp>
+                        <speaker>
+                           <persName>Ipsipile</persName>
+                        </speaker>
+                        <lg>
+                           <l n="12">
+                              La casa, al momento, è priva di uomini che ne abbiano la guida…
+                           </l>
+                           <l n="13">
+                              l’abitazione…
+                           </l>
+                           <l n="14">
+                              …
+                           </l>
+                        </lg>
+                     </sp>
+                  </quote>
+                  
+               </cit>
+            </cit>
+         </div>
+         <div type="fragment" xml:id="fr752e">
+            <head>
+               <ref type="work">Eur. <title xml:lang="la">Hypsipyle</title></ref>,
+               <ref type="fragment">F 752e Kn.</ref>
+            </head>
+            
+            <cit type="fragment">
+               <quote xml:lang="grc">
+                  
+                  <sp>
+                     <speaker>
+                        <persName>Ἰψίπυλη</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="1">
+                           <gap reason="lost"/>
+                        </l>
+                        <l n="2">
+                           <gap reason="lost"/>μ<gap reason="lost"/>
+                        </l>
+                        <l n="3">
+                           <persName>Λυκοῦρ<supplied reason="lost">γ</supplied></persName>
+                        </l>
+                        <l n="4">
+                           γ̲υὴ <gap reason="lost"/>
+                        </l>
+                     </lg>
+                  </sp>
+                  
+                  <sp>
+                     <speaker>
+                        <persName>Θόας</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="5">
+                           οὐχ ἐν <gap reason="lost"/>ξ̣ε<gap reason="lost"/>
+                        </l>
+                        <l n="6">
+                           π̲ρὸς δ' <gap reason="lost"/>
+                        </l>
+                     </lg>
+                  </sp>
+                  
+                  <sp>
+                     <speaker>
+                        <persName>Ἰψίπυλη</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="7">
+                           ἥκιστ<supplied reason="lost">α</supplied>
+                        </l>
+                        <l n="8">
+                           ξέν̣ο<gap reason="lost"/>
+                        </l>
+                        <l n="9">
+                           ἀεὶ δε<gap reason="lost"/>
+                        </l>
+                        <l n="10">
+                           ἀλλ' εἰ̣σ <gap reason="lost"/>
+                        </l>
+                        <l n="11">
+                           <gap reason="lost"/>ῶν ε̣δ<gap reason="lost"/>
+                        </l>
+                     </lg>
+                  </sp>
+                  
+               </quote>
+               
+               <cit type="translation">
+                  <quote xml:lang="it">
+                     
+                     <sp>
+                        <speaker>
+                           <persName>Ipsipile</persName>
+                        </speaker>
+                        <lg>
+                           <l n="1">
+                              … Licurgo …
+                           </l>
+                           <l n="2">
+                              … sua moglie …
+                           </l>
+                        </lg>
+                     </sp>
+                     
+                     <sp>
+                        <speaker>
+                           <persName>Toante</persName>
+                        </speaker>
+                        <lg>
+                           <l n="5">
+                              … non nei locali riservati agli ospiti …
+                           </l>
+                           <l n="6">
+                              ma piuttosto verso …
+                           </l>
+                        </lg>
+                     </sp>
+                     
+                     <sp>
+                        <speaker>
+                           <persName>Ipsipile</persName>
+                        </speaker>
+                        <lg>
+                           <l n="7">
+                              Niente affatto.
+                           </l>
+                           <l n="8">
+                              … come ospiti …
+                           </l>
+                           <l n="9">
+                              … e sempre …
+                           </l>
+                           <l n="10">
+                              ma piuttosto dentro …
+                           </l>
+                           <l n="11">
+                              … degli alloggi / delle stanze …
+                           </l>
+                        </lg>
+                     </sp>
+                     
+                  </quote>
+               </cit>
+            </cit>
+         </div>
+         <div type="fragment" xml:id="fr752f">
+            <head>
+               <ref type="work">Eur. <title xml:lang="la">Hypsipyle</title></ref>,
+               <ref type="fragment">F 752f Kn.</ref>
+            </head>
+            
+            <cit type="fragment">
+               <quote xml:lang="grc">
+                  <sp>
+                     <speaker>
+                        <persName>Ἰψίπυλη</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="1">
+                           <gap reason="lost"/>ο̣σ̣ο̣ι̣
+                        </l>
+                        <l n="2">
+                           ο̣ς ἰδέσθαι
+                        </l>
+                        <l n="3">
+                           … χον ὡς ἐνόπτρου
+                        </l>
+                        <l n="4">
+                           οφαῆ τιν᾽αὐγάν
+                        </l>
+                        <l n="5">
+                           αὔξημα τὸ σόν
+                        </l>
+                        <l n="6">
+                           <gap reason="lost"/>μ̣νήσωμαι, τέκνον, εὐ-
+                        </l>
+                        <l n="7">
+                           ωποῖς ἢ θεραπείαις
+                        </l>
+                        <l n="8">
+                           ἰδοὺ κτύπος ὅδε κορτάλων.
+                        </l>
+                        <l n="9">
+                           <gap reason="lost"/>
+                        </l>
+                        <l n="10">
+                           οὐ τάδε πήνας, οὐ τάδε κερκίδος 
+                        </l>
+                        <l n="11">
+                           ἱστοτόνου παραμύθια Λήμνια 
+                        </l>
+                        <l n="12">
+                           Μοῦσα θέλει με κρέκειν, ὅτι δ’ εἰς ὕπνον
+                        </l>
+                        <l n="13">
+                           ἢ̣ χάριν ἢ θεραπεύματα πρόσφορα
+                        </l>
+                        <l n="14">
+                           παιδὶ πρέπει νεαρῷ, τ̲άδε μελῳδὸς αὐδῶ.
+                        </l>
+                     </lg>
+                  </sp>
+                  <sp>
+                     <speaker>
+                        <persName>Χόρος</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="15">
+                           τί σὺ παρὰ προθύροις, φίλα;
+                        </l>
+                        <l n="16">
+                           πότερα δώματος εἰσόδους σαίρει<supplied reason="lost">ς</supplied>,
+                        </l>
+                        <l n="17">
+                           ἢ δρόσον ἐπὶ πέδωι βάλλεις οἶά τε δούλα;
+                        </l>
+                        <l n="18">
+                           ἦ τὰν Ἀργὼ τὰν διὰ σοῦ στόματος αἰεὶ κλῃζομέναν
+                        </l>
+                        <l n="19">
+                           πεντηκόντερον ἄ[ι]δεις
+                        </l>
+                        <l n="20">
+                           ἢ τὸ χρυσεόμαλλον
+                        </l>
+                        <l n="21">
+                           ͜ἱερὸν δέρος ὃ περὶ δρυὸς ὄζοις ὄμμα δράκοντος φρουρεῖ,
+                        </l>
+                        <l n="22">
+                           μναμοσύνα δέ σοι τᾶς ἀγχιάλοιο Λήμνου,
+                        </l>
+                        <l n="23">
+                           τὰν Αἰγαῖος ἑλί[σ]σων
+                        </l>
+                        <l n="24">
+                           κυμο⟨κ⟩τύπος ἀχεῖ
+                        </l>
+                        <l n="25">
+                           <gap reason="lost"/>
+                        </l>
+                        <l n="26">
+                           <gap reason="lost"/>
+                        </l>
+                        <l n="27">
+                           <gap reason="lost"/>
+                        </l>
+                        <l n="28">
+                           <gap reason="lost"/>
+                        </l>
+                     </lg>
+                  </sp>
+               </quote>
+               
+               <cit type="translation">
+                  <quote xml:lang="it">
+                     <sp>
+                        <speaker>
+                           <persName>Ipsipile</persName>
+                        </speaker>
+                        <lg>
+                           <l n="1">
+                              Quanti a vedersi come in uno specchio
+                           </l>
+                           <l n="2">
+                              una luce la crescita tua figlio,
+                           </l>
+                           <l n="3">
+                              con balli e cure.
+                           </l>
+                           <l n="4">
+                              Ecco questo è lo strepito delle nacchere
+                           </l>
+                           <l n="5">
+                              ⟨ … ⟩
+                           </l>
+                           <l n="6">
+                              lassù. Non di tessuti, non della spola
+                           </l>
+                           <l n="7">
+                              tesa sul telaio sollievo di Lemno
+                           </l>
+                           <l n="8">
+                              la Musa vuole che io componga la trama,
+                           </l>
+                           <l n="9">
+                              ma ciò che al sonno o al piacere o al giovamento
+                           </l>
+                           <l n="10">
+                              e conforto conviene a un bambino piccino.
+                           </l>
+                           <l n="11">
+                              Tutto questo lo dico col canto.
+                           </l>
+                        </lg>
+                     </sp>
+                     <sp>
+                        <speaker>
+                           <persName>Coro</persName>
+                        </speaker>
+                        <lg>
+                           <l n="15">
+                              O cara, cosa fai all’entrata?
+                           </l>
+                           <l n="16">
+                              Pulisci spazzando l’ingresso del palazzo
+                           </l>
+                           <l n="17">
+                              o getti acqua al suolo come una schiava?
+                           </l>
+                           <l n="18">
+                              Forse, canti di Argo,
+                           </l>
+                           <l n="19">
+                              quella dai cinquanta remi
+                           </l>
+                           <l n="20">
+                              sempre celebrata dalla tua bocca
+                           </l>
+                           <l n="21">
+                              o il sacro vello d’oro, su cui vigila l’occhio del drago
+                           </l>
+                           <l n="22">
+                              attorno ai rami d’una quercia?
+                           </l>
+                           <l n="23">
+                              Ripensi all’isola di Lemno,
+                           </l>
+                           <l n="24">
+                              che l’Egeo abbraccia
+                           </l>
+                           <l n="25">
+                              e fa risuonare del rumore delle onde?
+                           </l>
+                           <l n="26">
+                              <gap reason="lost"/>
+                           </l>
+                           <l n="27">
+                              <gap reason="lost"/>
+                           </l>
+                           <l n="28">
+                              <gap reason="lost"/>
+                           </l>
+                        </lg>
+                     </sp>
+                  </quote>
+               </cit>
+            </cit>
+         </div>
+         <div type="fragment" xml:id="fr752g">
+            <head>
+               <ref type="work">Eur. <title xml:lang="la">Hypsipyle</title></ref>,
+               <ref type="fragment">F 752g Kn.</ref>
+            </head>
+            
+            <cit type="fragment">
+               <quote xml:lang="grc">
+                  <sp>
+                     <speaker>
+                        <persName>Ἰψίπυλη</persName>
+                     </speaker>
+                     <lg type="verse">
+                        <l n="1">
+                           <gap reason="lost"/>ρ̣α̣ι[.]
+                        </l>
+                        <l n="2">
+                           Θ]ρῃκίαν
+                        </l>
+                        <l n="3">
+                           <gap reason="lost"/>[ς̣<supplied reason="lost">]</supplied>μενης ὀρούσας
+                        </l>
+                        <l n="4">
+                           ἐπ’ oἶδμα γαληνείας
+                        </l>
+                        <l n="5">
+                           πρυμνήσι᾽ ἀνάψαι
+                        </l>
+                        <l n="6">
+                           τὸν ἁ τοῦ ποταμοῦ παρ-
+                        </l>
+                        <l n="7">
+                           θένος Αἴγιν᾽ ἐτέκνωσεν Πηλ͜έα
+                        </l>
+                        <l n="8">
+                           μέσῳ δὲ παρ᾽ ἱστῶι
+                        </l>
+                        <l n="9">
+                           Ἀσιὰς ἔλεγον ἰήιον
+                        </l>
+                        <l n="10">
+                           Θρῇσσ᾽ ἐβόα κίθαρις {Ὀρφέυς}
+                        </l>
+                        <l n="11">
+                           μακροπόλων πιτύλων ἐρέταισι κελεύσματα μελπομένα
+                        </l>
+                        <l n="12">
+                           τότε μὲν ταχύπλουν
+                        </l>
+                        <l n="13">
+                           τότε δ᾽ εἰλατίνας ἀνάπαυμα πλάτα̣[ς]
+                        </l>
+                        <l n="14">
+                           τ[ά]δε μοι τάδε θυμὸς ἰδεῖν ἵεται
+                        </l>
+                        <l n="15">
+                           Δαναῶν δὲ πόνους
+                        </l>
+                        <l n="16">
+                           ἕ̲τ̲ερος ἀναβοάτω
+                        </l>
+                        <l n="17">
+                           <gap reason="lost"/>
+                        </l>
+                     </lg>
+                  </sp>
+               </quote>
+               
+               <cit type="translation">
+                  <quote xml:lang="it">
+                     <sp>
+                        <speaker>
+                           <persName>Ipsipile</persName>
+                        </speaker>
+                        <lg>
+                           <l n="1">
+                              … Tracia…
+                           </l>
+                           <l n="2">
+                              balzando sul mare in bonaccia
+                           </l>
+                           <l n="3">
+                              per legare le gomene,
+                           </l>
+                           <l n="4">
+                              Peleo, colui che Egina,
+                           </l>
+                           <l n="5">
+                              figlia del fiume, generò,
+                           </l>
+                           <l n="6">
+                              presso l’albero mediano
+                           </l>
+                           <l n="7">
+                              la lira tracia dell’Asia {Orfeo}
+                           </l>
+                           <l n="8">
+                              grida la triste elegia
+                           </l>
+                           <l n="9">
+                              e canta comandi ai rematori
+                           </l>
+                           <l n="10">
+                              per i lunghi colpi,
+                           </l>
+                           <l n="11">
+                              ora per una navigazione rapida,
+                           </l>
+                           <l n="12">
+                              ora per fare una pausa dai remi di pino.
+                           </l>
+                           <l n="13">
+                              Queste cose, sì queste, desidero vedere,
+                           </l>
+                           <l n="14">
+                              ma altri levino grida di dolore
+                           </l>
+                           <l n="15">
+                              sulle pene dei Danai.
+                           </l>
+                           <l n="16">
+                              <gap reason="lost"/>
+                           </l>
+                           <l n="17">
+                              <gap reason="lost"/>
+                           </l>
+                        </lg>
+                     </sp>
+                  </quote>
+               </cit>
+            </cit>
+         </div>
+         
+      </body>
+  </text>
+</TEI>

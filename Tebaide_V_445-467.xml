@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title type="main">Tebaide</title>  
+            <title type="sub"> Libro Quinto (vv. 445-467)</title>
+            <author> P. Papinio Stazio</author>
+            <editor xml:id="agervasi"> Anastasia Maria Gervasi </editor>
+            <respStmt>
+               <resp> Edizione critica digitale, traduzione e note di commento di </resp>
+               <name ref="#agervasi">Anastasia Maria Gervasi</name>
+            </respStmt>
+         </titleStmt>
+         <editionStmt>
+            <edition>Edizione critica digitale con traduzione italiana in parallelo</edition>
+            <respStmt>
+               <resp>Conversione in XML/TEI, marcatura del testo e correzione a cura di</resp>
+               <name ref="#agervasi">Anastasia Maria Gervasi</name>
+            </respStmt>
+         </editionStmt>
+         <publicationStmt>
+            <publisher> UniBa</publisher>
+            <pubPlace> Bari </pubPlace>
+            <date> 2026 </date>
+            <availability status="free">
+               <licence target="nd">
+                  <p> da inserire la licenza per il no commerciale</p>
+               </licence>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Born digital, based on academic research notes.</p>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>Progetto di ricerca dal titolo <hi rend="italic">Didattica interattiva e inclusiva per lo studio del teatro greco </hi>, finanziato dalla Pubblica Amministrazione (D.M. 351/22 - curriculum 3).
+               La tesi ha titolo <hi rend="italic">Stazio lettore di Euripide: per un’edizione digitale 
+               <foreign xml:lang="en">school oriented</foreign>del teatro greco e della sua fortuna</hi>
+               </p>
+            <p>Tutor: <name>Prof.ssa Olimpia Imperio</name></p>
+            <p>Co-Tutor: <name>Prof.ssa Sabina Castellaneta</name></p>
+         </projectDesc>
+         <editorialDecl>
+            <p> Documento XML codificato secondo le Guidelines della TEI <ref type="url" target="http://www.tei-c.org/release/doc/tei-p5-doc/es/html/index.html">TEI
+               P5</ref>.</p>
+         </editorialDecl>
+         <variantEncoding  method="double-end-point" location="external"/>
+      </encodingDesc>
+      <profileDesc>
+         <langUsage>
+            <language ident="la" ana="source">latino</language>
+            <language ident="grc" ana="comparison">greco</language>
+            <language ident="it" ana="translation-commentary"> italiano</language>
+         </langUsage>
+      </profileDesc>
+   </teiHeader>
+    
+   <text xml:id="Eur_Stat_Text_comparison_2" >
+     <group> 
+        <!-- Latin Source: Statius -->
+        <text type="source" xml:lang="la" xml:id="la">
+       <body>
+          <div type="book" n="5" xml:id="la.5">
+             <head>
+                <seg xml:id="la.5.t"> Liber quintus</seg>
+             </head>
+             <div xml:id="la.versi.5.445">
+                <head>
+                   <seg xml:id="la.part.445">445-467</seg>
+                </head>
+             <p>
+                <seg xml:id="la.5.445">
+                   <l xml:id="Theb.5.445">Ergo iterum Venus et tacitis corda aspera flammis</l>
+                   <l xml:id="Theb.5.446">Lemniadum pertemptat Amor. <w xml:id="app_w_446"><anchor xml:id="app_446_begin"/>Tunc<anchor xml:id="app_446_end"/></w> regia Iuno</l>
+                   <l xml:id="Theb.5.447"><w xml:id="app_w_447"><anchor xml:id="app_447_begin"/>Arma<anchor xml:id="app_447_end"/></w> habistusque virum pulchreaque insigna gentis</l>
+                   <l xml:id="Theb.5.448">Mentibus insinuat, certatimque ordine cunctae</l>
+                   <l xml:id="Theb.5.449">Hospitibus patuere fores; tunc primus in aris</l>
+                   <l xml:id="Theb.5.450">Ignis, et infandis venere oblivia curis;</l>
+                   <l xml:id="Theb.5.451">Tunc epulae felixque sopor noctesque quietae,</l>
+                   <l xml:id="Theb.5.452">Nec superum sine mente, reor, placuere <w xml:id="app_w_452"><anchor xml:id="app_452_begin"/>fatentes<anchor xml:id="app_452_end"/></w>.</l>
+                   <l xml:id="Theb.5.453">Forsitan et nostrae <w xml:id="app_w_453"><anchor xml:id="app_453_begin"/>fatum<anchor xml:id="app_453_end"/></w> excusabile culpae</l>
+                   <l xml:id="Theb.5.454">Noscere cura, duces, <w xml:id="app_w_454_1"><anchor xml:id="app_454_1_begin"/>cineres<anchor xml:id="app_454_1_end"/></w> <w xml:id="app_w_454_2"><anchor xml:id="app_454_2_begin"/>furiasque<anchor xml:id="app_454_2_end"/></w> meorum</l>
+                   <l xml:id="Theb.5.455">testor ut externas non sponte aut crimine taedas</l>
+                   <l xml:id="Theb.5.456">attigerim (<w xml:id="app_w_456_1"><anchor xml:id="app_456_1_begin"/>scit<anchor xml:id="app_456_1_end"/></w> cura deum), <w xml:id="app_w_456_2"><anchor xml:id="app_456_2_begin"/>etsi<anchor xml:id="app_456_2_end"/></w> blandus Iason</l>
+                   <l xml:id="Theb.5.457">virginibus dare vincla novis; sua iura cruentum</l>
+                   <l xml:id="Theb.5.458">Phasin habent, alios, Colchi, generatis amores.</l>
+                   <l xml:id="Theb.5.459">Iamque exuta gelu tepuerunt sidera longis</l>
+                   <l xml:id="Theb.5.460">solibus, et velox in terga revolvitur annus.</l>
+                   <l xml:id="Theb.5.461">Iam nova progenies partusque in vota soluti,</l>
+                   <l xml:id="Theb.5.462">Et non speratis <w xml:id="app_w_462"><anchor xml:id="app_462_begin"/>clamatur Lemnos<anchor xml:id="app_462_end"/></w> alumnis.</l>
+                   <l xml:id="Theb.5.463">Nec non opsa tamen, thalami monimenta coacti,</l>
+                   <l xml:id="Theb.5.464">enitor geminos, duroque sub hospite mater</l>
+                   <l xml:id="Theb.5.465">nomen avi renovo; nec quae fortuna relictis</l>
+                   <l xml:id="Theb.5.466">nosse <w xml:id="app_w_466_1"><anchor xml:id="app_466_1_begin"/>datur<anchor xml:id="app_466_1_end"/></w>; iam plena quater quinquennia <w xml:id="app_w_466_2"><anchor xml:id="app_466_2_begin"/>degunt<anchor xml:id="app_466_2_end"/></w></l>
+                   <l xml:id="Theb.5.467">si modo fata sinunt aluitque rogata Lycaste</l>
+                </seg>
+             </p>
+             <div xml:id="aTheb.5" type="apparatus">
+                <p><hi rend="bold">446</hi></p>
+                <app from="#app_446_begin" to="#app_446_end">
+                   <lem wit="#B #D #G #M #P #Q #R #S #T">tunc <bibl type="mss">B D G M P Q R S T</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#O">cum <bibl type="mss">O</bibl></rdg>
+                </app>
+                <p><hi rend="bold">447</hi></p>
+                <app from="#app_447_begin" to="#app_447_end">
+                   <lem wit="#codd">arma <bibl type="mss">codd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg resp="#Hall">ora <bibl type="edition">Hall 2007, 126</bibl></rdg>
+                </app>
+                <p><hi rend="bold">452</hi></p>
+                <app from="#app_452_begin" to="#app_452_end">
+                   <lem wit="#B #D #G #M #O #P #Q #R #S #Tac">fatentes <bibl type="mss">B D G M O P Q R S Tac</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#Tpc #Lvl">faventes <bibl type="mss">Tpc Lvl</bibl>,</rdg>
+                   <rdg resp="#Alton">patentes <bibl type="edition">Alton</bibl>,</rdg>
+                   <rdg resp="#Peyrarède">furores <bibl type="edition">Peyrarède ap. Müller 1870, 209</bibl>,</rdg>
+                   <rdg resp="#Lachmann">foventes <bibl type="edition">Lachmann</bibl></rdg>
+                </app>
+                <p><hi rend="bold">453</hi></p>
+                <app from="#app_453_begin" to="#app_453_end">
+                   <lem wit="#B #G #M #O #P #Q #R #S #T">fatum <bibl type="mss">B G M O P Q R S T</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#d #S3 #U4vl #Alton #Hall">factum <bibl type="mss">d S3 U4vl</bibl>, <bibl type="edition">Alton</bibl>, <bibl type="edition">Hall 2007 126</bibl></rdg>
+                </app>
+                <p><hi rend="bold">454</hi></p>
+                <app from="#app_454_1_begin" to="#app_454_1_end">
+                   <lem wit="#D #G #P #E #n #S2 #d #J1 #M3 #M4 #O3 #U2 #U3 #Z19 #Queck #edd">cineres <bibl type="mss">D G P E n S2 d J1 M3 M4 O3 U2 U3 Z19</bibl>, <bibl>duce Queck 1854 edd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#B #M #O #Q #R #S #T">cinerem <bibl type="mss">B M O Q R S T</bibl></rdg>
+                </app>
+                <app from="#app_454_2_begin" to="#app_454_2_end">
+                   <lem wit="#codd">furiasque <bibl type="mss">codd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg resp="#Hall">animasque <bibl type="edition">Hall 2007, 126</bibl></rdg>
+                </app>
+                <p><hi rend="bold">456</hi></p>
+                <app from="#app_456_1_begin" to="#app_456_1_end">
+                   <lem wit="#B #D #G #M #O #P #Q #R #S #T">scit <bibl type="mss">B D G M O P Q R S T</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#t #Z19ac #Sandström">sit <bibl type="mss">t Z19ac</bibl>, <bibl type="edition">Sandström 1878, 49</bibl></rdg>
+                </app>
+                <app from="#app_456_2_begin" to="#app_456_2_end">
+                   <lem wit="#B #D #G #M #O #P #Q #R #S #T">etsi <bibl type="mss">B D G M O P Q R S T</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#J3">et scit <bibl type="mss">J3</bibl>,</rdg>
+                   <rdg wit="#J1 #O3">si <bibl type="mss">J1 O3</bibl>,</rdg>
+                   <rdg resp="#Barth">scit <bibl type="edition">Barth 1663, 222</bibl>,</rdg>
+                   <rdg resp="#Sandström">sit <bibl type="edition">Sandström 1878, 49</bibl>,</rdg>
+                   <rdg resp="#Peyrarède">et sic <bibl type="edition">Peyrarède ap. Kohlmann 1884, 133</bibl></rdg>
+                </app>
+                <p><hi rend="bold">462</hi></p>
+                <app from="#app_462_begin" to="#app_462_end">
+                   <lem wit="#P #U2 #Kohlmann #Hill">clamatur Lemnos <bibl type="mss">P U2</bibl> <bibl type="edition">Kohlmann 1884, 133</bibl>, <bibl type="edition">Hill 1996, 123</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#G #Mvl #R #S #T">Lemnos clamatur <bibl type="mss">G Mvl R S T</bibl>,</rdg>
+                   <rdg wit="#B #D #M #O #Q #Rvl #Tvl #Hall">Lemnos celebratur <bibl type="mss">B D M O Q Rvl Tvl</bibl>, <bibl type="edition">Hall 2007, 126</bibl>,</rdg>
+                   <rdg wit="#F2">celebratur Lemnos <bibl type="mss">F2</bibl></rdg>
+                </app>
+                <p><hi rend="bold">466</hi></p>
+                <app from="#app_466_1_begin" to="#app_466_1_end">
+                   <lem wit="#P #J5 #O6 #U2 #d #F2 #M2 #O5 #S5 #U1 #U15 #Müller">datur <bibl type="mss">P J5 O6 U2 d F2 M2 O5 S5 U1 U15</bibl>, <bibl>duce Müller 1870, 210 edd.</bibl><span type="lem/rdg_sep">:</span></lem>
+                   <rdg wit="#B #D #G #M #O #Q #R #S #T">datum <bibl type="mss">B D G M O Q R S T</bibl></rdg>
+                </app>
+                <app from="#app_466_2_begin" to="#app_466_2_end">
+                    <lem resp="#Damsté">degunt <bibl type="edition">Damsté</bibl><span type="lem/rdg_sep">:</span></lem>
+                    <rdg wit="#codd">pergunt <bibl type="mss">codd.</bibl>,</rdg>
+                    <rdg resp="#Lachmann">vergunt <bibl type="edition">Lachmann ap. Kohlmann 1884, 140</bibl>,</rdg>
+                    <rdg resp="#Watt">surgunt <bibl type="edition">Watt</bibl></rdg>
+                </app>
+             </div>
+          </div>
+          </div>
+       </body>
+        </text>
+
+        <!-- Translation (Italian) -->
+        <text type="translation" xml:lang="it" xml:id="Tr.it">
+           <body>
+              <div type="book" n="5" xml:id="Tr.it.5">
+                 <div xml:id="it.versi.5.445">
+                    <head>
+                       <seg xml:id="it.part.445">Traduzione</seg>
+                    </head>
+                    <p>
+                       <seg xml:id="it.5.445">
+                           Ed ecco Venere e Amore smuovono ancora una volta con tacito fuoco i cuori inaspriti delle Lemnie. Allora Giunone regina insinua nelle loro menti le armi e il portamento degli eroi e i segni del nobile lignaggio; tutte quante, a gara, una dopo l’altra spalancarono le dimore agli ospiti e a quel punto la fiamma primigenia tornò a bruciare sugli altari e venne l’oblio sui terribili tormenti. Seguirono banchetti, sonni felici e notti serene, né fu, credo, senza il volere dei numi, che le donne, confessando le loro colpe, conquistarono il cuore degli eroi. Forse, o signori, desiderate conoscere il destino che mi ha condotto a uno sbaglio degno di perdono. Per le ceneri e le Furie dei miei cari giuro che mai avrei cercato di mia iniziativa, o per senso di colpa, nozze straniere (lo sanno gli dèi che vegliano su tutto), benché il seducente Giasone fosse bravo a intrecciare vincoli amorosi con nuove fanciulle. Il Fasi sanguinario ha le sue leggi; voi Colchi generate altri amori. E già gli astri, sciolti dal gelo, si scaldano col tepore delle lunghe giornate di sole, e l’anno veloce ha ripreso il suo ciclo tornando al punto di partenza. Già nasce una nuova progenie e i frutti del parto che compiono i voti, e Lemno risuona dei vagiti di bambini insperati. Io stessa non sono da meno e do alla luce due gemelli, costante ricordo dell’unione imposta. E quindi, resa madre da quello sgradevole straniero, faccio rivivere in uno di essi il nome del nonno. Ma quale sia ora la loro sorte, dopo che li ho dovuti abbandonare, non mi è dato sapere: già compiono i vent’anni, se il Fato lo consente e se Licaste li ha allevati come ho tanto pregato.
+                       </seg>
+                    </p>
+                 </div>
+              </div>
+           </body> 
+        </text>
+
+        <!-- Commentary (Italian) -->
+        <text type="commentary" xml:lang="it" xml:id="Note.it">
+           <body>
+              <div type="book" n="5" xml:id="Note.it.5"> 
+                 <head>
+                    <seg xml:id="it.5.subt"> Commento 445 - 467</seg>
+                 </head>
+                 <div xml:id="it.note.5.445">
+                     <head>
+                        <seg xml:id="note.part.445"> 445-446</seg>
+                     </head>
+                     <p>
+                        <seg xml:id="note.5.445">
+                            <seg xml:id="comm.5.445.1">
+                                <hi rend="bold">445 iterum</hi>: l’avverbio sottolinea la ripetitività delle azioni all’interno del racconto caratterizzato da uno schema che, com’è noto, permette a Ipsipile di presentarsi nel ruolo di narratrice epica (cf. <hi rend="italic">Theb.</hi> 5.478: <foreign xml:lang="la">heu iterum gemitus, iterumque novissima nox est</foreign>).
+                            </seg>
+                            <seg xml:id="comm.5.445.2">
+                                <hi rend="bold">445 tacitis flammis</hi>: l’espressione richiama esplicitamente i celebri versi virgiliani sull’amore nascente di Didone nel libro IV dell’Eneide (vv. 66s.: <foreign xml:lang="la">est mollis flamma medullas / interea et tacitum vivit sub pectore vultus</foreign>), in cui la passione si insinua silenziosa nel cuore della regina. In tal caso, Didone e la sorella Anna offrono sacrifici agli altari di Cerere, Febo, Lieo e Giunone per propiziare l’unione con Enea. In modo analogo, Stazio, all’inizio della sezione narrativa della Tebaide dedicata all’incontro tra Lemnie e Argonauti, descrive l’intervento divino orchestrato da Venere, Cupido e Giunone, volto a suscitare il desiderio amoroso. Cupido, in particolare, è presentato come un dio della medicina, incaricato di lenire il dolore delle donne, mentre Giunone, in qualità di dea delle nozze, agisce proiettando l’immagine eroica e l’alto lignaggio degli Argonauti e infondendo in tal modo coraggio nei loro cuori (<hi rend="italic">Theb.</hi> 5.448). Affidare proprio a Giunone il compito di innescare l’innamoramento tra gli eroi e le donne dell’isola consente a Stazio di inserirsi nel solco della consolidata tradizione mitografica (<bibl>FGrHist 3 F 105</bibl>; <bibl>A.R. 1.12-14</bibl>; <bibl>Apollod. 1.9.6</bibl>) che voleva Giunone favorevole agli Argonauti, in particolare a Giasone per aver ricevuto da lui un aiuto mentre, sotto mentite spoglie, tentava di attraversare un fiume. In questo contesto, Giunone rende quindi gli Argonauti desiderabili in quanto sposi legittimi, e non amanti, come sarebbe accaduto se l’azione fosse dipesa esclusivamente da Venere. Si ribadisce così il fine dell’unione tra Lemnie e Argonauti, che mira a un rapido ripopolamento dell’isola e alla restaurazione dell’ordine naturale.
+                                L’aggettivo <foreign xml:lang="la">tacitus</foreign> sottolinea che l’amore penetra lentamente, in modo silenzioso ma efficace, nei cuori delle donne, sciogliendo progressivamente l’ostilità e la furia omicida che le aveva prima animate (cf. <hi rend="italic">Theb.</hi> 5.202s.: <foreign xml:lang="la">Invasere nefas, cuncto sua regnat Erinys / pectore</foreign>).
+                            </seg>
+                            <seg xml:id="comm.5.446.1">
+                                <hi rend="bold">446 pertemptat</hi>: Il verbo, di forte intensità espressiva, è frequentemente impiegato per evocare un’esperienza sensoriale o emotiva totalizzante, spesso assimilata a un brivido fisico o a uno scossone interiore. In ambito epico, <foreign xml:lang="la">pertemptare</foreign> è associato tanto alla diffusione graduale ma inesorabile di un veleno (cf. <bibl>Verg. A. 1.502</bibl>: <foreign xml:lang="la">Ac dum prima lues udo sublapsa veneno / pertemptat sensus</foreign>) quanto alla forza istintiva del desiderio sessuale (cf. <bibl>Verg. G. 3.250</bibl>: <foreign xml:lang="la">nonne vides ut tota tremor pertemptet equorum / corpora...?</foreign>) o, ancora, all’urgenza di un moto emotivo intenso e improvviso (cf. <hi rend="italic">Theb.</hi> 3.381: <foreign xml:lang="la">sic variis pertemptat pectora dictis</foreign>). Il verbo definisce in questa sede lo stato d’animo delle Lemnie, agitate da un turbamento che è insieme fisico e psicologico: il desiderio amoroso si insinua nei cuori con la stessa progressiva potenza che connota la passione, il veleno o l’impulso irrefrenabile.
+                            </seg>
+                        </seg>
+                     </p>
+                  </div>
+              </div>
+           </body>
+        </text>
+     </group>
+   </text>
+</TEI>

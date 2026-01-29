@@ -16,6 +16,9 @@
             "type": "string",
             "required": true
         },
+        "type": {
+            "type": "string"
+        },
         "period": {
             "type": "string"
         },

@@ -177,7 +177,7 @@ export default function NewCatalogPage() {
                         },
                         period,
                         isFragmented,
-                        reference_text: referenceTextId,
+                        reference_file: referenceTextId,
                         // Defaults
                         encodingMethod: "double-end-point"
                     }
@@ -209,7 +209,7 @@ export default function NewCatalogPage() {
 
             <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
                 <h1 className="text-2xl font-serif font-bold mb-6 flex items-center gap-2">
-                    <BookPlus className="w-6 h-6" /> Nuova Opera
+                    <BookPlus className="w-6 h-6" /> Nuovo Progetto
                 </h1>
 
                 {message && (
@@ -306,7 +306,7 @@ export default function NewCatalogPage() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Testo di Riferimento (XML/TEI)</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">File di Riferimento (TEI XML)</label>
                         <input
                             type="file"
                             accept=".xml"
@@ -409,7 +409,7 @@ export default function NewCatalogPage() {
                             disabled={submitting}
                             className="w-full bg-purple-600 text-white py-3 rounded-md font-bold hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                         >
-                            {submitting ? "Creazione..." : <><Save className="w-5 h-5" /> Crea Opera</>}
+                            {submitting ? "Creazione..." : <><Save className="w-5 h-5" /> Crea Progetto</>}
                         </button>
                     </div>
                 </form >

@@ -12,28 +12,425 @@
             <editor xml:id="agervasi"> Anastasia Maria Gervasi </editor>
             <respStmt>
                <resp> Edizione critica digitale, traduzione e note di commento di </resp>
-               <name xml:id="gervasi">Anastasia Maria Gervasi</name>
+               <name ref="#agervasi">Anastasia Maria Gervasi</name>
             </respStmt>
          </titleStmt>
+         <editionStmt>
+            <edition>Edizione critica digitale con traduzione italiana in parallelo</edition>
+            <respStmt>
+               <resp>Conversione in XML/TEI, marcatura del testo e correzione a cura di</resp>
+               <name ref="#agervasi">Anastasia Maria Gervasi</name>
+            </respStmt>
+         </editionStmt>
          <publicationStmt>
-            <publisher> DEFrAG-Tragedy</publisher>
+            <publisher> UniBa</publisher>
             <pubPlace> Bari </pubPlace>
             <date> 2024 </date>
+            <availability status="free">
+               <licence target="nd">
+                  <p> da inserire la licenza per il no commerciale</p>
+               </licence>
+            </availability>
          </publicationStmt>
          <sourceDesc>
-            <p>born digital</p>
+            <listBibl n="refeditionsStatius">
+               <head> Edizioni di riferimento della Tebaide </head>
+               <bibl xml:id="Hill">
+                  <abbr type="siglum">Hill 1996:</abbr>
+                  <editor role="ed">D. E. Hill</editor>
+                  <title level="m">P. Papini Stati Thebaidos Libri XII</title>
+                  <pubPlace>Leiden</pubPlace>
+                  <date>1996</date>
+               </bibl>
+               <bibl xml:id="Hall">
+                  <abbr type="siglum">Hall 2007:</abbr>
+                  <editor role="ed., trad.">J.B. Hall, A.L. Ritchie, &amp; M.J. Edwards</editor>                
+                  <pubPlace>Cambridge</pubPlace>
+                  <date>2007</date>
+               </bibl>
+            </listBibl>
+            <listBibl n="refeditionsEuripides">
+               <head> Edizioni di riferimento dell'Ipsipile</head>
+               <bibl xml:id="Bond">
+                  <abbr type="siglum">Bond 1963</abbr>
+                  <editor role="ed">G.W. Bond</editor>            
+                  <pubPlace>Oxford</pubPlace>
+                  <date>1963</date>
+               </bibl>
+               <bibl xml:id="Cockle">
+                  <abbr type="siglum">Cockle 1987:</abbr>
+                  <editor role="ed">W.E.H. COCK</editor>
+                  <pubPlace>Roma</pubPlace>
+                  <date>1987</date>
+               </bibl>
+               <bibl xml:id="Kannicht">
+                  <abbr type="siglum">Kannicht 2004:</abbr>
+                  <editor role="ed">R. Kannicht</editor>
+                  <edition> <date>2004</date> </edition>
+                  <title level="m" type="vol">Tragicorum Graecorum Fragmenta. Euripides, Vol.5  </title>
+                  <pubPlace>Göttingen</pubPlace>
+                  <date>2004</date>                  
+               </bibl>
+            </listBibl>
+            <listWit xml:id="sigla" n="sigla">
+               <head>Manoscritti citati</head>
+               <listWit>
+                  <head>Codices primarii semper et ubique laudati</head>
+                  <witness xml:id="B"> <abbr type="siglum">B</abbr>Bambergensis class. 47 (M IV 11), s. XI.
+                  </witness>
+                 <witness xml:id="D">
+                    <abbr type="siglum">D</abbr>Cantabrigiensis D. Iohannis Evangelistae D 12, s. X/XI.
+                 </witness>
+                  <witness xml:id="G">
+                     <abbr type="siglum">G</abbr> Bruxellensis 5337, s. XI<hi rendition="simple:superscript">1</hi>.
+                  </witness>
+                  <witness xml:id="M">
+                     <abbr type="siglum">M</abbr> Laurentianus 38.6, s. XII<hi rendition="simple:superscript">1</hi>.
+                  </witness>
+                  <witness xml:id="O">
+                     <abbr type="siglum">O</abbr> Oxoniensis S. M. Magdalenae 18, s. XII<hi rendition="simple:superscript">2</hi>.
+                  </witness>
+                  <witness xml:id="P">
+                     <abbr type="siglum">P</abbr> Parisinus lat. 8051, s. IX/X<hi rendition="simple:superscript">2/3</hi>.
+                  </witness>
+                  <witness xml:id="Q">
+                     <abbr type="siglum">Q</abbr>Parisinus lat. 10317, s. X ex.
+                  </witness>
+                  <witness xml:id="R">
+                     <abbr type="siglum">R</abbr> Londiniensis Bibl. Brit. Regius 15 C X, s. X/XI.
+                  </witness>
+                  <witness xml:id="S">
+                     <abbr type="siglum">S</abbr>Parisinus lat. 13046, s. X.
+                  </witness>
+                  <witness xml:id="T">
+                     <abbr type="siglum">T</abbr>Parisinus n. a. lat. 1627, s. XI.
+                  </witness>
+               </listWit>
+               <listWit>
+                  <head>Codice secundarii hic illic citati</head>
+                  <witness xml:id="d">
+                     <abbr type="siglum">d</abbr>Dertusensis 148, s. xii<hi rendition="simple:superscript">2</hi>.
+                  </witness>
+                  <witness xml:id="E">
+                     <abbr type="siglum">E</abbr>Edinburgensis Adu. MS. 18.5.12, s. xii.
+                  </witness>
+                  <witness xml:id="F">
+                     <abbr type="siglum">F</abbr>Monacensis 6396. s.x<hi rendition="simple:superscript">2</hi>.
+                  </witness>
+                  <witness xml:id="F2">
+                     <abbr type="siglum">F2</abbr>Monacensis 312, s. xii.
+                  </witness>
+                  <witness xml:id="J1">
+                     <abbr type="siglum">J1</abbr>Cantabrigiensis Petrensis 228, s. xii/xiii.
+                  </witness>
+                  <witness xml:id="J3">
+                     <abbr type="siglum">J3</abbr>Cantabrigiensis Emmanuelensis 250, s. xiii.
+                  </witness>
+                  <witness xml:id="J5">
+                     <abbr type="siglum">J5</abbr>Cantabrigiensis S. Trinitatis 0.9.12 (1424), s. xiii.
+                  </witness>
+                  <witness xml:id="L">
+                     <abbr type="siglum">L</abbr>Lipsiensis Rep. I 12, s. xi<hi rendition="simple:superscript">2</hi>.
+                  </witness>
+                  <witness xml:id="M2">
+                     <abbr type="siglum">M2</abbr>Laurentianus 38.4, s. xii.
+                  </witness>
+                  <witness xml:id="M3">
+                     <abbr type="siglum">M3</abbr>Laurentianus 38.5, s. xii ex. + xv/xvi<desc>(fort. post 1502)</desc>.
+                  </witness>
+                  <witness xml:id="M4">
+                     <abbr type="siglum">M4</abbr>Laurentianus Aedilium 197, s. xii<hi rendition="simple:superscript">2</hi>.
+                  </witness>
+                  <witness xml:id="n">
+                     <abbr type="siglum">n</abbr>Lincolniensis 130, s. xiii.
+                  </witness>
+                  <witness xml:id="O3">
+                     <abbr type="siglum">O3</abbr>Oxoniensis Bodl. Rawl. G 114, s. xiii.
+                  </witness>
+                  <witness xml:id="O5">
+                     <abbr type="siglum">O5</abbr>Oxoniensis Corp. Christi 58, s. xiii.
+                  </witness>
+                  <witness xml:id="O6">
+                     <abbr type="siglum">O6</abbr>Oxoniensis Bodl. Canon. class. lat. 77, s. xiii.
+                  </witness>
+                  <witness xml:id="S2">
+                     <abbr type="siglum">S2</abbr>Parisinus lat. 8054, s. xii<hi rendition="simple:superscript">2</hi>.
+                  </witness>
+                  <witness xml:id="S3">
+                     <abbr type="siglum">S3</abbr>Parisinus lat. 8052, s. xii<hi rendition="simple:superscript">1</hi>.
+                  </witness>
+                  <witness xml:id="S5">
+                     <abbr type="siglum">S5</abbr> Parisinus lat. 8055, s. xi <hi rendition="simple:superscript">4/4</hi>.
+                  </witness>
+                  <witness xml:id="t">
+                     <abbr type="siglum">t</abbr>Taurinensis D.IV.19 (485), s. xv.
+                  </witness>
+                  <witness xml:id="U1">
+                     <abbr type="siglum">U1</abbr>Londiniensis Bibl. Brit. Harl. 2665, s. xii med.
+                  </witness>
+                  <witness xml:id="U2">
+                     <abbr type="siglum">U2</abbr>Londiniensis Bibl. Brit. Reg. 15 A XXIX, s. xiii.
+                  </witness>
+                  <witness xml:id="U3">
+                     <abbr type="siglum">U3</abbr>Londiniensis Bibl. Brit. Reg. 15 A XXI, s. xiii.
+                  </witness>
+                  <witness xml:id="U4">
+                     <abbr type="siglum">U4</abbr>Londiniensis Bibl. Brit. Arundel. 389, s. xii ex.
+                  </witness>
+                  <witness xml:id="U11">
+                     <abbr type="siglum">U11</abbr>Londiniensis Bibl. Brit. Harl. 2463, s. xiii.
+                  </witness>
+                  <witness xml:id="U15">
+                     <abbr type="siglum">U15</abbr>Londiniensis Bibl. Brit. Harl. 3754, s. xiii.
+                  </witness>
+                  <witness xml:id="U16">
+                     <abbr type="siglum">U16</abbr>Londiniensis Regiae Societatis 24, s. xiii in.
+                  </witness>
+                  <witness xml:id="Z2">
+                     <abbr type="siglum">Z2</abbr>Vaticanus Barberinianus lat. 74, s. xii<hi rendition="simple:superscript">2</hi>.
+                  </witness>
+                  <witness xml:id="Z19">
+                     <abbr type="siglum">Z19</abbr>Vaticanus lat. 3278, s. xiii.
+                  </witness>                  
+               </listWit>
+               <listWit>
+                  <head>Abbreviazioni utilizzate</head>
+                  <witness xml:id="Σ">
+                     <abbr type="siglum">Σ</abbr>Scholia adscripta Lactantio Placido
+                  </witness>
+                  <witness xml:id="ac">
+                     <abbr type="siglum"></abbr>ante correctionem
+                  </witness>
+                  <witness xml:id="codd">
+                     <abbr type="siglum">codd.</abbr>omnes codices
+                  </witness>
+                  <witness xml:id="edd">
+                     <abbr type="siglum">edd.</abbr>omnes editores
+                  </witness>
+                  <witness xml:id="pc">
+                     <abbr type="siglum">pc</abbr>post correctionem
+                  </witness>
+                  <witness xml:id="vl">
+                     <abbr type="siglum">vl</abbr>varia lectio
+                  </witness>
+                  <witness xml:id="incunabulum1470">
+                     <abbr type="siglum">1470</abbr>editio princeps
+                  </witness>
+               </listWit>    
+            </listWit>
+            
+            <listWit xml:id="app_laudata" n="app_laudata">
+               <head> Altre opere citate in apparato</head>
+               <witness xml:id="Alton">
+               <abbr type="siglum">Alton</abbr>
+               <bibl>
+                  <editor>E.H. Alton</editor>                
+                  <title level="a">Notes on the <title>Thebaid</title> of Statius</title>
+                  <title level="j">CQ</title>
+                  <biblScope unit="vol">17</biblScope>
+                  <biblScope unit="pp">175-187</biblScope>
+                  <date>1923</date>
+               </bibl>
+               </witness>
+               <witness xml:id="Baehrens">
+                  <abbr type="siglum">Baehrens</abbr>
+                  <bibl>
+                     <author>E. Baehrens</author> Congetture registrate in Kohlmann 1884 <ref type="cross" target="#Kohlmann1884">(</ref>
+                  </bibl>
+               </witness>
+               <witness xml:id="Bailey">
+                  <abbr type="siglum">Bailey:</abbr>
+                  <bibl>
+                     <editor>R.D. Shackleton Bailey</editor>
+                     <title level="m">P.P. Statius, Thebaid, edited and translated </title>
+                     <date>2003</date>                   
+                  </bibl>
+               </witness>
+               <witness xml:id="Barth">
+                  <abbr type="siglum">Barth 1664:</abbr>
+                  <bibl>
+                     <editor role="ed., com.">C. Barth</editor>   
+                     <title level="m">P. Papinii Statii quae exstant ex recensione et cum
+                        animaduersionibus locupletis Casparis Barthii, 4 vols.</title>
+                     <pubPlace>Cyngneae</pubPlace>
+                     <date>1664-1665</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Behottio">
+               <abbr type="siglum">Behottio</abbr> 
+                  <bibl>
+                     <author>A.Behottio</author>
+                  </bibl> Congetture registrate in Tiliobroga 1650 <ref type="cross" target="#Tiliobroga"/>(pp. 513-536).
+               </witness>
+               <witness xml:id="Eden1994">
+                  <abbr type="siglum">Eden 1994:</abbr>
+                  <bibl>
+                     <author>P.T. Eden</author>
+                     <title level="a">Problems in Statius Thebaid II-V,</title>
+                     <title level="j">Mnemosyne</title>
+                     <biblScope unit="vol">47</biblScope>
+                     <biblScope unit="pp">231-233</biblScope>
+                     <date>1994</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Håkanson">
+                  <abbr type="siglum">Håkanson</abbr>
+                  <bibl>
+                     <author>L. Håkanson</author>
+                     <title level="m">Statius’ <title>Thebaid</title>. Critical and
+                        Exegetical Remarks</title>
+                     <pubPlace>Lund</pubPlace>
+                     <date>1973</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Klotz">
+                  <abbr type="siglum">Klotz 1908:</abbr>
+                  <bibl>
+                     <editor role="ed.">A. Klotz</editor>
+                     <title level="m">P. Papini Stati <title>Thebais</title>. Cum Ottonis
+                        Müller tum aliis copiis usus edidit Alfredus Klotz</title>
+                     <pubPlace>Lipsiae</pubPlace>
+                     <date>1908</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Kohlmann">
+                  <abbr type="siglum">Kohlmann:</abbr>
+                  <bibl>
+                     <editor role="ed.">P. Kohlmann</editor>
+                     <title level="m">P. Papinii Statii Achilleis et Thebais. Recensuit
+                        Philipphus Kolmann. Fasc. II Thebais</title>
+                     <pubPlace>Lipsiae</pubPlace>
+                     <date>1884</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Lachmann">
+                  <abbr type="siglum">Lachmann:</abbr>
+                  <bibl>
+                     <author>K. Lachmann</author>
+                     <title level="m">Kleinere schriften zur classischen philologie</title>
+                     <pubPlace>Berlin</pubPlace>
+                     <date>1974</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="LaPenna">
+                  <abbr type="siglum">La Penna</abbr>
+                  <bibl>
+                     <author>A. La Penna</author>
+                  <title level="a">Stazio, Theb. 5.355</title>
+                  <title level="j">Prometheus</title>
+                  <biblScope unit="vol">34</biblScope>
+                     <biblScope unit="pp">181-183</biblScope>
+                     <date>2008</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Markland">
+                  <abbr type="siglum">Markland:</abbr>
+                  <bibl>
+                     <editor>J. Markland</editor>
+                     <title level="m">Silvarum libri quinque : ex vetustis exemplaribus</title>
+                     <pubPlace>Londini</pubPlace>
+                     <date>1728</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Marolles">
+                  <abbr type="siglum">Marolles:</abbr>
+                  <bibl>
+                     <editor role="ed., com., trad.">M. de Marolles</editor>
+                     <title level="m">P. Statii Papinii Thebaidos libri duodecim. Cum notis
+                        Francisci Guieti Andini, Io. Peyraredi nob. Aquitani, et aliorum.
+                        Opera ac studio Michaelis de Marolles</title>
+                     <pubPlace>Paris</pubPlace>
+                     <date>1658</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Müller">
+                  <abbr type="siglum">Müller:</abbr>
+                  <bibl>
+                     <editor>O. Müller</editor>
+                     <title level="m">P. Papini Stati Thebais et Achilleis cum scholis</title>
+                     <pubPlace>Lipsiae</pubPlace>
+                     <date> 1870</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Peyrarède">
+                  <abbr type="siglum">Peyrarède:</abbr>
+                  <bibl>
+                     <author>J. Peyrarède</author>
+                     <hi>cf.</hi>
+                     <ref type="cross" target="#Kohlmann"></ref>
+                  </bibl>
+               </witness>
+               <witness xml:id="Queck">
+                  <abbr type="siglum">Queck:</abbr>
+                  <bibl>
+                     <editor role="ed.">G. Queck</editor>
+                     <title level="m">Publius Papinius Statius. Recognouit Gustauus Queck.
+                        Tom. II, Thebais</title>
+                     <pubPlace>Lipsiae</pubPlace>
+                     <date>1854</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Sandström">
+                  <abbr type="siglum">Sandström:</abbr>
+                  <bibl>
+                     <author>C.E. Sandström</author>
+                     <title level="m">Studia critica in P. Papinium Statium</title>
+                     <pubPlace>Upsaliae</pubPlace>
+                     <date>1878</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Bentley">
+                  <abbr type="siglum">Bentley:</abbr>
+                  <bibl>     
+                     <editor>R. Bentley</editor>                    
+                     <title level="a">Beiträge zur berichtigung der gedichte des P. Papinius Statius</title>
+                     <title level="m">Opuscula</title>
+                     <biblScope unit="vol">3</biblScope>      
+                     <date>1876</date>
+                  </bibl>
+               </witness> 
+               <witness xml:id="Tiliobroga">
+                  <abbr type="siglum">Tiliobroga</abbr>
+                  <bibl>
+                     <editor role="ed.">Fr. Tiliobroga</editor>                   
+                     <title level="m">Papinii Surculi Statii opera quae extant ... edidit Fr.
+                        Tiliobroga</title>
+                     <pubPlace>Parisiis</pubPlace>
+                     <date>1600</date>
+                  </bibl>
+               </witness>
+               <witness xml:id="Wakefield">
+                  <abbr type="siglum">Wakefield</abbr>
+                  <bibl>
+                     <author>G. Wakefield</author> Congetture registrate nell'edizione di Hall 2007 <ref type="cross" target="#Hall"/>
+                  </bibl>
+               </witness>
+            </listWit>   
+            
+            <listWit xml:id="com_laudata" n="comm_laudata">
+               <head> Altre opere citate </head>
+               <witness>
+                  
+               </witness>
+
+
+            </listWit>
          </sourceDesc>
       </fileDesc>
      <encodingDesc>
         <projectDesc>
-           <p>Stazio lettore di Euripide: per un’edizione digitale 
-              <hi rend="italic"><foreign xml:lang="en">school oriented</foreign></hi>del teatro greco e della sua fortuna </p>
+           <p>Progetto di ricerca dal titolo <hi rend="italic">Didattica interattiva e inclusiva per lo studio del teatro greco </hi>, finanziato dalla Pubblica Amministrazione (D.M. 351/22 - curriculum 3).
+              La tesi ha titolo <hi rend="italic">Stazio lettore di Euripide: per un’edizione digitale 
+              <foreign xml:lang="en">school oriented</foreign>del teatro greco e della sua fortuna</hi>
+              </p>
+           <p>Tutor: <name>Prof.ssa Olimpia Imperio</name></p>
+           <p>Co-Tutor: <name>Prof.ssa Sabina Castellaneta</name></p>
         </projectDesc>
         <editorialDecl>
            <p> Documento XML codificato secondo le Guidelines della TEI <ref type="url" target="http://www.tei-c.org/release/doc/tei-p5-doc/es/html/index.html">TEI
               P5</ref>.</p>
         </editorialDecl>
-        <variantEncoding location="external" method="double-end-point"/>
+        <variantEncoding  method="double-end-point" location="external"/>
      </encodingDesc>
      <profileDesc>
         <creation>
@@ -78,10 +475,15 @@
         <change when-iso="18-10-23" who="#agervasi">codificati i versi e l'apparato</change>
         <change when-iso="05-12-23" who="#agervasi">codificata la congettura 'ostia' di Bentley e Müller nell'apparato; 
            aggiunta la milestone 'anchor' per codificare i limiti di hospita per legare il termine alla lezione e alle congetture nell'apparato </change>
+<change when-iso="31-08-25" who="#agervasi"> codificati nella sezione del TEI Header i mss primari e secondari; le abbreviazioni; le edizioni principali 
+   di riferimento sia della Tebaide di Stazio che dell'Ipsipile di Euripide; le  edizioni e i commenti non di riferimeno ma citati in apparato.
+   Le sezioni dei mss primari e secondari, così come le edizioni principali, quelle citate in apparato e nel commento sono state codificate usando tre volte il tag listWit,
+   corredato di attributi adatti alla tipologia di testo e sezioni al fine di distinguere l'elenco dei mss, delle edd. principali e delle edd. e testi citati solo in apparato 
+   e dei testi citati solo nel commento. </change>
      </revisionDesc>
   </teiHeader>
    
-  <text>
+  <text xml:id="Eur_Stat_Text_comparison_1" >
     <group> 
        <text type="source" xml:lang="la" xml:id="la">
       <body>
@@ -91,14 +493,14 @@
             </head>
             <div xml:id="la.versi.5.335">
                <head>
-                  <seg xml:id="la.part.335">335-360</seg>
+                  <seg xml:id="la.part.335">335-357</seg>
                </head>
             <p>
                <seg xml:id="la.5.335"> <ref target="#note.part.335">
               
                <l xml:id="Theb.5.335">Ecce autem aerata dispellens aequora prora</l>
                   <l xml:id="Theb.5.336"> <ref target="#w1.336">Pelias </ref> intacti late subit
-                     <w xml:id="app_w1"><anchor xml:id="app1_336begin"/>hospita
+                     <w xml:id="app_w1"><anchor xml:id="app1_336begin"/>hospita 
                      <anchor xml:id="app1_336end"/></w> ponti</l>
                <l xml:id="Theb.5.337">pinus; agunt Minyae, geminus fragor ardua canet</l>
                <l xml:id="Theb.5.338">per latera: abruptam credas radicibus ire </l>
@@ -110,11 +512,10 @@
                   <l xml:id="Theb.5.341">mitior et senibus cycnis et pectine Phoebi </l>
                   <l xml:id="Theb.5.342"> uox media de puppe uenit, maria ipsa carinae</l>
                   <l xml:id="Theb.5.343"> accedunt. post nosse datum est: Oeagrius illic </l>
-                  <l xml:id="Theb.5.344">adclinis malo <w xml:id="app_w2"><anchor xml:id="app_344begin"/> mediis 
+                  <l xml:id="Theb.5.344">  adclinis malo <w xml:id="app_w2"><anchor xml:id="app_344begin"/> mediis 
                      <anchor xml:id="app_344end"/></w> intersonat Orpheus </l>
                   <l xml:id="Theb.5.345"> remigiis tantosque iubet nescire labores. </l>
                </seg>
-               
                <seg xml:id="la.5.346">
                   <l xml:id="Theb.5.346">illis in Scythicum Borean iter oraque <w xml:id="app_w3"><anchor xml:id="app_346begin"/>Ponti 
                      <anchor xml:id="app_346end"/></w></l>
@@ -130,21 +531,18 @@
                  <l xml:id="Theb.5.352">scandimus et celsas turres; hue saxa sudesque </l>
                  <l xml:id="Theb.5.353">armaque maesta uirum atque infectos caedibus enses </l>
                  <l xml:id="Theb.5.354">subuectant trepidae; quin et squalentia texta</l>
-                 <l xml:id="Theb.5.355">thoracum et uultu galeas intrare soluto  </l>
+                 <l xml:id="Theb.5.355">thoracum et <w xml:id="app_w5"> <anchor xml:id="app_355begin"/>cultu <anchor xml:id="app_355end"/></w> galeas intrare soluto  </l>
                  <l xml:id="Theb.5.356">non pudet; audaces rubuit mirata cateruas </l>
                  <l xml:id="Theb.5.357">Pallas, et auerso risit Gradiuus in Haemo. </l>
-                 <l xml:id="Theb.5.358">tune prim um ex animis praeceps amentia cessit, </l>
-                 <l xml:id="Theb.5.359">nee ratis ilia salo, sed diuum sera per aequor</l>
-                 <l xml:id="Theb.5.360">iustitia et poenae scelerum aduentare uidentur.</l>
               </seg>
-            </p>
+      </p>
             <div xml:id="aTheb.5" type="apparatus">
                <p><hi rend="bold">336</hi></p>
                <app from="#app1_336begin" to="#app1_336end">
                   <lem wit="#B #D #G #M #O #P #Q #S"> hospita <bibl type="mss.">B D G M O P Q S</bibl><span type="lem/rdg_sep">:</span></lem>
-                  <rdg wit="#Qvl #R #T">(h)ostia  <bibl type="mss.">Q<hi rend="italic">vl</hi>R T</bibl><span type="lem/rgd_sep">,</span></rdg>
+                  <rdg wit="#Qvl #R #T">(h)ostia  <bibl type="mss.">Qvl R T</bibl><span type="lem/rgd_sep">,</span></rdg>
                   <rdg wit="#O"> aequora <bibl type="ms">O</bibl></rdg>
-                  <rdg resp="#Bentley_Müller">ostia <bibl type="edition">Bentley 1861, 134 e Müller 1870, 201</bibl><span type="w_sep">|</span></rdg>
+                  <rdg resp="#Bentley_Müller">ostia <bibl type="edition">Bentley 1861, 134. Müller 1870, 201</bibl><span type="w_sep">|</span></rdg>
                </app>
                <p><hi rend="bold">344</hi></p>
                <app from="#app_344begin" to="#app_344end">
@@ -165,6 +563,11 @@
                      <bibl type="editions">Müller 1870, 223, Hill 1996, 118</bibl></rdg>
                   <rdg wit="#Bpc #D #G #M #O #Qpc #Hall">vadis <bibl type="mss">Bpc D G M O Qpc  </bibl> <bibl type="edition">S Hall 2007, 122 </bibl></rdg>
                </app>
+               <p> <hi rend="bold">355</hi></p>
+               <app from="#app_355begin" to="#app_355end">
+                  <lem resp="#La Penna">cultu <bibl>La Penna 2008, 181-83</bibl><span type="lem/rdg_sep">:</span></lem> 
+                  <rdg wit="#codd">vultu <bibl>codd.</bibl>.</rdg>
+               </app>
             </div>
          </div>
            
@@ -172,6 +575,45 @@
          </div>
       </body>
        </text>
+       <text type="sourcefragments" subtype="Ipsipile" xml:lang="grc" xml:id="grc">
+          <body>
+             <div>
+                <head>
+                   <seg></seg>
+                </head>
+             <p>
+                <seg xml:id="Eur.752g" type="fragment" subtype="Ipsipile" n="752g"> 
+                   <title> Eur. Hyps. 752g Kn. </title> 
+                 
+                   <lg>
+                      <l> <space quantity="3" unit="character"/> . . .</l>
+                      <l> <space quantity="14" unit="character"/> ca. 14 ll.]ρ̣α̣ι <gap reason="lost" quantity="1" unit="character"/>[.]</l>
+                      <l> <space quantity="8" unit="character"/> ca. 8 ll.Θ]ρῃκίαν</l>
+                      <l><space quantity="5" unit="character"/>. . . . .<supplied reason="lost"> [ς̣</supplied> <gap reason="lost" quantity="1" unit="character"/>[.]μενης ὀρούσας</l>
+                      <l>ἐπ’ οἶδμα γαληνείας</l>
+                      <l>πρυμνήσι᾽ ἀνάψαι,</l>
+                      <l>τὸν ἁ τοῦ ποταμοῦ παρ-</l>
+                      <l>θένος Αἴγιν᾽ ἐτέκνωσεν</l>
+                      <l>Πηλ͜έα, μέσῳ δὲ παρ᾽ ἱστῶι</l>
+                      <l>Ἀσιὰς ἔλεγον ἰήιον</l>
+                      <l xml:id="Hyps.752g.10">Θρῇσσ᾽ ἐβόα κίθαρις <note place="inline" type="editorial">{Ὀρφέυς}</note></l>
+                      <l>μακροπόλων πιτύλων</l>
+                      <l>ἐρέταισι κελεύσματα μελπομένα,</l>
+                      <l>τότε μὲν ταχύπλουν,</l>
+                      <l>τότε δ᾽ εἰλατίνας ἀνάπαυμα πλάτα̣<supplied reason="lost">[ς]</supplied></l>
+                      <l>τ<supplied reason="lost">[ά]</supplied>δε μοι τάδε θυμὸς ἰδεῖν ἵεται,</l>
+                      <l>Δαναῶν δὲ πόνους</l>
+                      <l>ἕ̲τ̲ερος ἀναβοάτω</l>                         
+                   </lg>
+                   <linkGrp type="parallel" xml:id="links1" target="#la.5.340 #Eur.752g" ana="intertextual">
+                      <link target="#Eur.752g #Theb.5.344"/>
+                   </linkGrp>
+                </seg>              
+             </p>         
+             </div>
+          </body>
+       </text>
+    
        
        <text type="translation" xml:lang="it" xml:id="Tr.it">
           <body>
@@ -181,10 +623,10 @@
                 </head>
                 <div xml:id="it.versi.5.335">
                    <head>
-                      <seg xml:id="it.part.335">335-360</seg>
+                      <seg xml:id="it.part.335">335-357</seg>
                    </head>
              <p>
-                <seg xml:id="it.5.335">Ma ecco avanzare la nave Peliaca, mentre fende le onde con la bronzea prora, <lb/> ospite sconosciuta dello sconfinato abisso mai navigato:
+                <seg xml:id="it.5.335">Ma ecco avanzare la nave Peliaca, mentre fende le onde con la bronzea prora, <lb/> ospite sconosciuta dello sconfinato abisso mai navigato: 
                    <lb/> la guidano i Mini
                    e spumeggiano fragorose le onde contro le alte fiancate! <lb/> Diresti che sia Ortigia a vagare,<lb/>  strappata alle proprie radici,<lb/> 
                    o una montagna divelta che naviga sul mare. <lb/> </seg>
@@ -212,11 +654,11 @@
           <body>
              <div type="book" n="5" xml:id="Note.it.5"> 
                 <head>
-                   <seg xml:id="it.5.subt"> Commento </seg>
+                   <seg xml:id="it.5.subt"> Commento 335 - 357</seg>
                 </head>
                 <div xml:id="it.note.5.335">
                    <head>
-                      <seg xml:id="note.part.335"> 335-360</seg>
+                      <seg xml:id="note.part.335"> 335-339</seg>
                    </head>
                    <p>
                       <ref target="#la.5.335"> <seg xml:id="note.5.335">
@@ -272,6 +714,7 @@
                          Mi pare inoltre interessante notare l’allitterazione del suono ‘p’, rimarcata da hospita, che conferisce alla voce di Ipsipile la parvenza di un balbettio, 
                          finalizzato a richiamare lo stato di ansia e paura all’arrivo degli eroi. </seg>
                        </seg>
+                       
                          
                       </ref>
                    </p>
@@ -280,5 +723,6 @@
           </body>
        </text>
     </group>
+    
   </text>
 </TEI>

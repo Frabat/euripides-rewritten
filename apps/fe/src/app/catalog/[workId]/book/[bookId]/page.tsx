@@ -1,4 +1,5 @@
 import { getBookById } from "@/lib/api";
+import { toRoman } from "@/lib/utils";
 import { Book } from "@/types/strapi";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -126,7 +127,7 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
                                             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-black group-hover:text-white transition-colors">
                                                 <BookOpen className="w-8 h-8" />
                                             </div>
-                                            <h4 className="text-xl font-bold mb-2">Volume {volNum === 0 ? "Extra" : volNum}</h4>
+                                            <h4 className="text-xl font-bold mb-2">Libro {volNum === 0 ? "Extra" : toRoman(volNum)}</h4>
                                             <p className="text-gray-500 text-sm">
                                                 {groupedVolumes[volNum]?.length || 0} Blocchi di versi
                                             </p>

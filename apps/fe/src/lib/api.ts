@@ -120,7 +120,9 @@ export async function getCatalogById(id: string): Promise<Catalog> {
         populate: {
             authors: true,
             books: true, // Populating books instead of fragments
-            languages: true
+            languages: true,
+            reference_text: true,
+            reference_file: true
         }
     }, {
         cache: 'no-store'

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter, useParams, useSearchParams } from "next/navigation";
 import { getUser, getToken } from "@/lib/auth";
 import { getBookById } from "@/lib/api";
 import { ArrowLeft, Save, FileText, Upload } from "lucide-react";
@@ -11,8 +11,10 @@ import { StrapiUser } from "@/types/strapi";
 export default function NewVerseBlockPage() {
     const router = useRouter();
     const params = useParams();
+    const searchParams = useSearchParams();
     const workId = params.workId as string;
     const bookId = params.bookId as string;
+    const initialVolume = searchParams.get("volume") || "";
 
     const [user, setUser] = useState<StrapiUser | null>(null);
     const [loading, setLoading] = useState(true);
@@ -21,7 +23,7 @@ export default function NewVerseBlockPage() {
     const [title, setTitle] = useState(""); // Book Title
 
     // Form
-    const [volumeNumber, setVolumeNumber] = useState("");
+    const [volumeNumber, setVolumeNumber] = useState(initialVolume);
     const [startVerse, setStartVerse] = useState("");
     const [endVerse, setEndVerse] = useState("");
     const [xmlFile, setXmlFile] = useState<File | null>(null);

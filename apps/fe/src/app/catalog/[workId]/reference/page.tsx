@@ -1,4 +1,4 @@
-import { TEIViewer } from "@/components/viewer/TEIViewer";
+import { ReferenceTEIViewer } from "@/components/viewer/ReferenceTEIViewer";
 import { fetchXML, getCatalogById } from "@/lib/api";
 import Link from "next/link";
 import { ArrowLeft, FileText } from "lucide-react";
@@ -16,7 +16,7 @@ export default async function ReferenceViewerPage({ params }: ReferenceViewerPag
     const work = await getCatalogById(workId);
     if (!work) notFound();
 
-    const referenceText = work.reference_text; // Assuming this is the field name from schema
+    const referenceText = work.reference_file || work.reference_text;
 
     if (!referenceText || !referenceText.url) {
         return (
@@ -66,7 +66,7 @@ export default async function ReferenceViewerPage({ params }: ReferenceViewerPag
                     Source: {referenceText.name}
                 </div>
                 <div className="bg-white">
-                    <TEIViewer xmlContent={xmlContent} />
+                    <ReferenceTEIViewer xmlContent={xmlContent} />
                 </div>
             </div>
         </div>

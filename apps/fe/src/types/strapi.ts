@@ -63,6 +63,7 @@ export interface Book {
     id: number;
     documentId: string;
     title: string;
+    type?: string;
     period?: string;
     authors?: Author[];
     work?: Catalog;
@@ -98,6 +99,7 @@ export interface Catalog {
     updatedAt: string;
     publishedAt?: string;
     reference_text?: any;
+    reference_file?: any;
 }
 
 export interface StrapiUser {
