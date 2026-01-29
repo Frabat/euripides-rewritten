@@ -45,7 +45,7 @@ export default async function DocumentViewerPage({ params }: DocumentViewerPageP
 
     if (book && !book.isSingleVolume && document?.bookNumber !== undefined) {
         backLink = `/catalog/${workId}/book/${bookId}/volumes/${document.bookNumber}`;
-        backLabel = "Torna al Volume";
+        backLabel = "Torna al Libro";
     }
 
     if (!document) {

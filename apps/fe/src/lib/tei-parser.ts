@@ -126,7 +126,14 @@ export const parseTEI = (xmlString: string): ParsedTEI => {
                 } else if (e.tagName === "foreign") {
                     content += `<i lang="${e.getAttribute("xml:lang") || ''}">${processContent(e)}</i>`;
                 } else if (e.tagName === "ref") {
-                    content += `<span class="tei-ref">${processContent(e)}</span>`;
+                    const target = e.getAttribute("target");
+                    if (target) {
+                        const isInternal = target.startsWith("#");
+                        const targetAttr = isInternal ? "" : ' target="_blank" rel="noopener noreferrer"';
+                        content += `<a href="${target}" class="tei-ref"${targetAttr}>${processContent(e)}</a>`;
+                    } else {
+                        content += `<span class="tei-ref">${processContent(e)}</span>`;
+                    }
                 } else if (e.tagName === "bibl") {
                     content += `<span class="tei-bibl">${processContent(e)}</span>`;
                 } else if (e.tagName === "quote") {

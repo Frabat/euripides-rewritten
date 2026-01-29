@@ -491,7 +491,8 @@ export function TEIViewer({ xmlContent, bookStructure, workId, bookId, currentDo
                     color: inherit;
                 }
                 title[type="sub"] { display: none; }
-                ref { color: #d97706; font-weight: 500; cursor: pointer; }
+                .tei-ref { color: #d97706; font-weight: 500; cursor: pointer; text-decoration: none; }
+                .tei-ref:hover { text-decoration: underline; }
                 hi[rend="bold"] { font-weight: bold; }
                 hi[rend="italic"] { font-style: italic; }
                 .tei-gap { color: #9ca3af; font-style: italic; }
@@ -512,11 +513,12 @@ export function TEIViewer({ xmlContent, bookStructure, workId, bookId, currentDo
                     <div className="font-bold border-b border-gray-100 pb-1 mb-1 text-gray-700">Apparato Critico</div>
                     {hoveredVariant.variants.map((v: any, i: number) => (
                         <div key={i} className="mb-2 last:mb-0">
-                            <span className="font-bold text-stone-800">{v.lemma}</span>
+                            <span className="font-bold text-stone-800" dangerouslySetInnerHTML={{ __html: v.lemma }} />
                             <span className="mx-2 text-gray-400">:</span>
                             {v.readings.map((r: any, j: number) => (
                                 <span key={j} className="text-gray-600">
-                                    {r.text} <span className="text-xs italic text-gray-400 ml-1">{r.witness}</span>
+                                    <span dangerouslySetInnerHTML={{ __html: r.text }} />
+                                    <span className="text-xs italic text-gray-400 ml-1">{r.witness}</span>
                                     {j < v.readings.length - 1 && ", "}
                                 </span>
                             ))}

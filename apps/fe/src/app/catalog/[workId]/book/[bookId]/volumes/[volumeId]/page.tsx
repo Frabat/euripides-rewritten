@@ -54,7 +54,7 @@ export default async function VolumePage({ params }: VolumePageProps) {
             <div className="bg-white rounded-lg p-8 border border-gray-200 shadow-sm mb-12 flex justify-between items-center">
                 <div>
                     <h1 className="text-3xl font-serif font-bold mb-2">{book.title}</h1>
-                    <h2 className="text-xl text-gray-500">Volume {targetVolumeNumber === 0 ? "Extra" : targetVolumeNumber}</h2>
+                    <h2 className="text-xl text-gray-500">Libro {targetVolumeNumber === 0 ? "Extra" : targetVolumeNumber}</h2>
                 </div>
                 <ProtectScholar>
                     <Link
@@ -69,7 +69,7 @@ export default async function VolumePage({ params }: VolumePageProps) {
 
             {sortedBlocks.length === 0 ? (
                 <div className="bg-gray-50 p-8 rounded-lg text-center text-gray-500">
-                    Nessun blocco di versi trovato per questo volume.
+                    Nessun blocco di versi trovato per questo libro.
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
