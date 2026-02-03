@@ -54,11 +54,7 @@ export default async function ReferenceViewerPage({ params }: ReferenceViewerPag
                 <ArrowLeft className="w-4 h-4" /> Torna alla Tragedia
             </Link>
 
-            <div className="mb-6">
-                <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">Testo di Riferimento</span>
-                <h1 className="text-2xl font-serif font-bold mt-1">{work.title}</h1>
-                <p className="text-gray-500 mt-2">Trascrizione ufficiale</p>
-            </div>
+
 
             <div className="mb-8 border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
                 <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 text-xs font-mono text-gray-500 flex items-center gap-2">

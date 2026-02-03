@@ -33,7 +33,45 @@
             </availability>
          </publicationStmt>
          <sourceDesc>
-            <p>Born digital, based on academic research notes.</p>
+            <listBibl n="refeditionsStatius">
+               <head> Edizioni di riferimento della Tebaide </head>
+               <bibl xml:id="Hill">
+                  <abbr type="siglum">Hill 1996:</abbr>
+                  <editor role="ed">D. E. Hill</editor>
+                  <title level="m">P. Papini Stati Thebaidos Libri XII</title>
+                  <pubPlace>Leiden</pubPlace>
+                  <date>1996</date>
+               </bibl>
+               <bibl xml:id="Hall">
+                  <abbr type="siglum">Hall 2007:</abbr>
+                  <editor role="ed., trad.">J.B. Hall, A.L. Ritchie, &amp; M.J. Edwards</editor>                
+                  <pubPlace>Cambridge</pubPlace>
+                  <date>2007</date>
+               </bibl>
+            </listBibl>
+            <listBibl n="refeditionsEuripides">
+               <head> Edizioni di riferimento dell'Ipsipile</head>
+               <bibl xml:id="Bond">
+                  <abbr type="siglum">Bond 1963</abbr>
+                  <editor role="ed">G.W. Bond</editor>            
+                  <pubPlace>Oxford</pubPlace>
+                  <date>1963</date>
+               </bibl>
+               <bibl xml:id="Cockle">
+                  <abbr type="siglum">Cockle 1987:</abbr>
+                  <editor role="ed">W.E.H. COCK</editor>
+                  <pubPlace>Roma</pubPlace>
+                  <date>1987</date>
+               </bibl>
+               <bibl xml:id="Kannicht">
+                  <abbr type="siglum">Kannicht 2004:</abbr>
+                  <editor role="ed">R. Kannicht</editor>
+                  <edition> <date>2004</date> </edition>
+                  <title level="m" type="vol">Tragicorum Graecorum Fragmenta. Euripides, Vol.5  </title>
+                  <pubPlace>Göttingen</pubPlace>
+                  <date>2004</date>                  
+               </bibl>
+            </listBibl>
          </sourceDesc>
       </fileDesc>
       <encodingDesc>

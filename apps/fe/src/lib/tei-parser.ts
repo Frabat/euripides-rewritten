@@ -13,6 +13,7 @@ export interface ParsedTEI {
     apparatus: Record<string, ApparatusEntry>;
     commentary: Record<string, CommentaryEntry>;
     fragments: Record<string, FragmentEntry>;
+    sourceDescHtml: string;
 }
 
 export interface parsedVerse {
@@ -104,10 +105,9 @@ export const parseTEI = (xmlString: string): ParsedTEI => {
             } else if (node.nodeType === Node.ELEMENT_NODE) {
                 const e = node as Element;
                 if (e.tagName === "gap") {
-                    const reason = e.getAttribute("reason");
-                    content += `<span class="tei-gap">[...${reason ? ` ${reason}` : ''}]</span>`;
+                    content += "";
                 } else if (e.tagName === "supplied") {
-                    content += `<span class="tei-supplied">&lt;${e.textContent}&gt;</span>`;
+                    content += "";
                 } else if (e.tagName === "placeName" || e.tagName === "persName" || e.tagName === "name") {
                     content += `<span class="tei-name ${e.getAttribute("type") || ''}">${processContent(e)}</span>`;
                 } else if (e.tagName === "anchor") {
@@ -445,11 +445,86 @@ export const parseTEI = (xmlString: string): ParsedTEI => {
         });
     }
 
+    // --- Source Desc Processing ---
+    let sourceDescHtml = "";
+    const fileDesc = getTags(doc, "fileDesc")[0];
+    if (fileDesc) {
+        const sourceDesc = getTags(fileDesc, "sourceDesc")[0];
+        if (sourceDesc) {
+            // We need a specific processor that handles structural elements for sourceDesc
+            const processSourceDesc = (el: Element): string => {
+                const processNodes = (nodes: NodeListOf<ChildNode>): string => {
+                    let content = "";
+                    nodes.forEach(node => {
+                        if (node.nodeType === Node.TEXT_NODE) {
+                            content += node.textContent;
+                        } else if (node.nodeType === Node.ELEMENT_NODE) {
+                            content += processElement(node as Element);
+                        }
+                    });
+                    return content;
+                };
+
+                const processElement = (e: Element): string => {
+                    if (e.tagName === "listBibl" || e.tagName === "listWit") {
+                        const headChild = Array.from(e.children).find(c => c.tagName === "head");
+                        let summaryHtml = "Dettagli";
+                        if (headChild) {
+                            summaryHtml = processNodes(headChild.childNodes);
+                        }
+
+                        const bodyNodes = Array.from(e.childNodes).filter(n => n !== headChild);
+                        let bodyHtml = "";
+                        bodyNodes.forEach(n => {
+                            if (n.nodeType === Node.TEXT_NODE) bodyHtml += n.textContent;
+                            else if (n.nodeType === Node.ELEMENT_NODE) bodyHtml += processElement(n as Element);
+                        });
+
+                        return `<details class="group mb-2 border border-gray-100 rounded bg-white">
+                            <summary class="font-bold text-stone-700 bg-stone-50 p-2 cursor-pointer select-none flex justify-between items-center hover:bg-stone-100 transition-colors uppercase text-xs tracking-wider outline-none">
+                                <span>${summaryHtml}</span>
+                                <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </summary>
+                            <div class="p-2 border-t border-gray-100">
+                                ${bodyHtml}
+                            </div>
+                         </details>`;
+
+                    } else if (e.tagName === "head") {
+                        // Fallback if head is found outside list (shouldn't happen with filter above, but safe to keep)
+                        return `<h4 class="font-bold text-stone-800 mb-2 mt-4 text-xs uppercase tracking-wider bg-stone-100 p-1 rounded">` + processNodes(e.childNodes) + `</h4>`;
+                    } else if (e.tagName === "witness" || e.tagName === "bibl") {
+                        const id = e.getAttribute("xml:id");
+                        return `<div class="tei-item mb-1 ml-2 text-sm text-gray-700" ${id ? `id="${id}"` : ''}>` + processNodes(e.childNodes) + `</div>`;
+                    } else if (e.tagName === "abbr") {
+                        return `<span class="font-mono text-xs bg-gray-100 px-1 rounded border border-gray-200 mr-1 text-gray-600" title="${e.getAttribute("type") || ''}">` + processNodes(e.childNodes) + `</span>`;
+                    } else if (e.tagName === "title") {
+                        return `<span class="italic font-medium">` + processNodes(e.childNodes) + `</span>`;
+                    } else if (e.tagName === "editor" || e.tagName === "author" || e.tagName === "name") {
+                        return `<span class="font-medium text-stone-800">` + processNodes(e.childNodes) + `</span>`;
+                    } else if (e.tagName === "date") {
+                        return `<span class="text-xs text-gray-500 ml-1">` + processNodes(e.childNodes) + `</span>`;
+                    } else if (e.tagName === "pubPlace") {
+                        return `<span class="text-xs text-gray-500 ml-1">` + processNodes(e.childNodes) + `</span>`;
+                    } else if (e.tagName === "biblScope") {
+                        return `<span class="text-xs text-gray-500 ml-1">` + processNodes(e.childNodes) + `</span>`;
+                    } else {
+                        return processContent(e);
+                    }
+                };
+
+                return processNodes(el.childNodes);
+            };
+            sourceDescHtml = processSourceDesc(sourceDesc);
+        }
+    }
+
     return {
         metadata: { title, author, editor, publicationDate: pubDate },
         sections,
         apparatus,
         commentary,
-        fragments
+        fragments,
+        sourceDescHtml
     };
 };

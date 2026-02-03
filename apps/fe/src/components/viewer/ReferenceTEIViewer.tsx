@@ -61,10 +61,16 @@ export function ReferenceTEIViewer({ xmlContent }: ReferenceTEIViewerProps) {
 
                 {/* Metadata Header */}
                 <div className="bg-transparent mb-2">
-                    <h1 className="text-3xl font-bold mb-1">{data.metadata.title}</h1>
+                    {data.metadata.title && data.metadata.title !== "Untitled" && (
+                        <h1 className="text-3xl font-bold mb-1">{data.metadata.title}</h1>
+                    )}
                     <div className="text-sm text-gray-600">
-                        <span className="block">Autore: <span className="font-semibold text-gray-900">{data.metadata.author}</span></span>
-                        <span className="block">Edizione Critica a cura di: <span className="font-semibold text-gray-900">{data.metadata.editor}</span></span>
+                        {data.metadata.author && data.metadata.author !== "Unknown" && (
+                            <span className="block">Autore: <span className="font-semibold text-gray-900">{data.metadata.author}</span></span>
+                        )}
+                        {data.metadata.editor && data.metadata.editor !== "Unknown" && (
+                            <span className="block">Edizione Critica a cura di: <span className="font-semibold text-gray-900">{data.metadata.editor}</span></span>
+                        )}
                     </div>
                 </div>
 
@@ -79,27 +85,30 @@ export function ReferenceTEIViewer({ xmlContent }: ReferenceTEIViewerProps) {
                                 <span className="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded border border-amber-200">Greco</span>
                             </div>
                             <div className="p-6 space-y-2 leading-relaxed text-lg bg-white min-h-[300px]">
-                                {activeSection.verses.map((verse, index, array) => (
-                                    <div
-                                        key={verse.id}
-                                        id={verse.id}
-                                        className={cn(
-                                            "grid grid-cols-[30px_1fr] gap-2 rounded p-1 -ml-1 pl-1 transition-colors relative",
-                                            selectedVerseId === verse.id ? "bg-amber-100" : "hover:bg-amber-50"
-                                        )}
-                                        onClick={() => setSelectedVerseId(verse.id === selectedVerseId ? null : verse.id)}
-                                    >
-                                        <span className="font-bold text-sm text-gray-800 tabular-nums pt-1 select-none text-right pr-2">
-                                            {verse.n}
-                                        </span>
-                                        <div>
-                                            {verse.speaker && (
-                                                <div className="font-bold text-sm text-euripides-accent mb-1 uppercase tracking-wider">{verse.speaker}</div>
+                                {activeSection.verses.map((verse, index, array) => {
+                                    const showSpeaker = verse.speaker && (index === 0 || array[index - 1].speaker !== verse.speaker);
+                                    return (
+                                        <div
+                                            key={verse.id}
+                                            id={verse.id}
+                                            className={cn(
+                                                "grid grid-cols-[30px_1fr] gap-2 rounded p-1 -ml-1 pl-1 transition-colors relative",
+                                                selectedVerseId === verse.id ? "bg-amber-100" : "hover:bg-amber-50"
                                             )}
-                                            <div dangerouslySetInnerHTML={{ __html: verse.sourceContent }} />
+                                            onClick={() => setSelectedVerseId(verse.id === selectedVerseId ? null : verse.id)}
+                                        >
+                                            <span className="font-bold text-sm text-gray-800 tabular-nums pt-1 select-none text-right pr-2">
+                                                {verse.n}
+                                            </span>
+                                            <div>
+                                                {showSpeaker && (
+                                                    <div className="font-bold text-sm text-euripides-accent mb-1 uppercase tracking-wider">{verse.speaker}</div>
+                                                )}
+                                                <div dangerouslySetInnerHTML={{ __html: verse.sourceContent }} />
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
 
@@ -110,25 +119,28 @@ export function ReferenceTEIViewer({ xmlContent }: ReferenceTEIViewerProps) {
                                 <span className="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded border border-amber-200">Italiano</span>
                             </div>
                             <div className="p-6 space-y-2 leading-relaxed text-lg bg-white min-h-[300px]">
-                                {activeSection.verses.map((verse, index) => (
-                                    <div
-                                        key={`tr-${verse.id}`}
-                                        className={cn(
-                                            "grid grid-cols-[30px_1fr] gap-2 rounded p-1 -ml-1 pl-1 transition-colors",
-                                            selectedVerseId === verse.id ? "bg-amber-100" : ""
-                                        )}
-                                    >
-                                        <span className="font-bold text-sm text-gray-400 tabular-nums pt-1 select-none text-right pr-2">
-                                            {verse.n}
-                                        </span>
-                                        <div>
-                                            {verse.speaker && (
-                                                <div className="font-bold text-sm text-euripides-accent mb-1 uppercase tracking-wider">{verse.speaker}</div>
+                                {activeSection.verses.map((verse, index, array) => {
+                                    const showSpeaker = verse.speaker && (index === 0 || array[index - 1].speaker !== verse.speaker);
+                                    return (
+                                        <div
+                                            key={`tr-${verse.id}`}
+                                            className={cn(
+                                                "grid grid-cols-[30px_1fr] gap-2 rounded p-1 -ml-1 pl-1 transition-colors",
+                                                selectedVerseId === verse.id ? "bg-amber-100" : ""
                                             )}
-                                            <div dangerouslySetInnerHTML={{ __html: verse.translationContent || "<span class='text-gray-300 italic'>...</span>" }} />
+                                        >
+                                            <span className="font-bold text-sm text-gray-400 tabular-nums pt-1 select-none text-right pr-2">
+                                                {verse.n}
+                                            </span>
+                                            <div>
+                                                {showSpeaker && (
+                                                    <div className="font-bold text-sm text-euripides-accent mb-1 uppercase tracking-wider">{verse.speaker}</div>
+                                                )}
+                                                <div dangerouslySetInnerHTML={{ __html: verse.translationContent || "<span class='text-gray-300 italic'>...</span>" }} />
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
 

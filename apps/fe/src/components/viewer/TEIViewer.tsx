@@ -41,6 +41,7 @@ export function TEIViewer({ xmlContent, bookStructure, workId, bookId, currentDo
     const [expandedBlockId, setExpandedBlockId] = useState<string | null>(currentDocumentId || null);
     const [parsedBlocks, setParsedBlocks] = useState<Record<string, ParsedTEI>>({});
     const [loadingBlocks, setLoadingBlocks] = useState<Record<string, boolean>>({});
+    const [manoscrittiOpen, setManoscrittiOpen] = useState(true);
 
     useEffect(() => {
         if (xmlContent) {
@@ -169,86 +170,103 @@ export function TEIViewer({ xmlContent, bookStructure, workId, bookId, currentDo
     return (
         <div className="flex flex-col lg:flex-row gap-8 bg-[#f8f5f2] min-h-screen text-gray-900 font-serif p-4 md:p-8">
 
-            {/* Sidebar */}
-            <aside className="w-full lg:w-72 shrink-0 h-fit bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden sticky top-4">
-                <div className="p-3 font-bold border-b border-gray-200 bg-gray-50 text-gray-700 uppercase tracking-tight text-sm flex items-center gap-2">
-                    <BookOpen className="w-4 h-4" />
-                    Indice del Libro
-                </div>
-                <div className="flex flex-col max-h-[calc(100vh-100px)] overflow-y-auto">
-                    {bookStructure && bookStructure.length > 0 ? (
-                        bookStructure.map((block) => {
-                            const isExpanded = block.documentId === expandedBlockId;
-                            const isCurrentDoc = block.documentId === currentDocumentId;
-                            const blockData = parsedBlocks[block.documentId];
-                            const isLoading = loadingBlocks[block.documentId];
+            {/* Sidebar Column */}
+            <div className="w-full lg:w-72 shrink-0 flex flex-col gap-6">
+                {/* Index Card */}
+                <aside className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden sticky top-4 max-h-[calc(100vh-40px)] flex flex-col">
+                    <div className="p-3 font-bold border-b border-gray-200 bg-gray-50 text-gray-700 uppercase tracking-tight text-sm flex items-center gap-2 shrink-0">
+                        <BookOpen className="w-4 h-4" />
+                        Indice del Libro
+                    </div>
+                    <div className="flex flex-col overflow-y-auto">
+                        {bookStructure && bookStructure.length > 0 ? (
+                            bookStructure.map((block) => {
+                                const isExpanded = block.documentId === expandedBlockId;
+                                const isCurrentDoc = block.documentId === currentDocumentId;
+                                const blockData = parsedBlocks[block.documentId];
+                                const isLoading = loadingBlocks[block.documentId];
 
-                            return (
-                                <div key={block.documentId} className="border-b border-gray-100 last:border-0">
-                                    <button
-                                        onClick={() => toggleBlock(block)}
-                                        className={cn(
-                                            "w-full px-4 py-3 text-sm font-bold flex items-center justify-between transition-colors",
-                                            isCurrentDoc ? "text-stone-900 bg-stone-50" : "text-gray-600 hover:bg-stone-50 hover:text-stone-900"
-                                        )}
-                                    >
-                                        <span>{block.verseBlockName || block.title || "Documento"}</span>
-                                        {isExpanded ? <ChevronDown className="w-4 h-4 text-stone-500" /> : <ChevronRight className="w-4 h-4 text-gray-300" />}
-                                    </button>
-
-                                    {isExpanded && (
-                                        <div className="pl-4 pb-2 bg-stone-50/50 border-t border-gray-100 inner-shadow-sm transition-all duration-300">
-                                            {isLoading && <div className="p-2 text-xs text-gray-400 italic">Caricamento sezioni...</div>}
-                                            {blockData && blockData.sections.map((section) => {
-                                                const isActiveSection = isCurrentDoc && activeSectionId === section.id;
-                                                return (
-                                                    <Link
-                                                        key={`${block.documentId}-${section.id}`}
-                                                        href={isCurrentDoc ? "#" : `/catalog/${workId}/book/${bookId}/${block.documentId}`}
-                                                        onClick={(e) => {
-                                                            if (isCurrentDoc) {
-                                                                e.preventDefault();
-                                                                setActiveSectionId(section.id);
-                                                            }
-                                                        }}
-                                                        className={cn(
-                                                            "block w-full text-left px-4 py-2 text-xs border-l-2 transition-colors flex justify-between items-center hover:bg-stone-100 rounded-r",
-                                                            isActiveSection
-                                                                ? "border-stone-800 text-stone-900 font-bold bg-stone-100"
-                                                                : "border-gray-200 text-gray-500"
-                                                        )}
-                                                    >
-                                                        {section.label}
-                                                    </Link>
-                                                );
-                                            })}
-                                            {!isLoading && !blockData && (
-                                                <div className="p-2 text-xs text-red-400 italic">Errore nel caricamento</div>
+                                return (
+                                    <div key={block.documentId} className="border-b border-gray-100 last:border-0">
+                                        <button
+                                            onClick={() => toggleBlock(block)}
+                                            className={cn(
+                                                "w-full px-4 py-3 text-sm font-bold flex items-center justify-between transition-colors",
+                                                isCurrentDoc ? "text-stone-900 bg-stone-50" : "text-gray-600 hover:bg-stone-50 hover:text-stone-900"
                                             )}
-                                        </div>
+                                        >
+                                            <span>{block.verseBlockName || block.title || "Documento"}</span>
+                                            {isExpanded ? <ChevronDown className="w-4 h-4 text-stone-500" /> : <ChevronRight className="w-4 h-4 text-gray-300" />}
+                                        </button>
+
+                                        {isExpanded && (
+                                            <div className="pl-4 pb-2 bg-stone-50/50 border-t border-gray-100 inner-shadow-sm transition-all duration-300">
+                                                {isLoading && <div className="p-2 text-xs text-gray-400 italic">Caricamento sezioni...</div>}
+                                                {blockData && blockData.sections.map((section) => {
+                                                    const isActiveSection = isCurrentDoc && activeSectionId === section.id;
+                                                    return (
+                                                        <Link
+                                                            key={`${block.documentId}-${section.id}`}
+                                                            href={isCurrentDoc ? "#" : `/catalog/${workId}/book/${bookId}/${block.documentId}`}
+                                                            onClick={(e) => {
+                                                                if (isCurrentDoc) {
+                                                                    e.preventDefault();
+                                                                    setActiveSectionId(section.id);
+                                                                }
+                                                            }}
+                                                            className={cn(
+                                                                "block w-full text-left px-4 py-2 text-xs border-l-2 transition-colors flex justify-between items-center hover:bg-stone-100 rounded-r",
+                                                                isActiveSection
+                                                                    ? "border-stone-800 text-stone-900 font-bold bg-stone-100"
+                                                                    : "border-gray-200 text-gray-500"
+                                                            )}
+                                                        >
+                                                            {section.label}
+                                                        </Link>
+                                                    );
+                                                })}
+                                                {!isLoading && !blockData && (
+                                                    <div className="p-2 text-xs text-red-400 italic">Errore nel caricamento</div>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            data.sections.map((section) => (
+                                <button
+                                    key={section.id}
+                                    onClick={() => setActiveSectionId(section.id)}
+                                    className={cn(
+                                        "text-left px-4 py-3 text-sm font-semibold border-b border-gray-100 last:border-0 hover:bg-euripides-bg/20 transition-colors flex justify-between items-center",
+                                        activeSectionId === section.id
+                                            ? "bg-stone-200 border-l-4 border-l-stone-600 pl-3"
+                                            : "text-gray-600"
                                     )}
-                                </div>
-                            );
-                        })
-                    ) : (
-                        data.sections.map((section) => (
-                            <button
-                                key={section.id}
-                                onClick={() => setActiveSectionId(section.id)}
-                                className={cn(
-                                    "text-left px-4 py-3 text-sm font-semibold border-b border-gray-100 last:border-0 hover:bg-euripides-bg/20 transition-colors flex justify-between items-center",
-                                    activeSectionId === section.id
-                                        ? "bg-stone-200 border-l-4 border-l-stone-600 pl-3"
-                                        : "text-gray-600"
-                                )}
-                            >
-                                {section.label}
-                                {activeSectionId === section.id && <ChevronRight className="w-4 h-4 text-stone-600" />}
-                            </button>
-                        ))
-                    )}
-                </div>
-            </aside>
+                                >
+                                    {section.label}
+                                    {activeSectionId === section.id && <ChevronRight className="w-4 h-4 text-stone-600" />}
+                                </button>
+                            ))
+                        )}
+                    </div>
+                </aside>
+
+                {/* Source Description Card */}
+                {data.sourceDescHtml && (
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                        <div className="p-3 font-bold border-b border-gray-200 bg-gray-50 text-gray-700 uppercase tracking-tight text-sm flex items-center gap-2">
+                            <FileText className="w-4 h-4" />
+                            Manoscritti
+                        </div>
+                        <div
+                            className="p-4 text-sm text-gray-600"
+                            dangerouslySetInnerHTML={{ __html: data.sourceDescHtml }}
+                        />
+                    </div>
+                )}
+            </div>
 
             {/* Main Content */}
             <div className="flex-1 flex flex-col gap-6">
